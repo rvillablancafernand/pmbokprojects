@@ -1,0 +1,32 @@
+- title version: @pmbok.version, name: @process_group.name
+.admin-header
+	.row-wg
+		.col-sm-9
+			h1 = t '.heading.html', icon: icon('object-group'), version: @pmbok.version, name: @process_group.name
+		.col-sm-3
+			.btn-group.pull-right-sm-up
+				= header_link_to pmbok_path(@pmbok), tooltip: t('.back'), class: 'btn btn-admin-panel-primary'
+					= icon 'reply'
+				= header_link_to edit_pmbok_process_group_path(@process_group), tooltip: t('.edit'), class: 'btn btn-admin-panel-warning'
+					= icon 'edit'
+				= header_link_to pmbok_process_group_path(@process_group), tooltip: t('.remove'), data: { confirm: t('.confirm_remove') }, method: :delete, class: 'btn btn-admin-panel-danger'
+					= icon 'remove'
+.row-wg
+	.col-sm-12
+		h1 = ProcessObject.model_name.human.pluralize
+		- @process_group.process_objects.each do |process_object|
+			= content_tag :div, class: 'card process-card', style: process_object.bd_style
+				= content_tag :div, class: 'card-header', style: process_object.bg_style
+					h2.text-white = process_object.knowledge_area_type.name
+				.card-body
+					h3.header
+						span.version
+							= process_object.version
+						span.name
+							= process_object.name
+					.inputs
+						h4 Entradas
+					.tools
+						h4 Herramientas
+					.outputs
+						h4 Salidas

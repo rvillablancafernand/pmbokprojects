@@ -1,0 +1,17 @@
+es:
+  professors:
+    pmboks:
+      index:
+        title: PMBOKS
+        heading:
+          html: PMBOKS %{icon}
+        new: Nuevo PMBOK
+      show:
+        title: PMBOK %{version}
+        heading:
+          html: PMBOK %{version} %{icon}
+        confirm_remove: ¿Estás seguro que deseas eliminar este PMBOK?
+        confirm_remove_process_group: ¿Estás seguro que deseas eliminar este Grupo de Procesos?
+        back: Volver
+        edit: Editar
+        remove: Eliminar

@@ -1,0 +1,11 @@
+es:
+  professors:
+    invitations:
+      edit:
+        title: Bienvenido
+        header:
+          html: Bienvenido a %{app_name}
+        submit: Iniciar Sesión
+      new:
+        title: Invitar un nuevo Profesor
+        submit: Enviar invitación

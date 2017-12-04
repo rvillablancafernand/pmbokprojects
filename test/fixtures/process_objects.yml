@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  version: MyString
+  name: MyString
+  description: MyText
+  knowledge_area: one
+
+two:
+  version: MyString
+  name: MyString
+  description: MyText
+  knowledge_area: two

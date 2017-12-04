@@ -1,0 +1,27 @@
+.header-bg.bg-info
+	.upper-container
+		.container
+			.section.logo
+				= image_tag 'brand-logo.png'
+				span = t 'defaults.app_name.html'
+			hr
+
+			.section
+				h3 = t '.greetings', name: @resource.display_short_name, app_name: t('defaults.app_name.html')
+
+				p = t '.instruction', email: @email
+
+				p = t '.instruction_2'
+
+				.action
+					= link_to confirmation_url(@resource, confirmation_token: @token), class: 'btn btn-info', target: '_blank'
+						= t '.action'
+			hr
+
+			.section-sm.link-text
+				= link_to nil, confirmation_url(@resource, confirmation_token: @token), target: '_blank'
+			hr
+
+			.section-sm.regards
+				= t '.regards.html', info_mail: mail_to(t('defaults.info_mail'), t('defaults.info_mail')), app_name: t('defaults.app_name.html')
+			hr

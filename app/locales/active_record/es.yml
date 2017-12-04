@@ -1,0 +1,42 @@
+es:
+  attributes:
+    id: id
+    actions: Acciones
+    sort: Ordenar
+    version: Versión
+    name: Nombre
+    description: Descripción
+  activerecord:
+    models:
+      student: Estudiante
+      professor: Profesor
+      pmbok: PMBOK
+      process_group: Grupos de Procesos
+      process_group_type: Grupos de Procesos
+      knowledge_area_type: Áreas del Conocimiento
+      process_object: Proceso
+    attributes:
+      professor:
+        email: Email
+        surname: Apellido
+        second_surname: Segundo Apellido
+        avatar_url: Link de Avatar
+        password: Contraseña
+        password_confirmation: Confirmar Contraseña
+        current_password: Contraseña Actual
+        remember_me: Recordarme
+        reset_password_token: Token de cambio de constraseña
+        unlock_token: Token de desbloqueo
+      pmbok:
+      knowledge_area_type:
+        color: Color
+      process_group:
+        process_group_type: Grupo de Proceso
+      process_object:
+        knowledge_area_type: Área del Conocimiento
+    errors:
+      messages:
+        record_invalid: "La validación falló: %{errors}"
+        restrict_dependent_destroy:
+          has_one: No se puede eliminar el registro porque existe un %{record} dependiente
+          has_many: No se puede eliminar el registro porque existen %{record} dependientes

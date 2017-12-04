@@ -1,0 +1,5 @@
+es:
+  defaults:
+    app_name_styled:
+      html: <span class="app-name">PMBOK<span>projects</span></span>
+    app_name_plain: PMBOK projects

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  pmbok: one
+  name: MyString
+  description: MyText
+  knowledage_area_type: one
+
+two:
+  pmbok: two
+  name: MyString
+  description: MyText
+  knowledage_area_type: two

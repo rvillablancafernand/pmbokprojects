@@ -1,0 +1,32 @@
+- title
+.admin-header
+	.row-wg
+		.col-sm-9
+			h1 = t '.heading.html', icon: icon('globe')
+		.col-sm-3
+			.btn-group.pull-right-sm-up
+				= header_link_to new_process_group_type_path, tooltip: t('.new'), class: 'btn btn-admin-panel-primary'
+					= icon 'plus'
+.row-wg
+	.col-sm-12
+		table.admin-table
+			thead
+				tr
+					th = ProcessGroupType.human_attribute_name(:id)
+					th = ProcessGroupType.human_attribute_name(:name)
+					th = ProcessGroupType.human_attribute_name(:description)
+					th.actions = ProcessGroupType.human_attribute_name(:actions)
+			tbody
+				- @process_group_types.each do |process_group_type|
+					tr
+						td = process_group_type.id
+						td = process_group_type.name
+						td = process_group_type.description
+						td.actions
+							= link_to process_group_type
+								= icon 'eye'
+							= link_to edit_process_group_type_path(process_group_type)
+								= icon 'edit', class: 'text-warning'
+							= link_to process_group_type, data: { confirm: t('.confirm_remove') }, method: :delete
+								= icon 'remove', class: 'text-danger'
+= paginate_with_info @process_group_types

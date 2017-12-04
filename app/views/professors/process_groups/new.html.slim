@@ -1,0 +1,9 @@
+- title
+.admin-header
+	.row-wg
+		.col-sm-9
+			h1 = t '.heading.html', icon: icon('plus')
+		.col-sm-3
+			= link_to process_group_types_path, class: 'btn btn-admin-panel-primary pull-right-sm-up'
+				= icon 'reply'
+== render 'form'

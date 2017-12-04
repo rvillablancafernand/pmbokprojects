@@ -1,0 +1,8 @@
+es:
+  professors:
+    knowledge_area_types:
+      index:
+        title: Áreas del Conocimiento
+        heading:
+          html: Áreas del Conocimiento %{icon}
+        new: Nueva Área del Conocimiento

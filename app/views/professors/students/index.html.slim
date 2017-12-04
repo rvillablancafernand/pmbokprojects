@@ -1,0 +1,26 @@
+- title
+.admin-header
+	h1 = t '.heading.html', icon: icon('users')
+.row
+	.col-sm-12
+		table.admin-table
+			thead
+				tr
+					th = Student.human_attribute_name(:id)
+					th = Student.human_attribute_name(:name)
+					th = Student.human_attribute_name(:surname)
+					th = Student.human_attribute_name(:second_surname)
+					th.actions = Student.human_attribute_name(:actions)
+			tbody
+				- @students.each do |student|
+					tr
+						td = student.id
+						td = student.name
+						td = student.surname
+						td = student.second_surname
+						td.actions
+							= link_to student
+								= icon 'eye'
+							= link_to student, data: { confirm: t('.confirm_remove') }, method: :delete
+								= icon 'remove', class: 'text-danger'
+= paginate_with_info @students
