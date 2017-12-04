@@ -1,23 +1,13 @@
-- title
-.admin-header
-	.row
-		.col-sm-9
-			h1 = t '.heading.html', icon: icon('user'), name: @professor.display_name
-		.col-sm-3
-			.btn-group.pull-right-sm-up
-				= header_link_to professors_path, tooltip: t('.back'), class: 'btn btn-admin-panel-primary'
-					= icon 'reply'
-				= header_link_to @professor, tooltip: t('.remove'), data: { confirm: t('.confirm_remove') }, method: :delete, class: 'btn btn-admin-panel-danger'
-					= icon 'remove'
+= header_generator @student, 'user'
 .description-box-inverse
-	dl.row
-		dt.col-sm-3 = Professor.human_attribute_name(:id)
-		dd.col-sm-9 = @professor.id
-		dt.col-sm-3 = Professor.human_attribute_name(:name)
-		dd.col-sm-9 = @professor.name
-		dt.col-sm-3 = Professor.human_attribute_name(:surname)
-		dd.col-sm-9 = @professor.surname
-		dt.col-sm-3 = Professor.human_attribute_name(:second_surname)
-		dd.col-sm-9 = @professor.second_surname
-		dt.col-sm-3 = Professor.human_attribute_name(:email)
-		dd.col-sm-9 = @professor.email
+	dl.row-wg
+		dt.col-sm-3 = Student.human_attribute_name(:id)
+		dd.col-sm-9 = @student.id
+		dt.col-sm-3 = Student.human_attribute_name(:name)
+		dd.col-sm-9 = @student.name
+		dt.col-sm-3 = Student.human_attribute_name(:surname)
+		dd.col-sm-9 = @student.surname
+		dt.col-sm-3 = Student.human_attribute_name(:second_surname)
+		dd.col-sm-9 = @student.second_surname
+		dt.col-sm-3 = Student.human_attribute_name(:email)
+		dd.col-sm-9 = @student.email

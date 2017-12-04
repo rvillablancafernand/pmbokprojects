@@ -1,11 +1,3 @@
 es:
   professors:
     process_groups:
-      show:
-        title: PMBOK %{version} - %{name}
-        heading:
-          html: PMBOK %{version} - %{name} %{icon}
-        confirm_remove: ¿Estás seguro que deseas eliminar este PMBOK?
-        back: Volver
-        edit: Editar
-        remove: Eliminar

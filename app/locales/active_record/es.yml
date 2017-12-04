@@ -3,37 +3,64 @@ es:
     id: id
     actions: Acciones
     sort: Ordenar
-    version: Versión
+    email: Email
     name: Nombre
+    surname: Apellido
+    second_surname: Segundo Apellido
+    avatar_url: Link de Avatar
     description: Descripción
+    version: Versión
   activerecord:
     models:
       student: Estudiante
       professor: Profesor
       pmbok: PMBOK
-      process_group: Grupos de Procesos
-      process_group_type: Grupos de Procesos
-      knowledge_area_type: Áreas del Conocimiento
+      process_group_type: Grupo de Procesos
+      knowledge_area_type: Área del Conocimiento
+      input_and_output_type: Entrada o Salida
+      tool_and_technique_type: Herramienta o Técnica
+      process_group: Grupo de Procesos
       process_object: Proceso
+      input: Entrada
+      tool_and_technique: Herramienta o Técnica
+      output: Salida
+      course: Curso
     attributes:
       professor:
-        email: Email
-        surname: Apellido
-        second_surname: Segundo Apellido
-        avatar_url: Link de Avatar
         password: Contraseña
         password_confirmation: Confirmar Contraseña
         current_password: Contraseña Actual
         remember_me: Recordarme
         reset_password_token: Token de cambio de constraseña
         unlock_token: Token de desbloqueo
+        invitation_accepted?: Estado de la Invitación
+      student:
+        password: Contraseña
+        password_confirmation: Confirmar Contraseña
+        current_password: Contraseña Actual
+        remember_me: Recordarme
+        confirmation_token: Token de confimarción
+        reset_password_token: Token de cambio de constraseña
+        unlock_token: Token de desbloqueo
       pmbok:
+        process_groups_count: Grupos de Procesos
       knowledge_area_type:
         color: Color
       process_group:
         process_group_type: Grupo de Proceso
       process_object:
         knowledge_area_type: Área del Conocimiento
+      input:
+        input_and_output_type: Entrada o Salida
+      tool_and_technique:
+        tool_and_technique_type: Herramienta o Técnica
+      output:
+        input_and_output_type: Entrada o Salida
+      course:
+        id_code: id Universidad
+        year: Año
+        semester: Semestre
+        professor: Profesor
     errors:
       messages:
         record_invalid: "La validación falló: %{errors}"

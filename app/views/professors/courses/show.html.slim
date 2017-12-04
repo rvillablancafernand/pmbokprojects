@@ -1,0 +1,17 @@
+= header_generator @course, 'book'
+.description-box-inverse
+	dl.row-wg
+		dt.col-sm-3 = Course.human_attribute_name(:id)
+		dd.col-sm-9 = @course.id
+		dt.col-sm-3 = Course.human_attribute_name(:id_code)
+		dd.col-sm-9 = @course.id_code
+		dt.col-sm-3 = Course.human_attribute_name(:name)
+		dd.col-sm-9 = @course.name
+		dt.col-sm-3 = Course.human_attribute_name(:description)
+		dd.col-sm-9 = @course.description
+		dt.col-sm-3 = Course.human_attribute_name(:year)
+		dd.col-sm-9 = @course.year
+		dt.col-sm-3 = Course.human_attribute_name(:semester)
+		dd.col-sm-9 = @course.semester
+		dt.col-sm-3 = Course.human_attribute_name(:professor)
+		dd.col-sm-9 = @course.professor

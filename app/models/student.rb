@@ -5,22 +5,30 @@ class Student < ApplicationRecord
 		authentication_keys: [:username],
 		email_regexp: Regexp.new('\A[^@\s]+' + ENV['EMAIL_DOMAIN'] + '\z')
 
-	validates_presence_of :first_name, :last_names
+	delegate :can?, :cannot?, to: :ability
+
+	def ability
+		@ability ||= StudentAbility.new(self)
+	end
+
+	has_and_belongs_to_many :courses
+
+	validates_presence_of :name, :surname, :second_surname
 
 	before_validation do
 		self.email = "#{self.username}#{ENV['EMAIL_DOMAIN']}"
 	end
 
-	def display_name
-		(first_name.present? and last_name.present?) ? "#{first_name} #{last_name}" : email
+	def to_s
+		(name.present? and surname.present?) ? "#{name} #{surname}" : email
 	end
 
 	def display_short_name
-		first_name.present? ? first_name : email
+		name.present? ? name : email
 	end
 
 	def avatar
-		current_provider.present? ? current_provider.avatar_url : 'avatar-unknown.jpg'
+		avatar_url.present? ? avatar_url : 'avatar-unknown.jpg'
 	end
 
 	# Devise

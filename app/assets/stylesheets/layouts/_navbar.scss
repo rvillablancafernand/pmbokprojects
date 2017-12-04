@@ -15,7 +15,7 @@
 			margin-right: .5rem;
 		}
 		.app-name {
-			font-size: 2rem;
+			font-size: 1.6rem;
 		}
 	}
 	.navbar-toggler {
@@ -68,7 +68,7 @@
 			color: theme-color(primary);
 		}
 	}
-	@include media-breakpoint-up(md) {
+	@include media-breakpoint-up(lg) {
 		background-image: linear-gradient(to right, color(blue), color(indigo), color(purple), color(deep-red));
 
 		.navbar-brand {

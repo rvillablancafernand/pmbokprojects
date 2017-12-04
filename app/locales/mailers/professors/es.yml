@@ -32,7 +32,7 @@ es:
           html: <p>Atentamente</p><p class="team-name">El equipo de %{app_name}</p>
       password_change:
         greetings: ¡Hola %{name}!
-        instruction: Te estamos contactando para informarte que tu contraseña para %{email} ha sido cambiada con éxito en tu cuenta de administrador.
+        instruction: Te estamos contactando para informarte que tu contraseña para %{email} ha sido cambiada con éxito en tu cuenta de profesor.
         action: Ir a %{app_name}
         regards:
           html: <p>Atentamente</p><p class="team-name">El equipo de %{app_name}</p>

@@ -1,6 +1,8 @@
 .row-wg.justify-content-center
 	.col-md-8
-		.card
+		.card.border-primary
+			.card-header.bg-primary
+				h2.text-white = @knowledge_area_type.model_name.human
 			.card-body
 				= simple_form_for @knowledge_area_type do |f|
 					- f.error_notification

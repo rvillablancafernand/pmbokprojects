@@ -1,5 +1,6 @@
 class Professors::KnowledgeAreaTypesController < ApplicationController
 	before_action :authenticate_professor!
+	load_and_authorize_resource
 	before_action :set_knowledge_area_type, only: [:edit, :update, :destroy]
 
 	# GET /knowledge_area_types
@@ -18,28 +19,20 @@ class Professors::KnowledgeAreaTypesController < ApplicationController
 
 	# POST /knowledge_area_types
 	def create
-		@knowledge_area_type = KnowledgeAreaType.new(knowledge_area_type_params)
-
-		if @knowledge_area_type.save
-			redirect_to knowledge_area_types_url, notice: 'Knowledge Area was successfully created.'
-		else
-			render :new
-		end
+		@knowledge_area_type = KnowledgeAreaType.create(knowledge_area_type_params)
+		respond_with @knowledge_area_type, location: -> { knowledge_area_types_path }
 	end
 
 	# PATCH/PUT /knowledge_area_types/1
 	def update
-		if @knowledge_area_type.update(knowledge_area_type_params)
-			redirect_to knowledge_area_types_url, notice: 'Knowledge Area was successfully updated'
-		else
-			render :edit
-		end
+		@knowledge_area_type.update(knowledge_area_type_params)
+		respond_with @knowledge_area_type, location: -> { knowledge_area_types_path }
 	end
 
 	# DELETE /knowledge_area_types/1
 	def destroy
 		@knowledge_area_type.destroy
-		redirect_to knowledge_area_types_url, notice: 'Knowledge Area was successfully destroyed.'
+		respond_with @knowledge_area_type, location: -> { knowledge_area_types_path }
 	end
 
 	private

@@ -9,7 +9,7 @@
 			.section
 				h3 = t '.greetings', name: @resource.display_short_name
 
-				p = t '.instruction', app_name: t('defaults.app_name_plain'), invited_by: @resource.invited_by.display_full_name
+				p = t '.instruction', app_name: t('defaults.app_name_plain'), invited_by: @resource.invited_by.to_s
 
 				p = t '.instruction_2', due_date: I18n.l(@resource.invitation_due_at, format: :long)
 

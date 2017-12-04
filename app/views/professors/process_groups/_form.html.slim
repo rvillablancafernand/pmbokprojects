@@ -1,15 +1,20 @@
 .row-wg.justify-content-center
 	.col-md-8
-		.card
+		.card.border-primary
+			.card-header.bg-primary
+				h2.text-white = @process_group.model_name.human
 			.card-body
-				= simple_form_for [@pmbok, @process_group] do |f|
+				= simple_form_for [@process_group.pmbok, @process_group] do |f|
 					- f.error_notification
 					= f.association :process_group_type
-					.row.justify-content-end
+					.form-group.row
+						label.col-sm-3.col-form-label
+							= ProcessObject.model_name.human.pluralize(I18n.locale)
 						.col-sm-9
-							h3 = ProcessObject.model_name.human.pluralize
-					= f.simple_fields_for :process_objects do |process_object|
-						= render 'process_object_fields', f: process_object
-					.links
-						= link_to_add_association "#{icon('plus')} #{ProcessObject.model_name.human}".html_safe, f, :process_objects
+							= f.simple_fields_for :process_objects do |process_object|
+								= render 'process_object_fields', f: process_object
+							.links
+								= link_to_add_association f, :process_objects
+									= icon 'new'
+									span = ProcessObject.model_name.human
 					= f.button :submit

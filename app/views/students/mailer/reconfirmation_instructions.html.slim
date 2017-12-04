@@ -1,20 +1,20 @@
-.header-bg.bg-warning
+.mail-container.warning
 	.upper-container
 		.container
 			.section.logo
 				= image_tag 'brand-logo.png'
-				span = t 'defaults.app_name.html'
+				= t 'defaults.app_name_styled.html'
 			hr
 
 			.section
-				h3 = t '.greetings', name: @resource.first_name, app_name: t('defaults.app_name.html')
+				h3 = t '.greetings', name: @resource.display_short_name
 
 				p = t '.instruction', email: @email
 
 				p = t '.instruction_2'
 
 				.action
-					= link_to confirmation_url(@resource, confirmation_token: @token), class: 'btn btn-warning', target: '_blank'
+					= link_to confirmation_url(@resource, confirmation_token: @token), class: 'btn', target: '_blank'
 						= t '.action'
 			hr
 
@@ -23,5 +23,5 @@
 			hr
 
 			.section-sm.regards
-				= t '.regards.html', info_mail: mail_to(t('defaults.info_mail'), t('defaults.info_mail')), app_name: t('defaults.app_name.html')
+				= t '.regards.html', info_mail: mail_to(t('defaults.info_mail'), t('defaults.info_mail')), app_name: t('defaults.app_name_plain')
 			hr

@@ -1,0 +1,40 @@
+.row-wg.justify-content-center
+	.col-md-8
+		.card.border-primary
+			.card-header.bg-primary
+				h2.text-white = @process_object.model_name.human
+			.card-body
+				= simple_form_for [@process_object.process_group.pmbok, @process_object.process_group, @process_object] do |f|
+					- f.error_notification
+					= f.association :knowledge_area_type
+					.form-group.row
+						label.col-sm-3.col-form-label
+							= Input.model_name.human.pluralize(I18n.locale)
+						.col-sm-9
+							= f.simple_fields_for :inputs do |input|
+								= render 'input_fields', f: input
+							.links
+								= link_to_add_association f, :inputs
+									= icon 'new'
+									span = Input.model_name.human
+					.form-group.row
+						label.col-sm-3.col-form-label
+							= ToolAndTechnique.model_name.human.pluralize(I18n.locale)
+						.col-sm-9
+							= f.simple_fields_for :tools_and_techniques do |tool_and_technique|
+								= render 'tool_and_technique_fields', f: tool_and_technique
+							.links
+								= link_to_add_association f, :tools_and_techniques
+									= icon 'new'
+									span = ToolAndTechnique.model_name.human
+					.form-group.row
+						label.col-sm-3.col-form-label
+							= Output.model_name.human.pluralize(I18n.locale)
+						.col-sm-9
+							= f.simple_fields_for :outputs do |output|
+								= render 'output_fields', f: output
+							.links
+								= link_to_add_association f, :outputs
+									= icon 'new'
+									span = Output.model_name.human
+					= f.button :submit

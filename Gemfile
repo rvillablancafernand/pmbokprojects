@@ -39,6 +39,9 @@ gem 'bcrypt', '~> 3.1.7'
 # Devise
 gem 'devise'
 gem 'devise_invitable'
+gem 'cancancan'
+
+gem 'responders'
 
 # Slim
 gem 'slim'

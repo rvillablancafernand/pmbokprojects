@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
 		# Home controller
 		root to: 'students/home#index'
+		resources :courses, module: 'students'
 	end
 
 	constraints subdomain: 'profesores' do
@@ -19,12 +20,16 @@ Rails.application.routes.draw do
 		resources :students, module: 'professors', only: [:show, :index, :destroy]
 
 		resources :pmboks, module: 'professors' do
-			resources :process_groups, except: [:index] do
-				resources :process_objects
+			resources :process_groups, only: [:edit, :update, :destroy] do
+				resources :process_objects, only: [:edit, :update, :destroy]
 			end
 		end
-		resources :knowledge_area_types, module: 'professors', except: [:show]
 		resources :process_group_types, module: 'professors', except: [:show]
+		resources :knowledge_area_types, module: 'professors', except: [:show]
+		resources :input_and_output_types, module: 'professors', except: [:show]
+		resources :tool_and_technique_types, module: 'professors', except: [:show]
+
+		resources :courses, module: 'professors'
 
 		# Admin Panel
 

@@ -1,0 +1,8 @@
+es:
+  layouts:
+    navbar:
+      dashboard: Dashboard
+      types: Tipos
+      edit_user: Editar mi perfil
+      sign_in: Iniciar Sesión
+      sign_out: Cerrar Sesión

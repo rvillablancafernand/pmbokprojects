@@ -2,7 +2,7 @@ es:
   professors:
     registrations:
       edit:
-        title: Editar mi Cuenta
+        heading: Editar mi Cuenta
         hints:
           password: Deja en blanco si no deseas cambiarla
           current_password: Necesitamos tu contraseña actual para confirmar los cambios

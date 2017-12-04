@@ -1,66 +1,68 @@
-nav.navbar.navbar-dark.navbar-expand-md
+nav.navbar.navbar-dark.navbar-expand-lg
 	= link_to root_url, class: 'navbar-brand'
 		= image_tag 'brand-logo-transparent-fill.png'
 		= t 'defaults.app_name_styled.html'
 	- unless controller_name == 'sessions'
 		button.navbar-toggler data-toggle='collapse' data-target='#navbar-collapse'
 			= icon 'bars'
-	- if professor_signed_in?
-		/ signed in
+	- if user_signed_in?
 		.collapse.navbar-collapse.justify-content-between#navbar-collapse
 			ul.navbar-nav
-				/ sections
-				li.nav-item
+				- if current_resource?(:professor)
+					/ sections
 					= navbar_link_to root_path, class: 'nav-link'
 						= icon 'home'
 						= t '.dashboard'
-				li.nav-item
-					= navbar_link_to professors_path, class: 'nav-link'
-						= icon 'users'
-						= Professor.model_name.human
-				li.nav-item
-					= navbar_link_to students_path, class: 'nav-link'
-						= icon 'users'
-						= Student.model_name.human
-				li.nav-item
-					= navbar_link_to pmboks_path, class: 'nav-link'
-						= icon 'globe'
-						= Pmbok.model_name.human
-				li.nav-item
-					= navbar_link_to process_group_types_path, class: 'nav-link'
-						= icon 'object-group'
-						= ProcessGroupType.model_name.human
-				li.nav-item
-					= navbar_link_to knowledge_area_types_path, class: 'nav-link'
-						= icon 'cubes'
-						= KnowledgeAreaType.model_name.human
+					= navbar_link_to_index Professor, 'users'
+					= navbar_link_to_index Student, 'users'
+					= navbar_link_to_index Pmbok, 'globe'
+					= navbar_link_to_index Course, 'book'
+					- if current_user.can? :index, ProcessGroupType or current_user.can? :index, KnowledgeAreaType or current_user.can? :index, InputAndOutputType or current_user.can? :index, ToolAndTechniqueType
+						li.nav-item.dropdown.visible-desktop
+							= link_to '#', class: 'nav-link dropdown-toggle', data: { turbolinks: :false, toggle: 'dropdown' }
+								= icon 'list'
+								= t '.types'
+							.dropdown-menu
+								= navbar_dropdown_link_to_index ProcessGroupType,'object-group'
+								= navbar_dropdown_link_to_index KnowledgeAreaType, 'cubes'
+								= navbar_dropdown_link_to_index InputAndOutputType, 'exchange'
+								= navbar_dropdown_link_to_index ToolAndTechniqueType, 'wrench'
+						= navbar_link_to_index ProcessGroupType,'object-group', 'visible-mobile'
+						= navbar_link_to_index KnowledgeAreaType, 'cubes', 'visible-mobile'
+						= navbar_link_to_index InputAndOutputType, 'exchange', 'visible-mobile'
+						= navbar_link_to_index ToolAndTechniqueType, 'wrench', 'visible-mobile'
+				- elsif current_resource?(:student)
+					= navbar_link_to root_path, class: 'nav-link'
+						= icon 'home'
+						= t '.dashboard'
+					= navbar_link_to_index Course, 'book'
 				span.navbar-divider.visible-mobile
 			ul.navbar-nav
 				/ user avatar
 				li.nav-item
 					.navbar-text
-						= avatar_tag current_professor.avatar, class: 'rounded-circle'
-						= current_professor.display_name
+						= avatar_tag current_user.avatar, class: 'rounded-circle'
+						= current_user.to_s
 				/ desktop view
 				li.nav-item.dropdown.visible-desktop
 					= link_to '#', class: 'nav-link dropdown-toggle', data: { turbolinks: :false, toggle: 'dropdown' }
 						= icon 'cog'
 					.dropdown-menu.dropdown-menu-right
-						= link_to edit_professor_registration_path, class: 'dropdown-item'
+						= link_to edit_registration_path(current_resource), class: 'dropdown-item'
 							= icon 'user-o'
 							= t '.edit_user'
 						span.navbar-divider
-						= link_to destroy_professor_session_path, method: :delete, class: 'dropdown-item text-red'
+						= link_to destroy_session_path(current_resource), method: :delete, class: 'dropdown-item text-red'
 							= icon 'sign-out'
 							= t '.sign_out'
 				/ mobile view
 				li.nav-item.visible-mobile
-					= link_to edit_professor_registration_path, class: 'nav-link'
+					= link_to edit_registration_path(current_resource), class: 'nav-link'
 						= icon 'user-o'
-						span = t '.edit_user'
+						= t '.edit_user'
 				span.navbar-divider.visible-mobile
 				li.nav-item.visible-mobile
-					= link_to destroy_professor_session_path, method: :delete, class: 'nav-link text-red'
+					= link_to destroy_session_path(current_resource), method: :delete, class: 'nav-link text-red'
 						= icon 'sign-out'
 						= t '.sign_out'
 	- else
@@ -68,10 +70,10 @@ nav.navbar.navbar-dark.navbar-expand-md
 		- unless controller_name == 'sessions'
 			.collapse.navbar-collapse.justify-content-end#navbar-collapse
 				ul.nav.navbar-nav
-					li.nav-item.visible-mobile
-						= link_to professor_session_path, class: 'nav-link text-success'
-							= icon 'sign-in'
-							= t '.sign_in'
 					li.nav-item.visible-desktop
-						= link_to professor_session_path, class: 'btn btn-navbar'
+						= link_to new_session_path(current_resource), class: 'btn btn-navbar'
+							= t '.sign_in'
+					li.nav-item.visible-mobile
+						= link_to new_session_path(current_resource), class: 'nav-link text-success'
+							= icon 'sign-in'
 							= t '.sign_in'

@@ -1,9 +1,9 @@
-- title
+= header_generator resource, 'edit', t('.heading.html', app_name: t('defaults.app_name_styled.html'))
 .devise-form-container
 	.devise-form
 		.card.border-primary
 			.card-header.bg-primary
-				h2.text-white = t '.header.html', app_name: t('defaults.app_name_styled.html')
+				h2.text-white = t '.card_heading'
 			.card-body
 				= simple_form_for resource, as: resource_name, url: invitation_path(resource_name), html: { method: :put } do |f|
 					- f.error_notification message: f.full_error(:invitation_token)
@@ -11,6 +11,6 @@
 					= f.input :name
 					= f.input :surname
 					= f.input :second_surname
-					= f.input :password, hint: false
+					= f.input :password, label: t('.labels.password'), hint: false
 					= f.input :password_confirmation
 					= f.button :submit, t('.submit')

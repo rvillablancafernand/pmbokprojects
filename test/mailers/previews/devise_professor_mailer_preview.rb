@@ -16,6 +16,6 @@ class DeviseProfessorPreview < ActionMailer::Preview
 	end
 
 	def invitation_instructions
-		DeviseMailer.invitation_instructions(Professor.second, "faketoken")
+		DeviseMailer.invitation_instructions(Professor.last, "faketoken")
 	end
 end

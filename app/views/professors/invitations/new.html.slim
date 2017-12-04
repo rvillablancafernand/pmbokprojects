@@ -1,9 +1,9 @@
-- title
+= header_generator resource, 'plus', t('.heading')
 .devise-form-container
 	.devise-form
 		.card.border-primary
 			.card-header.bg-primary
-				h2.text-white = t '.title'
+				h2.text-white = t '.card_heading'
 			.card-body
 				= simple_form_for resource, as: resource_name, url: invitation_path(resource_name) do |f|
 					- f.error_notification

@@ -1,10 +1,12 @@
 module ApplicationHelper
-	def title(*args)
+	def title(title=nil, *args)
 		content_for :title do
-			if t('.title', default: '').empty?
-				t 'defaults.app_name_plain'
-			else
+			if t('.title', default: '').present?
 				"#{ t '.title', *args } | #{ t 'defaults.app_name_plain' }"
+			elsif title.present?
+				"#{ title } | #{ t 'defaults.app_name_plain' }"
+			else
+				t 'defaults.app_name_plain'
 			end
 		end
 	end
@@ -28,37 +30,6 @@ module ApplicationHelper
 				end
 				content += message
 			end
-		end
-	end
-
-	def paginate_with_info(resources)
-		content = paginate resources
-		content += content_tag :h6, class: 'small text-muted text-center' do
-			page_entries_info resources
-		end
-	end
-
-	def navbar_link_to(path, options={}, &block)
-		if current_page?(path)
-			content_tag :span, options.merge({class: options[:class] += ' active'}) do
-				capture(&block)
-			end
-		else
-			link_to path, options do
-				capture(&block)
-			end
-		end
-	end
-
-	def header_link_to(path, options={}, &block)
-		if options[:tooltip].present?
-			data = { toggle: 'tooltip', title: options[:tooltip], placement: 'bottom' }
-			options[:data].present? ? options[:data].merge!(data) : options.merge!({data: data})
-			options.delete(:tooltip)
-		end
-
-		link_to path, options do
-			capture(&block)
 		end
 	end
 

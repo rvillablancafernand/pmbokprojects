@@ -3,6 +3,14 @@ class Professor < ApplicationRecord
 	# :confirmable, :omniauthable
 	devise :database_authenticatable, :trackable, :timeoutable, :lockable, :registerable, :validatable, :recoverable, :rememberable, :invitable
 
+	delegate :can?, :cannot?, to: :ability
+
+	has_many :courses
+
+	def ability
+		@ability ||= Ability::Professor.new(self)
+	end
+
 	def admin?
 		administrator
 	end
@@ -11,7 +19,7 @@ class Professor < ApplicationRecord
 		avatar_url.present? ? avatar_url : 'avatar-unknown.jpg'
 	end
 
-	def display_name
+	def to_s
 		(name.present? and surname.present?) ? "#{name} #{surname}" : email
 	end
 

@@ -3,9 +3,13 @@ es:
     invitations:
       edit:
         title: Bienvenido
-        header:
+        heading:
           html: Bienvenido a %{app_name}
+        card_heading: Iniciar Sesión
+        labels:
+          password: Nueva contraseña
         submit: Iniciar Sesión
       new:
-        title: Invitar un nuevo Profesor
+        heading: Invitar un nuevo Profesor
+        card_heading: Profesor
         submit: Enviar invitación

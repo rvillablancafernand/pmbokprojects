@@ -1,0 +1,14 @@
+ ---------------------------------------------------------------------
+| PMBOKS                        : 1                             ✔ Ok! |
+| Process Group Types           : 5                             ✔ Ok! |
+| Knowledge Area Types          : 10                            ✔ Ok! |
+| Input And Output Types        : 75                            ✔ Ok! |
+| Tool And Technique Types      : 122                           ✔ Ok! |
+|---------------------------------------------------------------------|
+| Process Groups                : 5                             ✔ Ok! |
+| Process Objects               : 47                            ✔ Ok! |
+| Inputs                        : 256                           ✔ Ok! |
+| Tools And Techiniques         : 209                           ✔ Ok! |
+| Outputs                       : 153                           ✔ Ok! |
+| Runtime (secs)                : 0.087634                      ✔ Ok! |
+ ---------------------------------------------------------------------

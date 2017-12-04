@@ -32,8 +32,9 @@ class DeviseCreateStudents < ActiveRecord::Migration[5.0]
 			t.datetime :locked_at
 
 			## User Profile
-			t.string :first_name
-			t.string :last_names
+			t.string :name
+			t.string :surname
+			t.string :second_surname
 			t.string :avatar_url
 
 			t.timestamps null: false

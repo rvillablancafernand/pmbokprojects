@@ -4,10 +4,10 @@
 }
 .visible-desktop {
 	display: none;
-	@extend .d-md-inline-block;
+	@extend .d-lg-inline-block;
 }
 .visible-mobile {
-	@extend .d-md-none;
+	@extend .d-lg-none;
 }
 .pull-right-sm-up {
 	@include media-breakpoint-up(sm) {
