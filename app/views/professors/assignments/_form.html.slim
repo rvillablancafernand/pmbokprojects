@@ -1,0 +1,15 @@
+.row-wg.justify-content-center
+	.col-md-8
+		.card.border-primary
+			.card-header.bg-primary
+				h2.text-white = @assignment.model_name.human
+			.card-body
+				= simple_form_for @assignment do |f|
+					- f.error_notification
+					= f.input :name
+					= f.input :description
+					= f.association :course
+					= f.association :company
+					= f.association :students
+					= f.input :process_objects, as: :grouped_select, collection: ProcessGroup.includes(:process_objects, :process_group_type), group_method: :process_objects, input_html: { multiple: true }
+					= f.button :submit

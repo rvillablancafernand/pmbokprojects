@@ -1,0 +1,13 @@
+es:
+  devise:
+    mailer:
+      email_changed:
+        student_subject: Tu correo electrónico ha sido cambiado con éxito
+  students:
+    mailer:
+      email_changed:
+        greetings: ¡Hola %{name}!
+        instruction: Tu correo electrónico %{email} ha sido cambiado con éxito.
+        action: Ir a %{app_name}
+        regards:
+          html: <p>Atentamente</p><p class="team-name">El equipo de %{app_name}</p>

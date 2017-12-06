@@ -3,13 +3,13 @@
 		.container
 			.section.logo
 				= image_tag 'brand-logo.png'
-				= t 'defaults.app_name_styled.html'
+				= t 'globals.app_name'
 			hr
 
 			.section
-				h3 = t '.greetings', name: @resource.display_short_name
+				h3 = t '.greetings', name: @resource.short_name
 
-				p = t '.instruction', app_name: t('defaults.app_name_plain'), invited_by: @resource.invited_by.display_full_name
+				p = t '.instruction', invited_by: @resource.invited_by.to_s
 
 				p = t '.instruction_2', due_date: I18n.l(@resource.invitation_due_at, format: :long)
 
@@ -25,5 +25,4 @@
 			hr
 
 			.section-sm.regards
-				= t '.regards.html', info_mail: mail_to(t('defaults.info_mail'), t('defaults.info_mail')), app_name: t('defaults.app_name_plain')
-			hr
+				= t '.regards'

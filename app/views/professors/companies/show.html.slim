@@ -1,0 +1,9 @@
+= header_generator @company, 'building'
+.description-box-inverse
+	dl.row-wg
+		dt.col-sm-3 = Company.human_attribute_name(:id)
+		dd.col-sm-9 = @company.id
+		dt.col-sm-3 = Company.human_attribute_name(:name)
+		dd.col-sm-9 = @company.name
+		dt.col-sm-3 = Company.human_attribute_name(:description)
+		dd.col-sm-9 = @company.description

@@ -1,12 +1,2 @@
-- title name: @knowledge_area_type.name
-.admin-header
-	.row-wg
-		.col-sm-9
-			h1 = t '.heading.html', icon: icon('edit'), name: @knowledge_area_type.name
-		.col-sm-3
-			.btn-group.pull-right-sm-up
-				= link_to @knowledge_area_type, class: 'btn btn-admin-panel-primary'
-					= icon 'reply'
-				= link_to @knowledge_area_type, data: { confirm: t('.confirm_remove') }, method: :delete, class: 'btn btn-admin-panel-danger'
-					= icon 'remove'
+= header_generator @knowledge_area_type, 'edit'
 == render 'form'

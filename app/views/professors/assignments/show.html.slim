@@ -1,0 +1,11 @@
+= header_generator @assignment, 'book'
+.description-box-inverse
+	dl.row-wg
+		dt.col-sm-3 = Assignment.human_attribute_name(:id)
+		dd.col-sm-9 = @assignment.id
+		dt.col-sm-3 = Assignment.human_attribute_name(:name)
+		dd.col-sm-9 = @assignment.name
+		dt.col-sm-3 = Assignment.human_attribute_name(:description)
+		dd.col-sm-9 = @assignment.description
+		dt.col-sm-3 = Assignment.human_attribute_name(:course)
+		dd.col-sm-9 = @assignment.course

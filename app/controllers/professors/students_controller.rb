@@ -1,10 +1,10 @@
 class Professors::StudentsController < ApplicationController
 	before_action :authenticate_professor!
-	before_action :set_student, only: [:show, :destroy]
+	load_and_authorize_resource
 
 	# GET /students
 	def index
-		@students = Student.page(params[:page])
+		@students = @students.page(params[:page])
 	end
 
 	# GET /students/1
@@ -14,12 +14,6 @@ class Professors::StudentsController < ApplicationController
 	# DELETE /students/1
 	def destroy
 		@student.destroy
-		redirect_to students_url, notice: 'Student was successfully destroyed.'
-	end
-
-	private
-	# Use callbacks to share common setup or constraints between actions.
-	def set_student
-		@student = Student.find(params[:id])
+		respond_with @student
 	end
 end

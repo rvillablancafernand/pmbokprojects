@@ -1,0 +1,7 @@
+es:
+  professors:
+    invitations:
+      new:
+        heading: Invitar un nuevo Profesor
+        card_heading: Profesor
+        submit: Enviar invitación

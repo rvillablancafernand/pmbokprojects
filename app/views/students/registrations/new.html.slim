@@ -5,9 +5,11 @@
 				h2.text-white = t '.title'
 			.card-body
 				= simple_form_for resource, as: resource_name, url: registration_path(resource_name) do |f|
+					- f.error_notification
 					= f.input :username, wrapper: :email_at, required: true, autofocus: true, at: ENV['EMAIL_DOMAIN']
-					= f.input :first_name
-					= f.input :last_names
+					= f.input :name
+					= f.input :surname
+					= f.input :second_surname
 					= f.input :password, required: true
 					= f.input :password_confirmation, required: true
 					= f.input :remember_me, as: :boolean

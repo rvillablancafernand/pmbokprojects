@@ -1,0 +1,6 @@
+es:
+  professors:
+    passwords:
+      new:
+        title: ¿Olvidaste tu contraseña?
+        submit: Enviar instrucciones

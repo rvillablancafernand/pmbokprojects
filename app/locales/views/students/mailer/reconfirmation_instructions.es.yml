@@ -1,0 +1,14 @@
+es:
+  devise:
+    mailer:
+      reconfirmation_instructions:
+        student_subject: Instrucciones de confirmación de correo electrónico
+  students:
+    mailer:
+      reconfirmation_instructions:
+        greetings: ¡Hola %{name}!
+        instruction: Te estamos contactando para notificarte que tu correo electrónico está siendo cambiado a %{email}.
+        instruction_2: Por favor sigue el siguiente link para terminar el proceso de confirmación.
+        action: Confirmar mi Cuenta
+        regards:
+          html: <p>Atentamente</p><p class="team-name">El equipo de %{app_name}</p>

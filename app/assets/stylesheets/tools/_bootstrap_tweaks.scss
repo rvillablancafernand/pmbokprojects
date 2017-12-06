@@ -27,6 +27,12 @@
 			background-position: center right 0.5625rem;
 			background-size: 1.125rem 1.125rem;
 		}
+		select {
+			@extend .is-invalid;
+		}
+		.invalid-feedback {
+			display: block;
+		}
 	}
 }
 label {
@@ -34,6 +40,7 @@ label {
 }
 .alert {
 	font-size: 1rem;
+	margin: 0;
 
 	p {
 		margin: 0;

@@ -11,9 +11,10 @@
 # end
 
 # These inflection rules are supported but not enabled by default:
-# ActiveSupport::Inflector.inflections(:en) do |inflect|
-#   inflect.acronym 'RESTful'
-# end
+ActiveSupport::Inflector.inflections(:en) do |inflect|
+	inflect.irregular('ToolAndTechnique', 'ToolsAndTechniques')
+	inflect.irregular('tool_and_technique', 'tools_and_techniques')
+end
 ActiveSupport::Inflector.inflections(:es) do |inflect|
 	inflect.plural(/([^djlnrs])([A-Z]|_|$)/, '\1s\2')
 	inflect.plural(/([djlnrs])([A-Z]|_|$)/, '\1es\2')
@@ -22,4 +23,9 @@ ActiveSupport::Inflector.inflections(:es) do |inflect|
 	inflect.singular(/([^djlnrs])s([A-Z]|_|$)/, '\1\2')
 	inflect.singular(/([djlnrs])es([A-Z]|_|$)/, '\1\2')
 	inflect.singular(/(.*)ces([A-Z]|_|$)$/i, '\1z\2')
+	inflect.irregular('PMBOK', 'PMBOKS')
+	inflect.irregular('Grupo de Procesos', 'Grupos de Procesos')
+	inflect.irregular('Área del Conocimiento', 'Áreas del Conocimiento')
+	inflect.irregular('Herramienta o Técnica', 'Herramientas y Técnicas')
+	inflect.irregular('Entrada o Salida', 'Entradas y Salidas')
 end

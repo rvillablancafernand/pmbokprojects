@@ -1,0 +1,14 @@
+es:
+  devise:
+    mailer:
+      unlock_instructions:
+        student_subject: Instrucciones de desbloqueo de cuenta
+  students:
+    mailer:
+      unlock_instructions:
+        greetings: Hola %{name}
+        instruction: Tu cuenta ha sido bloqueada debido a un numero excesivo de intentos de conexión fallidos.
+        instruction_2: "Sigue el siguiente link para desbloquear tu cuenta:"
+        action: Desbloquear mi Cuenta
+        regards:
+          html: <p>Atentamente</p><p class="team-name">El equipo de %{app_name}</p>

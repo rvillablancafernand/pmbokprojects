@@ -1,26 +1,3 @@
-- title
-.admin-header
-	h1 = t '.heading.html', icon: icon('users')
-.row
-	.col-sm-12
-		table.admin-table
-			thead
-				tr
-					th = Professor.human_attribute_name(:id)
-					th = Professor.human_attribute_name(:name)
-					th = Professor.human_attribute_name(:surname)
-					th = Professor.human_attribute_name(:second_surname)
-					th.actions = Professor.human_attribute_name(:actions)
-			tbody
-				- @professors.each do |professor|
-					tr
-						td = professor.id
-						td = professor.name
-						td = professor.surname
-						td = professor.second_surname
-						td.actions
-							= link_to professor
-								= icon 'eye'
-							= link_to professor, data: { confirm: t('.confirm_remove') }, method: :delete
-								= icon 'remove', class: 'text-danger'
-= paginate_with_info @professors
+= header_generator Professor, 'users'
+.row-wg
+	= admin_table_generator @professors, :id, :email, :name, :surname, :second_surname, :invitation_accepted?, :actions

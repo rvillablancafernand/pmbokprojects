@@ -17,6 +17,6 @@
 #= require popper
 #= require bootstrap
 
-#= require home
+#= require main
 #= require cocoon
 #= require turbolinks

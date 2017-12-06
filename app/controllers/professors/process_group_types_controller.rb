@@ -1,19 +1,14 @@
 class Professors::ProcessGroupTypesController < ApplicationController
 	before_action :authenticate_professor!
-	before_action :set_process_group_type, only: [:show, :edit, :update, :destroy]
+	load_and_authorize_resource
 
 	# GET /process_group_types
 	def index
-		@process_group_types = ProcessGroupType.page(params[:page])
-	end
-
-	# GET /process_group_types/1
-	def show
+		@process_group_types = @process_group_types.page(params[:page])
 	end
 
 	# GET /process_group_types/new
 	def new
-		@process_group_type = ProcessGroupType.new
 	end
 
 	# GET /process_group_types/1/edit
@@ -22,28 +17,20 @@ class Professors::ProcessGroupTypesController < ApplicationController
 
 	# POST /process_group_types
 	def create
-		@process_group_type = ProcessGroupType.new(process_group_type_params)
-
-		if @process_group_type.save
-			redirect_to @process_group_type, notice: 'Process Group was successfully created.'
-		else
-			render :new
-		end
+		@process_group_type = ProcessGroupType.create(process_group_type_params)
+		respond_with @process_group_type, location: -> { process_group_types_path }
 	end
 
 	# PATCH/PUT /process_group_types/1
 	def update
-		if @process_group_type.update(process_group_type_params)
-			redirect_to @process_group_type, notice: 'Process Group was successfully updated'
-		else
-			render :edit
-		end
+		@process_group_type.update(process_group_type_params)
+		respond_with @process_group_type, location: -> { process_group_types_path }
 	end
 
 	# DELETE /process_group_types/1
 	def destroy
 		@process_group_type.destroy
-		redirect_to process_group_types_url, notice: 'Process Group was successfully destroyed.'
+		respond_with @process_group_type, location: -> { process_group_types_path }
 	end
 
 	private
