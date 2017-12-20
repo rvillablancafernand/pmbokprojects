@@ -45,6 +45,8 @@ class DeviseCreateProfessors < ActiveRecord::Migration[5.0]
 			t.string :second_surname
 			t.string :avatar_url
 
+			t.integer :courses_count, default: 0
+
 			## Admin
 			t.boolean :administrator, default: false
 

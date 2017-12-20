@@ -29,19 +29,19 @@ $grays: map-merge((
   1000: $black
 ), $grays);
 
-$blue:    #0060C0;
-$indigo:  #4A19AC;
-$purple:  #A330C0;
-$violet:  #C7167D;
-$pink:    #E84090;
-$deep-red:#F62A00;
-$red:     #E03840;
-$orange:  #FF8020;
-$yellow:  #FFC010;
-$green:   #30A040;
-$teal:    #20D0D0;
-$cyan:    #00A0FF;
-$soft-red:#FF5040;
+$blue:     #0060C0;
+$indigo:   #4A19AC;
+$purple:   #A330C0;
+$violet:   #C7167D;
+$pink:     #E84090;
+$deep-red: #F62A00;
+$red:      #E03840;
+$orange:   #FF8020;
+$yellow:   #FFC010;
+$green:    #30A040;
+$teal:     #20D0D0;
+$cyan:     #00A0FF;
+$soft-red: #FF5040;
 
 $colors: ();
 $colors: map-merge((
@@ -78,12 +78,12 @@ $theme-colors: map-merge((
 	accent: $soft-red
 ), $theme-colors);
 
-$mail-primary : #0072BB;
-$mail-info    : #009FFD;
-$mail-success : #28A745;
-$mail-warning : #FF7F00;
-$mail-danger  : #E0302E;
-$mail-trouble : #6F42C1;
+$mail-primary: #0072BB;
+$mail-info:    #009FFD;
+$mail-success: #28A745;
+$mail-warning: #FF7F00;
+$mail-danger:  #E0302E;
+$mail-trouble: #6F42C1;
 
 $mail-colors: ();
 $mail-colors: map-merge((

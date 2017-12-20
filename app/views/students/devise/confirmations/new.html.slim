@@ -1,0 +1,15 @@
+- title
+.devise-form-container
+	.devise-form
+		.card.border-primary
+			.card-header.bg-primary
+				h2.text-white = t '.title'
+			.card-body
+				= simple_form_for resource, as: resource_name, url: confirmation_path(resource_name) do |f|
+					- f.error_notification
+					= display_alert class: 'alert-danger mb-3'
+						= sanitize f.full_error(:confirmation_token), tags: %w()
+					= f.input :username, wrapper: :email_at, autofocus: true, at: ENV['EMAIL_DOMAIN']
+					= f.button :submit, t('.submit')
+			.card-footer
+				= render 'students/devise/shared/links'

@@ -1,0 +1,7 @@
+es:
+  professors:
+    devise:
+      unlocks:
+        new:
+          title: Reenviar las instrucciones de desbloqueo
+          submit: Reenviar instrucciones

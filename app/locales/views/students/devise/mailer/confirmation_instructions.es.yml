@@ -1,0 +1,12 @@
+es:
+  students:
+    devise:
+      mailer:
+        confirmation_instructions:
+          subject: Instrucciones de confirmación de correo electrónico
+          greetings: ¡Bienvenido %{name} a APP_NAME_PLAIN!
+          instruction: Tu cuenta para %{email} ha sido creada con éxito.
+          instruction_2: Por favor sigue el siguiente enlace para confirmar tu dirección de correo electrónico, podrás usar tu cuenta luego de haber confirmado.
+          action: Confirmar mi Cuenta
+          regards: <p>Atentamente</p><p class="team-name">El equipo de a APP_NAME_PLAIN</p>
+          regards_plain: Atentamente El equipo de APP_NAME_PLAIN

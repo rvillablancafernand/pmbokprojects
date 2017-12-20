@@ -1,5 +1,6 @@
 .nested-fields
-	= f.association :knowledge_area_type
+	= f.divider
+	= f.association :knowledge_area_type, wrapper: :chosen_select
 	= f.input :version
 	= f.input :name
 	= f.input :description

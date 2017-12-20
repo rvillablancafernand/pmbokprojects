@@ -1,0 +1,16 @@
+.row-wg.justify-content-center
+	.col-md-8
+		.card.border-primary
+			.card-header.bg-primary
+				h2.text-white = @assignment.singularize
+			.card-body
+				= simple_form_for @assignment do |f|
+					- f.error_notification
+					= f.input :name
+					= f.input :description
+					= f.association :pmbok
+					= f.association :company
+					= f.divider
+					= f.association :course, collection: @courses
+					= f.association :students, collection: @students, label_method: :to_s
+					= f.button :submit

@@ -1,3 +1,2 @@
 .nested-fields
-	= f.association :process_group_type
-	= link_to_remove_association icon('remove'), f
+	= f.association :process_group_type, wrapper: :single_line_nested_item, remove_link: link_to_remove_association(icon('remove'), f)

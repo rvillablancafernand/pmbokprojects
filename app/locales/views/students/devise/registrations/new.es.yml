@@ -1,0 +1,7 @@
+es:
+  students:
+    devise:
+      registrations:
+        new:
+          title: Registro
+          submit: Registrarme

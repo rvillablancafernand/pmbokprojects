@@ -2,7 +2,6 @@ class DeviseCreateStudents < ActiveRecord::Migration[5.0]
 	def change
 		create_table :students do |t|
 			## Database authenticatable
-			t.string :email, null: false, default: "", index: true
 			t.string :username, null: false, default: "", index: true
 			t.string :encrypted_password, null: false, default: ""
 
@@ -32,9 +31,12 @@ class DeviseCreateStudents < ActiveRecord::Migration[5.0]
 			t.datetime :locked_at
 
 			## User Profile
-			t.string :first_name
-			t.string :last_names
+			t.string :name
+			t.string :surname
+			t.string :second_surname
 			t.string :avatar_url
+
+			t.integer :courses_count, default: 0
 
 			t.timestamps null: false
 		end

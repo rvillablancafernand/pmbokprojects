@@ -1,0 +1,38 @@
+.chosen-container-single, .chosen-with-drop{
+	height: 34px;
+	.chosen-single{
+		border: 1px solid rgba(0, 0, 0, 0.15);
+		padding: 0.5rem 0.75rem;
+		line-height: 1.25rem;
+		background: none;
+		box-shadow: none;
+		border-radius: 0;
+		font-size: 1rem;
+		height: auto;
+		color: #55595c;
+		&:not([href]):not([tabindex]), &:focus:not([href]):not([tabindex]), &:hover:not([href]):not([tabindex]){
+			color: #55595c;
+		}
+		b, .search-choice-close{
+			margin-top: .4rem;
+		}
+	}
+	&.chosen-container-active{
+		.chosen-single{
+			border-color: #66afe9;
+			background-image: none;
+		}
+		.chosen-drop{
+			border: 1px solid rgba(0, 0, 0, 0.15);
+			padding: 0.5rem 0.75rem;
+			border-color: #66afe9;
+			line-height: 1.25rem;
+			border-top: none;
+			box-shadow: none;
+			border-radius: 0;
+			font-size: 1rem;
+			color: #55595c;
+			height: auto;
+		}
+	}
+}

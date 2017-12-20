@@ -1,6 +1,8 @@
 .row-wg.justify-content-center
 	.col-md-8
-		.card
+		.card.border-primary
+			.card-header.bg-primary
+				h2.text-white = @process_group_type.singularize
 			.card-body
 				= simple_form_for @process_group_type do |f|
 					- f.error_notification

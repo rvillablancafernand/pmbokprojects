@@ -1,39 +1,44 @@
-- title version: @pmbok.version
-.admin-header
-	.row-wg
-		.col-sm-9
-			h1 = t '.heading.html', icon: icon('globe'), version: @pmbok.version
-		.col-sm-3
-			.btn-group.pull-right-sm-up
-				= header_link_to pmboks_path, tooltip: t('.back'), class: 'btn btn-admin-panel-primary'
-					= icon 'reply'
-				= header_link_to edit_pmbok_path(@pmbok), tooltip: t('.edit'), class: 'btn btn-admin-panel-warning'
-					= icon 'edit'
-				= header_link_to @pmbok, tooltip: t('.remove'), data: { confirm: t('.confirm_remove') }, method: :delete, class: 'btn btn-admin-panel-danger'
-					= icon 'remove'
-
+= header_generator @pmbok, 'globe'
 - @pmbok.process_groups.includes(:process_group_type).each do |process_group|
 	.row-wg
-		.col-sm-12
-			.card.border-secundary.mb-3
-				.card-header.bg-secundary
-					h3
-						= link_to process_group.name, [@pmbok, process_group]
-						.btn-group.pull-right-sm-up
-							= link_to edit_pmbok_process_group_path(@pmbok, process_group), class: 'btn btn-warning'
-								= icon 'edit'
-							= link_to pmbok_process_group_path(@pmbok, process_group), class: 'btn btn-danger', data: { confirm: t('.confirm_remove_process_group') }, method: :delete
-								= icon 'remove'
-				.card-body
-					table.admin-table
-						thead
-							tr
-								th = ProcessGroup.model_name.human
-								th.actions = ProcessGroup.human_attribute_name(:actions)
-						tbody
-							- process_group.process_objects.each do |process_object|
-								tr
-									td = process_object.name
-
-
-
+		.col-sm-12.card-process-group
+			.card-header
+				h1.header-with-link
+					= process_group.to_s_with_desc
+					.btn-group
+						= link_to edit_pmbok_process_group_path(@pmbok, process_group), class: 'btn btn-admin-edit', data: { toggle: 'tooltip', placement: 'bottom', title: t('admin_helper.edit', model: ProcessGroup.singularize) }
+							= icon 'edit'
+			.card-body
+				.process-group-deck
+					- process_group.process_objects.includes(:knowledge_area_type).each do |process_object|
+						= content_tag :div, class: 'process-group-container', style: process_object.bd_style
+							.process-group
+								= content_tag :h1, class: 'header-with-link', style: process_object.bg_style
+									= process_object.knowledge_area_type.to_s_with_desc
+									.btn-group
+										= link_to edit_pmbok_process_group_process_object_path(@pmbok, process_group, process_object), class: 'btn btn-admin-edit', data: { toggle: 'tooltip', placement: 'bottom', title: t('admin_helper.edit', model: ProcessObject.singularize) }
+											= icon 'edit'
+								h3.process-group-subheader
+									span.version
+										span = process_object.version
+									span.name
+										= process_object.to_s_with_desc
+								.process-group-body
+									h3
+										= Input.pluralize
+									hr
+									ol
+										- process_object.inputs.includes(:input_and_output_type).each do |input|
+											li = input.to_s_with_desc
+									h3
+										= ToolAndTechnique.pluralize
+									hr
+									ol
+										- process_object.tools_and_techniques.includes(:tool_and_technique_type).each do |tool_and_technique|
+											li = tool_and_technique.to_s_with_desc
+									h3
+										= Output.pluralize
+									hr
+									ol
+										- process_object.outputs.includes(:input_and_output_type).each do |output|
+											li = output.to_s_with_desc

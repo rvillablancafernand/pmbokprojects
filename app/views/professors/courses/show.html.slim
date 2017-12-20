@@ -1,0 +1,6 @@
+= header_generator @course, 'book'
+= dbox_generator @course
+.row-wg
+	.col-sm-12
+		= header_generator nil, 'users', "#{Student.pluralize}"
+	= table_generator @course.students.page(params[:page])

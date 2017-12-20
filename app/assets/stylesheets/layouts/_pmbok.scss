@@ -1,0 +1,111 @@
+.card-process-group {
+	@extend .card;
+	border-color: theme-color(primary);
+	margin-bottom: 3rem;
+
+	.card-header {
+		background-color: theme-color(primary);
+		padding: 0;
+	}
+}
+.header-with-link {
+	text-align: center;
+	color: color(white);
+	margin: 0;
+	padding: 1rem;
+
+	.btn-group {
+		float: right;
+		display: flex;
+		align-items: center;
+		height: 1.2em;
+		margin-left: -2.5rem;
+
+		i {
+			margin: 0;
+		}
+	}
+}
+.process-group-deck {
+	display: flex;
+	justify-content: space-around;
+	flex-wrap: wrap;
+	align-items: flex-start;
+}
+.process-group-container {
+	margin: 0 1rem 2rem;
+	padding: .5rem;
+	position: relative;
+	width: 24rem;
+
+	&:after, &:before {
+		border-width: .4rem;
+		border-style: solid;
+		border-color: inherit;
+		bottom: 0;
+		content: '';
+		position: absolute;
+		top: 0;
+		width: .8rem;
+	}
+	&:after {
+		border-left: none;
+		right: 0;
+	}
+	&:before {
+		border-right: none;
+		left: 0;
+	}
+}
+.process-group {
+	border-color: inherit;
+	font-size: .7rem;
+
+	.process-group-subheader {
+		display: flex;
+		border-bottom: .2rem solid;
+		border-color: inherit;
+		align-items: stretch;
+
+		.version {
+			padding: 1rem;
+			border-right: .2rem solid;
+			border-color: inherit;
+			display: flex;
+			align-items: center;
+		}
+		.name {
+			flex: 1;
+			text-align: center;
+			width: 100%;
+			padding: 1rem;
+		}
+	}
+	.process-group-body {
+		padding: 1rem 1rem 0;
+		border-color: inherit;
+
+		ol {
+			margin: 1rem 0;
+			padding-left: 1em;
+			font-size: 1.5em;
+
+			&:last-child {
+				margin: 0;
+			}
+		}
+	}
+	hr {
+		border-bottom: .2rem solid;
+		border-color: inherit;
+		background-image: none;
+		height: 0;
+		margin: 0;
+	}
+	h3 {
+		margin: 0;
+	}
+}
+#assignment_process_object_ids, #assignment_student_ids {
+	height: 20rem;
+}

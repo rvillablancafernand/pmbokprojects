@@ -1,12 +1,2 @@
-- title name: @process_group_type.name
-.admin-header
-	.row-wg
-		.col-sm-9
-			h1 = t '.heading.html', icon: icon('edit'), name: @process_group_type.name
-		.col-sm-3
-			.btn-group.pull-right-sm-up
-				= link_to @process_group_type, class: 'btn btn-admin-panel-primary'
-					= icon 'reply'
-				= link_to @process_group_type, data: { confirm: t('.confirm_remove') }, method: :delete, class: 'btn btn-admin-panel-danger'
-					= icon 'remove'
+= header_generator @process_group_type, 'edit'
 == render 'form'

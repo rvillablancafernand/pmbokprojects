@@ -10,7 +10,82 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171101104020) do
+ActiveRecord::Schema.define(version: 20171211141010) do
+
+  create_table "assignment_process_objects", force: :cascade do |t|
+    t.integer  "assignment_id"
+    t.integer  "process_object_id"
+    t.integer  "student_id"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.index ["assignment_id"], name: "index_assignment_process_objects_on_assignment_id"
+    t.index ["process_object_id"], name: "index_assignment_process_objects_on_process_object_id"
+    t.index ["student_id"], name: "index_assignment_process_objects_on_student_id"
+  end
+
+  create_table "assignments", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.integer  "course_id"
+    t.integer  "company_id"
+    t.integer  "pmbok_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["company_id"], name: "index_assignments_on_company_id"
+    t.index ["course_id"], name: "index_assignments_on_course_id"
+    t.index ["pmbok_id"], name: "index_assignments_on_pmbok_id"
+  end
+
+  create_table "assignments_students", id: false, force: :cascade do |t|
+    t.integer "assignment_id", null: false
+    t.integer "student_id",    null: false
+    t.index ["assignment_id", "student_id"], name: "index_assignments_students_on_assignment_id_and_student_id"
+    t.index ["student_id", "assignment_id"], name: "index_assignments_students_on_student_id_and_assignment_id"
+  end
+
+  create_table "companies", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "courses", force: :cascade do |t|
+    t.string   "nrc"
+    t.string   "name"
+    t.text     "description"
+    t.integer  "year"
+    t.string   "semester"
+    t.integer  "professor_id"
+    t.integer  "students_count", default: 0
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.index ["professor_id"], name: "index_courses_on_professor_id"
+  end
+
+  create_table "courses_students", force: :cascade do |t|
+    t.integer "course_id"
+    t.integer "student_id"
+    t.boolean "accepted"
+    t.index ["course_id"], name: "index_courses_students_on_course_id"
+    t.index ["student_id"], name: "index_courses_students_on_student_id"
+  end
+
+  create_table "input_and_output_types", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "inputs", force: :cascade do |t|
+    t.integer  "input_and_output_type_id"
+    t.integer  "process_object_id"
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.index ["input_and_output_type_id"], name: "index_inputs_on_input_and_output_type_id"
+    t.index ["process_object_id"], name: "index_inputs_on_process_object_id"
+  end
 
   create_table "knowledge_area_types", force: :cascade do |t|
     t.string   "name"
@@ -20,10 +95,21 @@ ActiveRecord::Schema.define(version: 20171101104020) do
     t.datetime "updated_at",  null: false
   end
 
+  create_table "outputs", force: :cascade do |t|
+    t.integer  "input_and_output_type_id"
+    t.integer  "process_object_id"
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.index ["input_and_output_type_id"], name: "index_outputs_on_input_and_output_type_id"
+    t.index ["process_object_id"], name: "index_outputs_on_process_object_id"
+  end
+
   create_table "pmboks", force: :cascade do |t|
-    t.string   "version"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "name"
+    t.text     "description"
+    t.integer  "process_groups_count", default: 0
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
   end
 
   create_table "process_group_types", force: :cascade do |t|
@@ -36,8 +122,9 @@ ActiveRecord::Schema.define(version: 20171101104020) do
   create_table "process_groups", force: :cascade do |t|
     t.integer  "pmbok_id"
     t.integer  "process_group_type_id"
-    t.datetime "created_at",            null: false
-    t.datetime "updated_at",            null: false
+    t.integer  "process_objects_count", default: 0
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
     t.index ["pmbok_id"], name: "index_process_groups_on_pmbok_id"
     t.index ["process_group_type_id"], name: "index_process_groups_on_process_group_type_id"
   end
@@ -48,8 +135,11 @@ ActiveRecord::Schema.define(version: 20171101104020) do
     t.string   "version"
     t.string   "name"
     t.text     "description"
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.integer  "inputs_count",               default: 0
+    t.integer  "tools_and_techniques_count", default: 0
+    t.integer  "outputs_count",              default: 0
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
     t.index ["knowledge_area_type_id"], name: "index_process_objects_on_knowledge_area_type_id"
     t.index ["process_group_id"], name: "index_process_objects_on_process_group_id"
   end
@@ -83,6 +173,7 @@ ActiveRecord::Schema.define(version: 20171101104020) do
     t.string   "surname"
     t.string   "second_surname"
     t.string   "avatar_url"
+    t.integer  "courses_count",          default: 0
     t.boolean  "administrator",          default: false
     t.datetime "created_at",                             null: false
     t.datetime "updated_at",                             null: false
@@ -94,7 +185,6 @@ ActiveRecord::Schema.define(version: 20171101104020) do
   end
 
   create_table "students", force: :cascade do |t|
-    t.string   "email",                  default: "", null: false
     t.string   "username",               default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
@@ -112,16 +202,33 @@ ActiveRecord::Schema.define(version: 20171101104020) do
     t.integer  "failed_attempts",        default: 0,  null: false
     t.string   "unlock_token"
     t.datetime "locked_at"
-    t.string   "first_name"
-    t.string   "last_names"
+    t.string   "name"
+    t.string   "surname"
+    t.string   "second_surname"
     t.string   "avatar_url"
+    t.integer  "courses_count",          default: 0
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
     t.index ["confirmation_token"], name: "index_students_on_confirmation_token"
-    t.index ["email"], name: "index_students_on_email"
     t.index ["reset_password_token"], name: "index_students_on_reset_password_token"
     t.index ["unlock_token"], name: "index_students_on_unlock_token"
     t.index ["username"], name: "index_students_on_username"
+  end
+
+  create_table "tool_and_technique_types", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "tools_and_techniques", force: :cascade do |t|
+    t.integer  "tool_and_technique_type_id"
+    t.integer  "process_object_id"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.index ["process_object_id"], name: "index_tools_and_techniques_on_process_object_id"
+    t.index ["tool_and_technique_type_id"], name: "index_tools_and_techniques_on_tool_and_technique_type_id"
   end
 
 end

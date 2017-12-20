@@ -1,0 +1,971 @@
+# PMBOK name
+5° Edición
+Inicio
+Planificación
+Ejecución
+Cierre
+Monitoreo y Control
+<->
+Integración|#282525
+Interesados|#9C3F87
+Alcance|#24408A
+Tiempo|#00ABEA
+Costos|#008149
+Calidad|#FEBBA6
+Adquisiciones|#FD9437
+Recursos Humanos|#7FC452
+Comunicaciones|#D92830
+Riesgos|#F7D03D
+<->
+<Inicio>
+Integración
+4.1
+Desarrollar el Acta de Constitución del Proyecto
+Inputs
+1. Enunciado del trabajo del proyecto
+2. Caso de negocio
+3. Acuerdos
+4. Factores ambientales de la empresa
+5. Activos de los procesos de la organización
+ToolsAndTechniques
+1. Juicio de expertos
+2. Técnicas de facilitación
+Outputs
+1. Acta de constitución del proyecto
+<->
+Interesados
+13.1
+Identificar a los Interesados
+Inputs
+1. Acta de constitución del proyecto
+2. Documentos de las adquisiciones
+3. Factores ambientales de la empresa
+4. Activos de los procesos de la organización
+ToolsAndTechniques
+1. Análisis de interesados
+2. Juicio de expertos
+3. Reuniones
+Outputs
+1. Registro de interesados
+<->
+<Planificación>
+Alcance
+5.1
+Planificar la Gestión del Alcance
+Inputs
+1. Plan para la dirección del proyecto
+2. Acta de constitución del proyecto
+3. Factores ambientales de la empresa
+4. Activos de los procesos de la organización
+ToolsAndTechniques
+1. Juicio de expertos
+2. Reuniones
+Outputs
+1. Plan de gestión del alcance
+2. Plan de gestión de los requisitos
+<->
+Alcance
+5.2
+Recopilar Requisitos
+Inputs
+1. Plan de gestión del alcance
+2. Plan de gestión de los requisitos
+3. Plan de gestión de los interesados
+4. Acta de constitución del proyecto
+5. Registro de interesados
+ToolsAndTechniques
+1. Entrevistas
+2. Grupos focales
+3. Talleres facilitados
+4. Técnicas grupales de creatividad
+5. Técnicas grupales de toma de decisiones
+6. Cuestionarios y encuestas
+7. Observaciones
+8. Prototipos
+9. Estudios comparativos
+10. Diagramas de contexto
+11. Análisis de documentos
+Outputs
+1. Documentación de requisitos
+2. Matriz de trazabilidad de requisitos
+<->
+Alcance
+5.3
+Definir el Alcance
+Inputs
+1. Plan de gestión del alcance
+2. Acta de constitución del proyecto
+3. Documentación de requisitos
+4. Activos de los procesos de la organización
+ToolsAndTechniques
+1. Juicio de expertos
+2. Análisis del producto
+3. Generación de alternativas
+4. Talleres facilitados
+Outputs
+1. Enunciado del alcance del proyecto
+2. Actualizaciones a los documentos del proyecto
+<->
+Alcance
+5.4
+Crear la EDT/WBS
+Inputs
+1. Plan de gestión del alcance
+2. Enunciado del alcance del proyecto
+3. Documentación de requisitos
+4. Factores ambientales de la empresa
+5. Activos de los procesos de la organización
+ToolsAndTechniques
+1. Descomposición
+2. Juicio de expertos
+Outputs
+1. Línea base del alcance
+2. Actualizaciones a los documentos del proyecto
+<->
+Tiempo
+6.1
+Planificar la Gestión del Cronograma
+Inputs
+1. Plan para la dirección del proyecto
+2. Acta de constitución del proyecto
+3. Factores ambientales de la empresa
+4. Activos de los procesos de la organización
+ToolsAndTechniques
+1. Juicio de expertos
+2. Técnicas analíticas
+3. Reuniones
+Outputs
+1. Plan de gestión del cronograma
+<->
+Tiempo
+6.2
+Definir las Actividades
+Inputs
+1. Plan de gestión del cronograma
+2. Línea base del alcance
+3. Factores ambientales de la empresa
+4. Activos de los procesos de la organización
+ToolsAndTechniques
+1. Descomposición
+2. Planificación gradual
+3. Juicio de expertos
+Outputs
+1. Lista de actividades
+2. Atributos de las actividades
+3. Lista de hitos
+<->
+Tiempo
+6.3
+Secuenciar las Actividades
+Inputs
+1. Plan de gestión del cronograma
+2. Lista de actividades
+3. Atributos de las actividades
+4. Lista de hitos
+5. Enunciado del alcance del proyecto
+6. Factores ambientales de la empresa
+7. Activos de los procesos de la organización
+ToolsAndTechniques
+1. Método de diagramación o precedencia (PDM)
+2. Determinación de las dependencias
+3. Adelantos y Retrasos
+Outputs
+1. Diagramas de red del cronograma del proyecto
+2. Actualizaciones a los documentos del proyecto
+<->
+Tiempo
+6.4
+Estimar los Recursos de las Actividades
+Inputs
+1. Plan de gestión del cronograma
+2. Lista de actividades
+3. Atributos de las actividades
+4. Calendarios de recursos
+5. Registro de riesgos
+6. Estimación de costos de las actividades
+7. Factores ambientales de la empresa
+8. Activos de los procesos de la organización
+ToolsAndTechniques
+1. Juicio de expertos
+2. Análisis de alternativas
+3. Datos publicados de estimaciones
+4. Estimación ascendente
+5. Software de gestión de proyectos
+Outputs
+1. Recursos requeridos para las actividades
+2. Estructura de desglose de recursos
+3. Actualizaciones a los documentos del proyecto
+<->
+Tiempo
+6.5
+Estimar la Duración de las Actividades
+Inputs
+1. Plan de gestión del cronograma
+2. Lista de actividades
+3. Atributos de las actividades
+4. Recursos requeridos para las actividades
+5. Calendarios de recursos
+6. Enunciado del alcance del proyecto
+7. Registro de riesgos
+8. Estructura de desglose de recursos
+9. Factores ambientales de la empresa
+10. Activos de los procesos de la organización
+ToolsAndTechniques
+1. Juicio de expertos
+2. Estimación análoga
+3. Estimación paramétrica
+4. Estimación por tres valores
+5. Técnicas grupales de toma de decisiones
+6. Análisis de reservas
+Outputs
+1. Estimación de la duración de las actividades
+2. Actualizaciones a los documentos del proyecto
+<->
+Tiempo
+6.6
+Desarrollar el Cronograma
+Inputs
+1. Plan de gestión del cronograma
+2. Lista de actividades
+3. Atributos de las actividades
+4. Diagramas de red del cronograma del proyecto
+5. Recursos requeridos para las actividades
+6. Calendarios de recursos
+7. Estimación de la duración de las actividades
+8. Enunciado del alcance del proyecto
+9. Registro de riesgos
+10. Asignaciones de personal al proyecto
+11. Estructura de desglose de recursos
+12. Factores ambientales de la empresa
+13. Activos de los procesos de la organización
+ToolsAndTechniques
+1. Análisis de la red del cronograma
+2. Método de la ruta crítica
+3. Método de la cadena crítica
+4. Técnicas de optimización de recursos
+5. Técnicas de modelado
+6. Adelantos y retrasos
+7. Compresión del cronograma
+8. Herramienta de programación
+Outputs
+1. Línea base del cronograma
+2. Cronograma del proyecto
+3. Datos del cronograma
+4. Calendarios del proyecto
+5. Actualizaciones al plan para la dirección del proyecto
+6. Actualizaciones a los documentos del proyecto
+<->
+Costos
+7.1
+Planificar la Gestión de los Costos
+Inputs
+1. Plan para la dirección del proyecto
+2. Acta de constitución del proyecto
+3. Factores ambientales de la empresa
+4. Activos de los procesos de la organización
+ToolsAndTechniques
+1. Juicio de expertos
+2. Técnicas analíticas
+3. Reuniones
+Outputs
+1. Plan de gestión de los costos
+<->
+Costos
+7.2
+Estimar los Costos
+Inputs
+1. Plan de gestión de los costos
+2. Plan de gestión de los recursos humanos
+3. Línea base del alcance
+4. Cronograma del proyecto
+5. Registro de riesgos
+6. Factores ambientales de la empresa
+7. Activos de los procesos de la organización
+ToolsAndTechniques
+1. Juicio de expertos
+2. Estimación análoga
+3. Estimación paramétrica
+4. Estimación ascendente
+5. Estimación por tres valores
+6. Análisis de reservas
+7. Costo de la Calidad
+8. Software de gestión de proyectos
+9. Análisis de ofertas de proveedores
+10. Técnicas grupales de toma de decisiones
+Outputs
+1. Estimación de costos de las actividades
+2. Base de las estimaciones
+3. Actualizaciones a los documentos del proyecto
+<->
+Costos
+7.3
+Determinar el Presupuesto
+Inputs
+1. Plan de gestión de los costos
+2. Línea base del alcance
+3. Estimación de costos de las actividades
+4. Base de las estimaciones
+5. Cronograma del proyecto
+6. Calendarios de recursos
+7. Registro de riesgos
+8. Acuerdos
+9. Activos de los procesos de la organización
+ToolsAndTechniques
+1. Agregación de Costos
+2. Análisis de reservas
+3. Juicio de expertos
+4. Relaciones históricas
+5. Conciliación del límite de financiamiento
+Outputs
+1. Línea base de costos
+2. Requisitos de financiamiento del proyecto
+3. Actualizaciones a los documentos del proyecto
+<->
+Integración
+4.2
+Desarrollar el Plan para la Dirección del Proyecto
+Inputs
+1. Acta de constitución del proyecto
+2. Outputs de otros procesos
+3. Factores ambientales de la empresa
+4. Activos de los procesos de la organización
+ToolsAndTechniques
+1. Juicio de expertos
+2. Técnicas de facilitación
+Outputs
+1. Plan para la dirección del proyecto
+<->
+Calidad
+8.1
+Planificar la Gestión de la Calidad
+Inputs
+1. Plan para la dirección del proyecto
+2. Registro de interesados
+3. Registro de riesgos
+4. Documentación de requisitos
+5. Factores ambientales de la empresa
+6. Activos de los procesos de la organización
+ToolsAndTechniques
+1. Análisis costo-beneficio
+2. Costo de la calidad
+3. Siete herramientas básicas de calidad
+4. Estudios comparativos
+5. Diseño de experimentos
+6. Muestreo estadístico
+7. Otras herramientas de planificación de calidad
+8. Reuniones
+Outputs
+1. Plan de gestión de la calidad
+2. Plan de mejoras del proceso
+3. Métricas de Calidad
+4. Listas de verificación de calidad
+5. Actualizaciones a los documentos del proyecto
+<->
+Recursos Humanos
+9.1
+Planificar la Gestión de los Recursos Humanos
+Inputs
+1. Plan para la dirección del proyecto
+2. Recursos requeridos para las actividades
+3. Factores ambientales de la empresa
+4. Activos de los procesos de la organización
+ToolsAndTechniques
+1. Organigramas y descripciones de cargos
+2. Creación de relaciones de trabajo
+3. Teoría organizacional
+4. Juicio de expertos
+5. Reuniones
+Outputs
+1. Plan de gestión de los recursos humanos
+<->
+Comunicaciones
+10.1
+Planificar la Gestión de las Comunicaciones
+Inputs
+1. Plan para la dirección del proyecto
+2. Registro de interesados
+3. Factores ambientales de la empresa
+4. Activos de los procesos de la organización
+ToolsAndTechniques
+1. Análisis de requisitos de comunicación
+2. Tecnología de la comunicación
+3. Modelos de comunicación
+4. Métodos de comunicación
+5. Reuniones
+Outputs
+1. Plan de gestión de las comunicaciones
+2. Actualizaciones a los documentos del proyecto
+<->
+Adquisiciones
+12.1
+Planificar la Gestión de las Adquisiciones
+Inputs
+1. Plan para la dirección del proyecto
+2. Documentación de requisitos
+3. Registro de riesgos
+4. Recursos requeridos para las actividades
+5. Cronograma del proyecto
+6. Estimación de costos de las actividades
+7. Registro de interesados
+8. Factores ambientales de la empresa
+9. Activos de los procesos de la organización
+ToolsAndTechniques
+1. Análisis de hacer o comprar
+2. Juicio de expertos
+3. Investigación de mercado
+4. Reuniones
+Outputs
+1. Plan de gestión de las adquisiciones
+2. Enunciados del trabajo relativo a adquisiciones
+3. Documentos de las adquisiciones
+4. Criterios de selección de proveedores
+5. Decisiones de hacer o comprar
+6. Solicitudes de cambio
+7. Actualizaciones a los documentos del proyecto
+<->
+Interesados
+13.2
+Planificar la Gestión de los Interesados
+Inputs
+1. Plan para la dirección del proyecto
+2. Registro de interesados
+3. Factores ambientales de la empresa
+4. Activos de los procesos de la organización
+ToolsAndTechniques
+1. Juicio de expertos
+2. Reuniones
+3. Técnicas analíticas
+Outputs
+1. Plan de gestión de los interesados
+2. Actualizaciones a los documentos del proyecto
+<->
+Riesgos
+11.1
+Planificar la Gestión de los Riesgos
+Inputs
+1. Plan para la dirección del proyecto
+2. Acta de constitución del proyecto
+3. Registro de interesados
+4. Factores ambientales de la empresa
+5. Activos de los procesos de la organización
+ToolsAndTechniques
+1. Técnicas analíticas
+2. Juicio de expertos
+3. Reuniones
+Outputs
+1. Plan de gestión de los riesgos
+<->
+Riesgos
+11.2
+Identificar los Riesgos
+Inputs
+1. Plan de gestión de los riesgos
+2. Plan de gestión de los costos
+3. Plan de gestión del cronograma
+4. Plan de gestión de la calidad
+5. Plan de gestión de los recursos humanos
+6. Línea base del alcance
+7. Estimación de costos de las actividades
+8. Estimación de la duración de las actividades
+9. Registro de interesados
+10. Documentos del proyecto
+11. Documentos de las adquisiciones
+12. Factores ambientales de la empresa
+13. Activos de los procesos de la organización
+ToolsAndTechniques
+1. Revisiones a la documentación
+2. Técnicas de recopilación de información
+3. Análisis con lista de verificación
+4. Análisis de supuestos
+5. Técnicas de diagramación
+6. Análisis FODA
+7. Juicio de expertos
+Outputs
+1. Registro de riesgos
+<->
+Riesgos
+11.3
+Realizar el Análisis Cualitativo de Riesgos
+Inputs
+1. Plan de gestión de los riesgos
+2. Línea base del alcance
+3. Registro de riesgos
+4. Factores ambientales de la empresa
+5. Activos de los procesos de la organización
+ToolsAndTechniques
+1. Evaluación de probabilidad e impacto de los riesgos
+2. Matriz de probabilidad de impacto
+3. Evaluación de la calidad de los datos sobre riesgos
+4. Categorización de riesgos
+5. Evaluación de la urgencia de los riesgos
+6. Juicio de expertos
+Outputs
+1. Actualizaciones a los documentos del proyecto
+<->
+Riesgos
+11.4
+Realizar el Análisis Cuantitativo de Riesgos
+Inputs
+1. Plan de gestión de los riesgos
+2. Plan de gestión de los costos
+3. Plan de gestión del cronograma
+4. Registro de riesgos
+5. Factores ambientales de la empresa
+6. Activos de los procesos de la organización
+ToolsAndTechniques
+1. Técnicas de recopilación representación de datos
+2. Técnicas de análisis cuantitativo de riesgos y de modelado
+3. Juicio de expertos
+Outputs
+1. Actualizaciones a los documentos del proyecto
+<->
+Riesgos
+11.5
+Planificar la Respuesta a los Riesgos
+Inputs
+1. Plan de gestión de los riesgos
+2. Registro de riesgos
+ToolsAndTechniques
+1. Estrategias para riesgos negativos o amenazas
+2. Estrategias para riesgos positivos u oportunidades
+3. Estrategias de respuesta a contingencias
+4. Juicio de expertos
+Outputs
+1. Actualizaciones al plan para la dirección del proyecto
+2. Actualizaciones a los documentos del proyecto
+<->
+<Ejecución>
+Recursos Humanos
+9.2
+Adquirir el Equipo del Proyecto
+Inputs
+1. Plan de gestión de los recursos humanos
+2. Factores ambientales de la empresa
+3. Activos de los procesos de la organización
+ToolsAndTechniques
+1. Asignación Previa
+2. Negociación
+3. Adquisición
+4. Equipos Virtuales
+5. Análisis de decisiones multicriterio
+Outputs
+1. Asignaciones de personal al proyecto
+2. Calendarios de recursos
+3. Actualizaciones al plan para la dirección del proyecto
+<->
+Recursos Humanos
+9.3
+Desarrollar el Equipo del Proyecto
+Inputs
+1. Plan de gestión de los recursos humanos
+2. Asignaciones de personal al proyecto
+3. Calendarios de recursos
+ToolsAndTechniques
+1. Habilidades interpersonales
+2. Capacitación
+3. Actividades de desarrollo del espíritu de equipo
+4. Reglas básicas
+5. Coubicación
+6. Reconocimiento y recompensas
+7. Herramientas para la evaluación del personal
+Outputs
+1. Evaluaciones del desempeño del equipo
+2. Actualizaciones a los factores ambientales de la empresa
+<->
+Recursos Humanos
+9.4
+Dirigir el Equipo del Proyecto
+Inputs
+1. Plan de gestión de los recursos humanos
+2. Asignaciones de personal al proyecto
+3. Evaluaciones del desempeño del equipo
+4. Registro de incidentes
+5. Informes de desempeño del trabajo
+6. Activos de los procesos de la organización
+ToolsAndTechniques
+1. Observación y conversación
+2. Evaluaciones del desempeño del proyecto
+3. Gestión de conflictos
+4. Habilidades interpersonales
+Outputs
+1. Solicitudes de cambio
+2. Actualizaciones al plan para la dirección del proyecto
+3. Actualizaciones a los documentos del proyecto
+4. Actualizaciones a los factores ambientales de la empresa
+5. Actualizaciones a los activos de los procesos de la organización
+<->
+Integración
+4.3
+Dirigir y Gestionar el Trabajo del Proyecto
+Inputs
+1. Plan para la dirección del proyecto
+2. Solicitudes de cambio probadas
+3. Factores ambientales de la empresa
+4. Activos de los procesos de la organización
+ToolsAndTechniques
+1. Juicio de expertos
+2. Sistema de información para la dirección de proyectos
+3. Reuniones
+Outputs
+1. Entregables
+2. Datos de desempeño del trabajo
+3. Solicitudes de cambio
+4. Actualizaciones al plan para la dirección del proyecto
+5. Actualizaciones a los documentos del proyecto
+<->
+Calidad
+8.2
+Realizar el Aseguramiento de Calidad
+Inputs
+1. Plan de gestión de la calidad
+2. Plan de mejoras del proceso
+3. Métricas de Calidad
+4. Medidas de control de calidad
+5. Documentos del proyecto
+ToolsAndTechniques
+1. Herramientas de gestión y control de la calidad
+2. Auditorías de calidad
+3. Análisis de procesos
+Outputs
+1. Solicitudes de cambio
+2. Actualizaciones al plan para la dirección del proyecto
+3. Actualizaciones a los documentos del proyecto
+4. Actualizaciones a los activos de los procesos de la organización
+<->
+Comunicaciones
+10.2
+Gestionar las Comunicaciones
+Inputs
+1. Plan de gestión de las comunicaciones
+2. Informes de desempeño del trabajo
+3. Factores ambientales de la empresa
+4. Activos de los procesos de la organización
+ToolsAndTechniques
+1. Tecnología de la comunicación
+2. Modelos de comunicación
+3. Métodos de comunicación
+4. Sistemas de gestión de la información
+5. Informes de desempeño
+Outputs
+1. Comunicaciones del proyecto
+2. Actualizaciones al plan para la dirección del proyecto
+3. Actualizaciones a los documentos del proyecto
+4. Actualizaciones a los activos de los procesos de la organización
+<->
+Adquisiciones
+12.2
+Efectuar las Adquisiciones
+Inputs
+1. Plan de gestión de las adquisiciones
+2. Documentos de las adquisiciones
+3. Criterios de selección de proveedores
+4. Propuestas de los vendedores
+5. Documentos del proyecto
+6. Decisiones de hacer o comprar
+7. Enunciados del trabajo relativo a adquisiciones
+8. Activos de los procesos de la organización
+ToolsAndTechniques
+1. Conferencia de oferentes
+2. Técnicas de evaluación de propuestas
+3. Estimaciones independientes
+4. Juicio de expertos
+5. Publicidad
+6. Técnicas analíticas
+7. Negociación de adquisiciones
+Outputs
+1. Vendedores seleccionados
+2. Acuerdos
+3. Calendarios de recursos
+4. Solicitudes de cambio
+5. Actualizaciones al plan para la dirección del proyecto
+6. Actualizaciones a los documentos del proyecto
+<->
+Interesados
+13.3
+Gestionar la Participación de los Interesados
+Inputs
+1. Plan de gestión de los interesados
+2. Plan de gestión de las comunicaciones
+3. Registro de cambios
+4. Activos de los procesos de la organización
+ToolsAndTechniques
+1. Métodos de comunicación
+2. Habilidades interpersonales
+3. Habilidades de gestión
+Outputs
+1. Registro de incidentes
+2. Solicitudes de cambio
+3. Actualizaciones al plan para la dirección del proyecto
+4. Actualizaciones a los documentos del proyecto
+5. Actualizaciones a los activos de los procesos de la organización
+<->
+<Cierre>
+Integración
+4.6
+Cerrar el Proyecto o Fase
+Inputs
+1. Plan para la dirección del proyecto
+2. Entregables aceptados
+3. Activos de los procesos de la organización
+ToolsAndTechniques
+1. Juicio de expertos
+2. Técnicas analíticas
+3. Reuniones
+Outputs
+1. Transferencia del producto, servicio o resultado final
+2. Actualizaciones a los activos de los procesos de la organización
+<->
+Adquisiciones
+12.4
+Cerrar las Adquisiciones
+Inputs
+1. Plan para la dirección del proyecto
+2. Documentos de las adquisiciones
+ToolsAndTechniques
+1. Auditorías de la adquisición
+2. Negociación de adquisiciones
+3. Sistema de gestión de registros
+Outputs
+1. Adquisiciones cerradas
+2. Actualizaciones a los activos de los procesos de la organización
+<->
+<Monitoreo y Control>
+Alcance
+5.5
+Validar el Alcance
+Inputs
+1. Plan para la dirección del proyecto
+2. Documentación de requisitos
+3. Matriz de trazabilidad de requisitos
+4. Entregables verificados
+5. Datos de desempeño del trabajo
+ToolsAndTechniques
+1. Inspección
+2. Técnicas grupales de toma de decisiones
+Outputs
+1. Entregables aceptados
+2. Solicitudes de cambio
+3. Información de desempeño del trabajo
+4. Actualizaciones a los documentos del proyecto
+<->
+Alcance
+5.6
+Controlar el Alcance
+Inputs
+1. Plan para la dirección del proyecto
+2. Documentación de requisitos
+3. Matriz de trazabilidad de requisitos
+4. Datos de desempeño del trabajo
+5. Activos de los procesos de la organización
+ToolsAndTechniques
+1. Análisis de variación
+Outputs
+1. Información de desempeño del trabajo
+2. Solicitudes de cambio
+3. Actualizaciones al plan para la dirección del proyecto
+4. Actualizaciones a los documentos del proyecto
+5. Actualizaciones a los activos de los procesos de la organización
+<->
+Integración
+4.4
+Monitorear y Controlar el Trabajo del Proyecto
+Inputs
+1. Plan para la dirección del proyecto
+2. Pronóstico del cronograma
+3. Pronósticos de costos
+4. Cambios validados
+5. Información de desempeño del trabajo
+6. Factores ambientales de la empresa
+7. Activos de los procesos de la organización
+ToolsAndTechniques
+1. Juicio de expertos
+2. Técnicas analíticas
+3. Sistema de información para la dirección de proyectos
+4. Reuniones
+Outputs
+1. Solicitudes de cambio
+2. Informes de desempeño del trabajo
+3. Actualizaciones al plan para la dirección del proyecto
+4. Actualizaciones a los documentos del proyecto
+<->
+Integración
+4.5
+Realizar el Control Integrado de Cambios
+Inputs
+1. Plan para la dirección del proyecto
+2. Informes de desempeño del trabajo
+3. Solicitudes de cambio
+4. Factores ambientales de la empresa
+5. Activos de los procesos de la organización
+ToolsAndTechniques
+1. Juicio de expertos
+2. Reuniones
+3. Herramientas de control de cambios
+Outputs
+1. Solicitudes de cambio probadas
+2. Registro de cambios
+3. Actualizaciones al plan para la dirección del proyecto
+4. Actualizaciones a los documentos del proyecto
+<->
+Tiempo
+6.7
+Controlar el Cronograma
+Inputs
+1. Plan para la dirección del proyecto
+2. Cronograma del proyecto
+3. Datos de desempeño del trabajo
+4. Calendarios del proyecto
+5. Datos del cronograma
+6. Activos de los procesos de la organización
+ToolsAndTechniques
+1. Revisiones del desempeño
+2. Software de gestión de proyectos
+3. Técnicas de optimización de recursos
+4. Técnicas de modelado
+5. Adelantos y retrasos
+6. Compresión del cronograma
+7. Herramienta de programación
+Outputs
+1. Información de desempeño del trabajo
+2. Pronóstico del cronograma
+3. Solicitudes de cambio
+4. Actualizaciones al plan para la dirección del proyecto
+5. Actualizaciones a los documentos del proyecto
+6. Actualizaciones a los activos de los procesos de la organización
+<->
+Costos
+7.4
+Controlar los Costos
+Inputs
+1. Plan para la dirección del proyecto
+2. Requisitos de financiamiento del proyecto
+3. Datos de desempeño del trabajo
+4. Activos de los procesos de la organización
+ToolsAndTechniques
+1. Gestión del valor ganado
+2. Pronósticos
+3. Índice de desempeño del trabajo por completar (TCPI)
+4. Revisiones del desempeño
+5. Software de gestión de proyectos
+6. Análisis de reservas
+Outputs
+1. Información de desempeño del trabajo
+2. Pronósticos de costos
+3. Solicitudes de cambio
+4. Actualizaciones al plan para la dirección del proyecto
+5. Actualizaciones a los documentos del proyecto
+6. Actualizaciones a los activos de los procesos de la organización
+<->
+Calidad
+8.3
+Controlar la Calidad
+Inputs
+1. Plan para la dirección del proyecto
+2. Métricas de calidad
+3. Listas de verificación de calidad
+4. Datos de desempeño del trabajo
+5. Solicitudes de cambio probadas
+6. Entregables
+7. Documentos del proyecto
+8. Activos de los procesos de la organización
+ToolsAndTechniques
+1. Siete herramientas básicas de calidad
+2. Muestreo estadístico
+3. Inspección
+4. Revisión de solicitudes de cambio aprobadas
+Outputs
+1. Medidas de control de calidad
+2. Cambios validados
+3. Entregables verificados
+4. Información de desempeño del trabajo
+5. Solicitudes de cambio
+6. Actualizaciones al plan para la dirección del proyecto
+7. Actualizaciones a los documentos del proyecto
+8. Actualizaciones a los activos de los procesos de la organización
+<->
+Comunicaciones
+10.3
+Controlar las Comunicaciones
+Inputs
+1. Plan para la dirección del proyecto
+2. Comunicaciones del proyecto
+3. Registro de incidentes
+4. Datos de desempeño del trabajo
+5. Activos de los procesos de la organización
+ToolsAndTechniques
+1. Sistemas de gestión de la información
+2. Juicio de expertos
+3. Reuniones
+Outputs
+1. Información de desempeño del trabajo
+2. Solicitudes de cambio
+3. Actualizaciones al plan para la dirección del proyecto
+4. Actualizaciones a los documentos del proyecto
+5. Actualizaciones a los activos de los procesos de la organización
+<->
+Riesgos
+11.6
+Controlar los Riesgos
+Inputs
+1. Plan para la dirección del proyecto
+2. Registro de riesgos
+3. Datos de desempeño del trabajo
+4. Informes de desempeño del trabajo
+ToolsAndTechniques
+1. Reevaluación de los riesgos
+2. Auditorías de los riesgos
+3. Análisis de variación de tendencias
+4. Medición del desempeño técnico
+5. Análisis de reservas
+6. Reuniones
+Outputs
+1. Información de desempeño del trabajo
+2. Solicitudes de cambio
+3. Actualizaciones al plan para la dirección del proyecto
+4. Actualizaciones a los documentos del proyecto
+5. Actualizaciones a los activos de los procesos de la organización
+<->
+Adquisiciones
+12.3
+Controlar las Adquisiciones
+Inputs
+1. Plan para la dirección del proyecto
+2. Documentos de las adquisiciones
+3. Acuerdos
+4. Solicitudes de cambio aprobadas
+5. Informes de desempeño del trabajo
+6. Datos de desempeño del trabajo
+ToolsAndTechniques
+1. Sistema de control de cambios del contrato
+2. Revisiones del desempeño de las adquisiciones
+3. Inspecciones y auditorías
+4. Informar el desempeño
+5. Sistemas de pago
+6. Administración de reclamaciones
+7. Sistema de gestión de registros
+Outputs
+1. Información de desempeño del trabajo
+2. Solicitudes de cambio
+3. Actualizaciones al plan para la dirección del proyecto
+4. Actualizaciones a los documentos del proyecto
+5. Actualizaciones a los activos de los procesos de la organización
+<->
+Interesados
+13.4
+Controlar la Participación de los Interesados
+Inputs
+1. Plan para la dirección del proyecto
+2. Registro de incidentes
+3. Datos de desempeño del trabajo
+4. Documentos del proyecto
+ToolsAndTechniques
+1. Sistemas de gestión de la información
+2. Juicio de expertos
+3. Reuniones
+Outputs
+1. Información de desempeño del trabajo
+2. Solicitudes de cambio
+3. Actualizaciones al plan para la dirección del proyecto
+4. Actualizaciones a los documentos del proyecto
+5. Actualizaciones a los activos de los procesos de la organización
+<->

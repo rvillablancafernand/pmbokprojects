@@ -1,0 +1,6 @@
+= header_generator @company, 'building'
+= dbox_generator @company
+.row-wg
+	.col-sm-12
+		= header_generator nil, 'book', Assignment.pluralize
+	= table_generator @company.assignments.page(params[:page]), :actions

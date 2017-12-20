@@ -1,0 +1,8 @@
+es:
+  professors:
+    devise:
+      shared:
+        links:
+          sign_in: Iniciar Sesión
+          forgot_password: ¿Olvidaste tu contraseña?
+          send_unlock: ¿No recibiste instrucciones de desbloqueo?

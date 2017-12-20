@@ -15,6 +15,9 @@
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
 
+@import 'chosen';
+@import 'tools/chosen';
+
 @import 'tools/bootstrap_tweaks';
 @import 'tools/mixins';
 @import 'tools/extra_classes';
@@ -22,8 +25,8 @@
 @import 'patterns/buttons';
 @import 'patterns/headings';
 
-@import 'layouts/navbar';
-@import 'layouts/professors';
-// @import 'layouts/home';
-// @import 'layouts/not_found';
 @import 'layouts/devise';
+@import 'layouts/main';
+@import 'layouts/navbar';
+@import 'layouts/pmbok';
+@import 'layouts/not_found';

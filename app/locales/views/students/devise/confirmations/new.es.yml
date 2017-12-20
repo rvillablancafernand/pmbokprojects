@@ -1,0 +1,7 @@
+es:
+  students:
+    devise:
+      confirmations:
+        new:
+          title: Volver a enviar instrucciones de confirmación
+          submit: Enviar instrucciones

@@ -1,0 +1,14 @@
+es:
+  students:
+    home:
+      not_found:
+        title: 404 Página no encontrada
+        oops: ¡¡¡Oopsi!!!
+        not_found: "404 Página no encontrada"
+        im_sorry:
+          |
+          <h3>- ¡Lo siento Señor!</h3>
+          <h3>- Usted confió en mi y yo...</h3>
+          <h3>- ¡Y yo!</h3>
+          <h3>- Le he fallado</h3>
+          <h3 class="text-center">😢</h3>

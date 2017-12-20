@@ -1,0 +1,8 @@
+es:
+  students:
+    devise:
+      sessions:
+        new:
+          title: Iniciar Sesión
+          submit: Iniciar Sesión
+

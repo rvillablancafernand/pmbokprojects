@@ -39,6 +39,9 @@ gem 'bcrypt', '~> 3.1.7'
 # Devise
 gem 'devise'
 gem 'devise_invitable'
+gem 'cancancan'
+
+gem 'responders'
 
 # Slim
 gem 'slim'
@@ -48,6 +51,7 @@ gem 'slim-rails'
 gem 'simple_form'
 gem 'bootstrap', '~> 4.0.0.beta'
 gem 'font-awesome-sass'
+gem 'chosen-rails'
 
 gem 'kaminari'
 gem 'kaminari-activerecord'
@@ -55,6 +59,8 @@ gem 'kaminari-activerecord'
 gem 'cocoon'
 
 gem 'premailer-rails'
+
+gem 'dotiw'
 
 group :development, :test do
 	# Call 'byebug' anywhere in the code to stop execution and get a debugger console

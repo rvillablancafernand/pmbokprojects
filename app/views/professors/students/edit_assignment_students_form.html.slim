@@ -1,0 +1,17 @@
+= header_generator nil, 'edit', "#{Student.pluralize}/#{ProcessObject.pluralize}"
+
+.row-wg.justify-content-center
+	.col-md-8
+		.card.border-primary
+			.card-header.bg-primary
+				h2.text-white = @assignment.singularize
+			.card-body
+				= simple_form_for @assignment do |f|
+					- f.error_notification
+					= f.simple_fields_for :assignment_process_objects do |assignment_process_object|
+						= render 'assignment_process_object_fields', f: assignment_process_object
+					.links
+						= link_to_add_association f, :assignment_process_objects
+							= icon 'new'
+							span = "#{Student.singularize}/#{ProcessObject.singularize}"
+					= f.button :submit

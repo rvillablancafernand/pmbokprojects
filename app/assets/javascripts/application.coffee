@@ -17,6 +17,8 @@
 #= require popper
 #= require bootstrap
 
-#= require home
+#= require main
+#= require students
+#= require chosen-jquery
 #= require cocoon
 #= require turbolinks

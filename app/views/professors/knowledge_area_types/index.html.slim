@@ -1,33 +1,3 @@
-- title
-.admin-header
-	.row-wg
-		.col-sm-9
-			h1 = t '.heading.html', icon: icon('cubes')
-		.col-sm-3
-			.btn-group.pull-right-sm-up
-				= header_link_to new_knowledge_area_type_path, tooltip: t('.new'), class: 'btn btn-admin-panel-primary'
-					= icon 'plus'
+= header_generator KnowledgeAreaType, 'cubes'
 .row-wg
-	.col-sm-12
-		table.admin-table
-			thead
-				tr
-					th = KnowledgeAreaType.human_attribute_name(:id)
-					th = KnowledgeAreaType.human_attribute_name(:name)
-					th = KnowledgeAreaType.human_attribute_name(:description)
-					th = KnowledgeAreaType.human_attribute_name(:color)
-					th.actions = KnowledgeAreaType.human_attribute_name(:actions)
-			tbody
-				- @knowledge_area_types.each do |knowledge_area_type|
-					tr
-						td = knowledge_area_type.id
-						td = knowledge_area_type.name
-						td = knowledge_area_type.description
-						= content_tag :td, style: "background-color:#{knowledge_area_type.color};"
-							= knowledge_area_type.color
-						td.actions
-							= link_to edit_knowledge_area_type_path(knowledge_area_type)
-								= icon 'edit', class: 'text-warning'
-							= link_to knowledge_area_type, data: { confirm: t('.confirm_remove') }, method: :delete
-								= icon 'remove', class: 'text-danger'
-= paginate_with_info @knowledge_area_types
+	= table_generator @knowledge_area_types, :actions

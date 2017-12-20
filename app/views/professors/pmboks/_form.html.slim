@@ -1,15 +1,20 @@
 .row-wg.justify-content-center
 	.col-md-8
-		.card
+		.card.border-primary
+			.card-header.bg-primary
+				h2.text-white = @pmbok.singularize
 			.card-body
 				= simple_form_for @pmbok do |f|
 					- f.error_notification
-					= f.input :version
-					.row.justify-content-end
+					= f.input :name
+					.form-group.row
+						label.col-sm-3.col-form-label
+							= ProcessGroup.pluralize
 						.col-sm-9
-							h3 Process Groups
-					= f.simple_fields_for :process_groups do |process_group|
-						= render 'process_group_fields', f: process_group
-					.links
-						= link_to_add_association "Process Group #{icon('plus')}".html_safe, f, :process_groups
+							= f.simple_fields_for :process_groups do |process_group|
+								= render 'process_group_fields', f: process_group
+							.links
+								= link_to_add_association f, :process_groups
+									= icon 'new'
+									span = ProcessGroup.singularize
 					= f.button :submit

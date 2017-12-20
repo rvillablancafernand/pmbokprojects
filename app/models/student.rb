@@ -1,44 +1,53 @@
 class Student < ApplicationRecord
-	# Include default devise modules. Others available are :omniauthable
-	devise :database_authenticatable, :registerable, :recoverable, :rememberable,
-		:trackable, :validatable, :confirmable, :lockable, :timeoutable,
-		authentication_keys: [:username],
-		email_regexp: Regexp.new('\A[^@\s]+' + ENV['EMAIL_DOMAIN'] + '\z')
+	# Include default devise modules. Others available are :omniauthable, :validatable
+	devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :confirmable, :lockable, :timeoutable, authentication_keys: [:username], confirmation_keys: [:username], reset_password_keys: [:username], unlock_keys: [:username]
 
-	validates_presence_of :first_name, :last_names
+	validates_presence_of :username, :name, :surname, :second_surname
+	validates_uniqueness_of :username
 
-	before_validation do
-		self.email = "#{self.username}#{ENV['EMAIL_DOMAIN']}"
+	has_and_belongs_to_many :assignments
+	has_many :courses_students
+	has_many :courses, through: :courses_students
+	has_many :assignment_process_objects
+
+	set_attrs :id, :name, :surname, :second_surname, :email, :courses_count, :sign_in_count, :current_sign_in_at, :last_sign_in_at
+
+	delegate :can?, :cannot?, to: :ability
+
+	def ability
+		@ability = StudentAbility.new(self)
 	end
 
-	def display_name
-		(first_name.present? and last_name.present?) ? "#{first_name} #{last_name}" : email
+	def to_s
+		full_name = [name, surname, second_surname]
+		full_name.any?(&:present?) ? full_name.join(' ').strip : email
 	end
 
-	def display_short_name
-		first_name.present? ? first_name : email
+	def short_name
+		name.present? ? name : email
 	end
 
 	def avatar
-		current_provider.present? ? current_provider.avatar_url : 'avatar-unknown.jpg'
+		avatar_url.present? ? avatar_url : 'avatar-unknown.jpg'
 	end
 
-	# Devise
-	def send_reconfirmation_instructions
-		@reconfirmation_required = false
-
-		unless @skip_confirmation_notification
-			unless @raw_confirmation_token
-				generate_confirmation_token!
-			end
-
-			opts = pending_reconfirmation? ? { to: unconfirmed_email } : { }
-			send_devise_notification(:reconfirmation_instructions, @raw_confirmation_token, opts)
-		end
+	def process_objects
+		assignment_process_objects.map{|i| i.process_object.to_s}.join(', ')
 	end
 
-	def after_confirmation
-		opts = { to: email }
-		send_devise_notification(:email_changed, opts)
+	def accept_link
+	end
+
+	# Username
+	def email
+		"#{username}#{ENV['EMAIL_DOMAIN']}"
+	end
+
+	def email_required?
+		false
+	end
+
+	def email_changed?
+		false
 	end
 end

@@ -9,6 +9,10 @@ class DeviseMailer < Devise::Mailer
 		devise_mail(record, :reconfirmation_instructions, opts)
 	end
 
+	def confirmation_notification(record, opts={})
+		devise_mail(record, :confirmation_notification, opts)
+	end
+
 	def reset_password_instructions(record, token, opts={})
 		@token = token
 		devise_mail(record, :reset_password_instructions, opts)

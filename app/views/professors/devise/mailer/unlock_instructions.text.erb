@@ -1,0 +1,15 @@
+<%= t 'globals.app_name_plain' %>
+
+------------------------------------
+
+<%= t '.greetings', name: @resource.short_name %>
+
+<%= t '.instruction' %>
+
+<%= t '.instruction_2' %>
+
+<%= unlock_url(@resource, unlock_token: @token) %>
+
+------------------------------------
+
+<%= t '.regards_plain' %>

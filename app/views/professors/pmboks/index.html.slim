@@ -1,28 +1,3 @@
-- title
-.admin-header
-	.row-wg
-		.col-sm-9
-			h1 = t '.heading.html', icon: icon('globe')
-		.col-sm-3
-			.btn-group.pull-right-sm-up
-				= header_link_to new_pmbok_path, tooltip: t('.new'), class: 'btn btn-admin-panel-primary'
-					= icon 'plus'
+= header_generator Pmbok, 'globe'
 .row-wg
-	.col-sm-12
-		table.admin-table
-			thead
-				tr
-					th = Pmbok.human_attribute_name(:version)
-					th.actions = Pmbok.human_attribute_name(:actions)
-			tbody
-				- @pmboks.each do |pmbok|
-					tr
-						td = pmbok.version
-						td.actions
-							= link_to pmbok
-								= icon 'eye'
-							= link_to edit_pmbok_path(pmbok)
-								= icon 'edit', class: 'text-warning'
-							= link_to pmbok, data: { confirm: t('.confirm_remove') }, method: :delete
-								= icon 'remove', class: 'text-danger'
-= paginate_with_info @pmboks
+	= table_generator @pmboks

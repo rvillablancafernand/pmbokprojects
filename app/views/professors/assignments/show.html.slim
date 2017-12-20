@@ -1,0 +1,6 @@
+= header_generator @assignment, 'book'
+= dbox_generator @assignment
+.row-wg
+	.col-sm-12
+		= header_generator nil, 'users', "#{Student.pluralize} - #{icon 'object-group'}#{ProcessObject.pluralize}".html_safe, link_to(icon('edit'), assignment_students_path(@assignment), class: 'btn btn-admin-edit', data: { toggle: 'tooltip', placement: 'bottom', title: t('admin_helper.edit', model: "#{Student.pluralize}/#{ProcessObject.pluralize}")})
+	= table_generator @assignment.students.includes(assignment_process_objects: :process_object).page(params[:page]), :process_objects
