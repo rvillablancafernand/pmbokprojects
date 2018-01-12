@@ -6,6 +6,7 @@
 			.card-body
 				= simple_form_for @course do |f|
 					- f.error_notification
+					= f.association :professor, label_method: :to_s if current_user.admin?
 					= f.input :nrc
 					= f.input :name
 					= f.input :description

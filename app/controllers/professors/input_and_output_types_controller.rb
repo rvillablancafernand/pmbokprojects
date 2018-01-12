@@ -4,15 +4,12 @@ class Professors::InputAndOutputTypesController < ApplicationController
 
 	def index
 		@input_and_output_types = @input_and_output_types.page(params[:page])
-		respond_with @input_and_output_types
 	end
 
 	def show
-		respond_with @input_and_output_type
 	end
 
 	def new
-		respond_with @input_and_output_type
 	end
 
 	def edit
@@ -24,7 +21,7 @@ class Professors::InputAndOutputTypesController < ApplicationController
 	end
 
 	def update
-		@input_and_output_type.update(input_and_output_type_params)
+		@input_and_output_type.update input_and_output_type_params
 		respond_with @input_and_output_type, location: -> { input_and_output_types_path }
 	end
 

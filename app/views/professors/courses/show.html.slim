@@ -3,4 +3,4 @@
 .row-wg
 	.col-sm-12
 		= header_generator nil, 'users', "#{Student.pluralize}"
-	= table_generator @course.students.page(params[:page])
+	= table_generator @course.students.page(params[:page]), :actions

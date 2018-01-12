@@ -1,6 +1,8 @@
 class Output < ApplicationRecord
 	belongs_to :input_and_output_type
 	belongs_to :process_object, counter_cache: true
+	has_many :attachments, as: :attachable
+	accepts_nested_attributes_for :attachments, allow_destroy: true
 
 	def to_s
 		input_and_output_type.name

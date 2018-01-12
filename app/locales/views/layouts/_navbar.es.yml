@@ -2,6 +2,7 @@ es:
   layouts:
     navbar:
       dashboard: Dashboard
+      my_courses: Mis Cursos
       types: Tipos
       edit_user: Editar mi perfil
       sign_in: Iniciar Sesión

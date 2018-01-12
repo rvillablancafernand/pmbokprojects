@@ -41,6 +41,8 @@ gem 'devise'
 gem 'devise_invitable'
 gem 'cancancan'
 
+gem 'paperclip'
+
 gem 'responders'
 
 # Slim
@@ -49,7 +51,7 @@ gem 'slim-rails'
 
 # Assets
 gem 'simple_form'
-gem 'bootstrap', '~> 4.0.0.beta'
+gem 'bootstrap', '4.0.0.beta2.1'
 gem 'font-awesome-sass'
 gem 'chosen-rails'
 

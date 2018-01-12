@@ -7,12 +7,15 @@ module AdminHelper
 				buttons ||= buttons_generator(object, :index)
 			when :show
 				heading ||= object.respond_to?(:to_s) ? object.to_s : object.singularize
-				buttons ||= buttons_generator(object, :index, :edit, :destroy)
+				buttons ||= buttons_generator(object, :register, :index, :edit, :destroy)
 			when :edit, :update
 				heading ||= object.respond_to?(:to_s) ? t('admin_helper.edit_with_name', name: object.to_s) : t('admin_helper.edit', model: object.singularize)
 				buttons ||= buttons_generator(object, :index, :show, :destroy)
 			when :index
 				heading ||= object.pluralize
+				buttons ||= buttons_generator(object, :new)
+			when :my_courses
+				heading ||= "Mis #{object.pluralize}"
 				buttons ||= buttons_generator(object, :new)
 			end
 		end
@@ -141,6 +144,8 @@ module AdminHelper
 			concat show_link_to(object)
 			concat edit_link_to(object, 'text-warning')
 			concat destroy_link_to(object, 'text-danger')
+			concat register_link_to(object, 'text-success')
+			concat accept_link_to(object, 'text-success')
 		end
 	end
 
@@ -209,6 +214,26 @@ module AdminHelper
 		if current_user.can? :destroy, object
 			link_to path, method: :delete, class: class_name, data: { toggle: 'tooltip', placement: 'bottom', title: t('admin_helper.remove', model: object.singularize), confirm: t('admin_helper.confirm_remove', model: object.singularize)} do
 				icon 'destroy'
+			end
+		end
+	end
+
+	def register_link_to(object, class_name=nil)
+		path = [:register, object]
+		if current_user.can? :register, object
+			link_to path, class: class_name, data: { toggle: 'tooltip', placement: 'bottom', title: t('admin_helper.register', model: object.singularize), confirm: t('admin_helper.confirm_register', model: object.singularize)}, method: :post do
+				icon 'register'
+			end
+		end
+	end
+
+	def accept_link_to(object, class_name=nil)
+		if action_name.to_sym == :show and controller_name.to_sym == :courses
+			path = accept_student_courses_path(course_id: params[:id], id: object.id)
+			if current_user.can? :accept, object
+				link_to path, class: class_name, data: { toggle: 'tooltip', placement: 'bottom', title: t('admin_helper.accept', model: object.singularize)}, method: :post do
+					icon 'accept'
+				end
 			end
 		end
 	end

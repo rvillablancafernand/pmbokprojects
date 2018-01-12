@@ -8,9 +8,9 @@
 					- f.error_notification
 					= f.input :name
 					= f.input :description
-					= f.association :pmbok
-					= f.association :company
+					= f.association :pmbok, label_method: :to_s
+					= f.association :company, label_method: :to_s
 					= f.divider
-					= f.association :course, collection: @courses
+					= f.association :course, collection: @courses, label_method: :to_s
 					= f.association :students, collection: @students, label_method: :to_s
 					= f.button :submit

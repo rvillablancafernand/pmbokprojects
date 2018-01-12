@@ -4,15 +4,12 @@ class Professors::PmboksController < ApplicationController
 
 	def index
 		@pmboks = @pmboks.page(params[:page])
-		respond_with @pmboks
 	end
 
 	def show
-		respond_with @pmbok
 	end
 
 	def new
-		respond_with @pmbok
 	end
 
 	def edit
@@ -24,7 +21,7 @@ class Professors::PmboksController < ApplicationController
 	end
 
 	def update
-		@pmbok.update(pmbok_params)
+		@pmbok.update pmbok_params
 		respond_with @pmbok
 	end
 

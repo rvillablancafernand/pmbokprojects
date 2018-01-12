@@ -6,15 +6,16 @@ class Professors::AssignmentsController < ApplicationController
 
 	def index
 		@assignments = @assignments.includes(:course, :company).page(params[:page])
-		respond_with @assignments
+	end
+
+	def students
+		@students = @assignment.students
 	end
 
 	def show
-		respond_with @assignment
 	end
 
 	def new
-		respond_with @assignment
 	end
 
 	def edit
@@ -22,17 +23,17 @@ class Professors::AssignmentsController < ApplicationController
 
 	def create
 		@assignment.save
-		respond_with @assignment
+		respond_with @assignment, location: -> { assignment_path(@assignment) }
 	end
 
 	def update
-		@assignment.update(assignment_params)
-		respond_with @assignment
+		@assignment.update assignment_params
+		respond_with @assignment, location: -> { assignment_path(@assignment) }
 	end
 
 	def destroy
 		@assignment.destroy
-		respond_with @assignment
+		respond_with @assignment, location: -> { assignments_path }
 	end
 
 	private
@@ -43,6 +44,6 @@ class Professors::AssignmentsController < ApplicationController
 	end
 
 	def assignment_params
-		params.require(:assignment).permit(:name, :description, :pmbok_id, :company_id, :course_id, student_ids: [],  assignment_process_objects_attributes: [:id, :student_id, :process_object_id, :_destroy])
+		params.require(:assignment).permit(:name, :description, :pmbok_id, :company_id, :course_id, student_ids: [], assignment_process_objects_attributes: [:id, :student_id, :process_object_id, :_destroy])
 	end
 end

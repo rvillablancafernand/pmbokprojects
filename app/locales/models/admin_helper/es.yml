@@ -6,4 +6,7 @@ es:
     edit_with_name: Editar %{name}
     remove: Eliminar %{model}
     confirm_remove: ¿Estás seguro que deseas eliminar %{model}?
+    register: Registrarme en este %{model}
+    confirm_register: ¿Estás seguro que deseas registrarte en este %{model}?
+    accept: Aceptar este %{model}
     back: Volver

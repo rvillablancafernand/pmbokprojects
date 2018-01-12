@@ -3,12 +3,10 @@ class Professors::ProfessorsController < ApplicationController
 	load_and_authorize_resource
 
 	def index
-		@professors = @professors.page
-		respond_with @professors
+		@professors = @professors.page(params[:page])
 	end
 
 	def show
-		respond_with @professor
 	end
 
 	def destroy

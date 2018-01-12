@@ -1,0 +1,4 @@
+.nested-fields
+	= f.association :student, collection: f.object.assignment.students
+	= f.association :process_object, as: :grouped_select, collection: f.object.assignment.pmbok.process_groups.includes(:process_objects, :process_group_type), group_method: :process_objects
+	= link_to_remove_association icon('remove'), f

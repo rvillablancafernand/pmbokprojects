@@ -4,11 +4,9 @@ class Professors::KnowledgeAreaTypesController < ApplicationController
 
 	def index
 		@knowledge_area_types = @knowledge_area_types.page(params[:page])
-		respond_with @knowledge_area_types
 	end
 
 	def new
-		respond_with @knowledge_area_type
 	end
 
 	def edit
@@ -20,7 +18,7 @@ class Professors::KnowledgeAreaTypesController < ApplicationController
 	end
 
 	def update
-		@knowledge_area_type.update(knowledge_area_type_params)
+		@knowledge_area_type.update knowledge_area_type_params
 		respond_with @knowledge_area_type, location: -> { knowledge_area_types_path }
 	end
 

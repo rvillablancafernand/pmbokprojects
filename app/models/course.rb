@@ -2,6 +2,7 @@ class Course < ApplicationRecord
 	belongs_to :professor, counter_cache: true
 	has_many :courses_students
 	has_many :students, through: :courses_students
+	has_many :assignments
 
 	validates_presence_of :nrc, :name, :year, :semester
 	validates_uniqueness_of :nrc
@@ -13,6 +14,6 @@ class Course < ApplicationRecord
 	end
 
 	def to_s
-		"#{year} - #{semester} - #{name}"
+		"#{year}-#{semester} - (#{students_count}) #{Student.model_name.human.pluralize(students_count, I18n.locale)} - #{name}"
 	end
 end

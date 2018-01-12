@@ -35,6 +35,9 @@ nav.navbar.navbar-dark.navbar-expand-lg
 						= icon 'home'
 						= t '.dashboard'
 					= navbar_link_to_index Course, 'book'
+					= navbar_link_to my_courses_path, class: 'nav-link'
+						= icon 'book'
+						= t '.my_courses'
 				span.navbar-divider.visible-mobile
 			ul.navbar-nav
 				/ user avatar

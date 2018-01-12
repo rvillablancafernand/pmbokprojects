@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171211141010) do
+ActiveRecord::Schema.define(version: 20180111141010) do
 
   create_table "assignment_process_objects", force: :cascade do |t|
     t.integer  "assignment_id"
@@ -41,6 +41,20 @@ ActiveRecord::Schema.define(version: 20171211141010) do
     t.integer "student_id",    null: false
     t.index ["assignment_id", "student_id"], name: "index_assignments_students_on_assignment_id_and_student_id"
     t.index ["student_id", "assignment_id"], name: "index_assignments_students_on_student_id_and_assignment_id"
+  end
+
+  create_table "attachments", force: :cascade do |t|
+    t.integer  "assignment_process_object_id"
+    t.string   "attachable_type"
+    t.integer  "attachable_id"
+    t.string   "item_file_name"
+    t.string   "item_content_type"
+    t.integer  "item_file_size"
+    t.datetime "item_updated_at"
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+    t.index ["assignment_process_object_id"], name: "index_attachments_on_assignment_process_object_id"
+    t.index ["attachable_type", "attachable_id"], name: "index_attachments_on_attachable_type_and_attachable_id"
   end
 
   create_table "companies", force: :cascade do |t|

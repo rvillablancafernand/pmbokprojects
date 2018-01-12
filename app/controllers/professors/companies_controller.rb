@@ -4,15 +4,12 @@ class Professors::CompaniesController < ApplicationController
 
 	def index
 		@companies = @companies.page(params[:page])
-		respond_with @companies
 	end
 
 	def show
-		respond_with @company
 	end
 
 	def new
-		respond_with @company
 	end
 
 	def edit
@@ -24,7 +21,7 @@ class Professors::CompaniesController < ApplicationController
 	end
 
 	def update
-		@company.update(company_params)
+		@company.update company_params
 		respond_with @company
 	end
 

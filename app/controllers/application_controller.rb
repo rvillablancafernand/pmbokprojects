@@ -4,12 +4,13 @@ class ApplicationController < ActionController::Base
 	self.responder = ApplicationResponder
 	respond_to :html
 
-	before_action :verify_requested_format!
-
 	protect_from_forgery with: :exception
+
+	# check_authorization unless: :devise_controller?
 
 	helper_method :current_user, :user_signed_in?, :current_resource, :current_resource?
 
+	protected
 	def current_ability
 		current_user.ability
 	end

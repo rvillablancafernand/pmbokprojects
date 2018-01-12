@@ -1,18 +1,26 @@
 class Professors::CoursesController < ApplicationController
 	before_action :authenticate_professor!
-	load_and_authorize_resource
+	load_and_authorize_resource except: [:accept]
 
 	def index
 		@courses = @courses.includes(:professor).page(params[:page])
-		respond_with @courses, location: -> { courses_path }
+	end
+
+	def students
+		@students = @course.students
+	end
+
+	def accept
+		@course = Course.find(params[:course_id])
+		Student.find(params[:id]).courses_students.where(course: @course).first.update_attributes accepted: true
+		flash[:notice] = 'Estudiante fue aceptado con éxito'
+		redirect_to :back
 	end
 
 	def show
-		respond_with @course, location: -> { course_path(@course) }
 	end
 
 	def new
-		respond_with @course
 	end
 
 	def edit
@@ -24,7 +32,7 @@ class Professors::CoursesController < ApplicationController
 	end
 
 	def update
-		@course.update(course_params)
+		@course.update course_params
 		respond_with @course, location: -> { course_path(@course) }
 	end
 
@@ -35,6 +43,8 @@ class Professors::CoursesController < ApplicationController
 
 	private
 	def course_params
-		params.require(:course).permit(:nrc, :name, :description, :year, :semester).merge(professor: current_professor)
+		allowed_params = [:nrc, :name, :description, :year, :semester]
+		allowed_params << :professor_id if current_professor.admin?
+		params.require(:course).permit(allowed_params)
 	end
 end

@@ -1,16 +1,26 @@
 Rails.application.routes.draw do
-	concern :paginatable do
-		get '(page/:page)', action: :index, on: :collection, as: ''
-		get '(page/:page)', action: :show, on: :member, as: ''
-	end
-
 	constraints subdomain: 'www' do
 		# Devise students
 		devise_for :students, module: 'students/devise', path: '', controllers: { registrations: 'students/devise/registrations' }
 
+		resources :assignments, module: 'students'
+		resources :assignment_process_objects, module: 'students' do
+			resources :inputs
+			resources :tools_and_techniques
+			resources :outputs
+		end
+
+		resources :courses, module: 'students' do
+			member do
+				post 'register'
+			end
+			collection do
+				get 'my_courses', as: 'my'
+			end
+		end
+
 		# Home controller
 		root to: 'students/home#index'
-		resources :courses, module: 'students'
 	end
 
 	constraints subdomain: 'profesores' do
@@ -21,7 +31,8 @@ Rails.application.routes.draw do
 			patch '', to: 'professors/devise/registrations#update', as: 'professor_registration'
 			put '', to: 'professors/devise/registrations#update'
 		end
-		resources :professors, module: 'professors', only: [:show, :index, :destroy], concerns: :paginatable
+
+		resources :professors, module: 'professors', only: [:show, :index, :destroy]
 		resources :students, module: 'professors', only: [:show, :index, :destroy]
 
 		resources :pmboks, module: 'professors' do
@@ -34,11 +45,17 @@ Rails.application.routes.draw do
 		resources :input_and_output_types, module: 'professors', except: [:show]
 		resources :tool_and_technique_types, module: 'professors', except: [:show]
 
+		post 'courses/:course_id/accept/:id', to: 'professors/courses#accept', as: 'accept_student_courses'
+
 		resources :courses, module: 'professors' do
-			get 'accept_student', to: 'courses#accept_student'
+			member do
+				get 'students'
+			end
 		end
 		resources :assignments, module: 'professors' do
-			resources :students, only: :index
+			member do
+				get 'students'
+			end
 		end
 		resources :companies, module: 'professors'
 

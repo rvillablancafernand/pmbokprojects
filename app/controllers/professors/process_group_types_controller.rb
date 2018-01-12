@@ -4,11 +4,9 @@ class Professors::ProcessGroupTypesController < ApplicationController
 
 	def index
 		@process_group_types = @process_group_types.page(params[:page])
-		respond_with @process_group_types
 	end
 
 	def new
-		respond_with @process_group_type
 	end
 
 	def edit
@@ -20,7 +18,7 @@ class Professors::ProcessGroupTypesController < ApplicationController
 	end
 
 	def update
-		@process_group_type.update(process_group_type_params)
+		@process_group_type.update process_group_type_params
 		respond_with @process_group_type, location: -> { process_group_types_path }
 	end
 

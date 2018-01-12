@@ -6,7 +6,7 @@ class Professors::ProcessObjectsController < ApplicationController
 	end
 
 	def update
-		@process_object.update(process_object_params)
+		@process_object.update process_object_params
 		respond_with @process_object, location: -> { @process_object.process_group.pmbok }
 	end
 
