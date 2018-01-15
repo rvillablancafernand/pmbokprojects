@@ -20,6 +20,7 @@
 											= input.to_s_with_desc
 									.card-body
 										= simple_form_for [assignment_process_object, input] do |f|
+											= f.hidden_field :assignment_process_object_id, value:assignment_process_object.id
 											= f.simple_fields_for :attachments do |attachment|
 												= render 'attachment_fields', f: attachment
 											.links
@@ -40,6 +41,7 @@
 											= tool_and_technique.to_s_with_desc
 									.card-body
 										= simple_form_for [assignment_process_object, tool_and_technique] do |f|
+											= f.hidden_field :assignment_process_object_id, value:assignment_process_object.id
 											= f.simple_fields_for :attachments do |attachment|
 												= render 'attachment_fields', f: attachment
 											.links
@@ -59,6 +61,7 @@
 											= output.to_s_with_desc
 									.card-body
 										= simple_form_for [assignment_process_object, output] do |f|
+											= f.hidden_field :assignment_process_object_id, value:assignment_process_object.id
 											= f.simple_fields_for :attachments do |attachment|
 												= render 'attachment_fields', f: attachment
 											.links

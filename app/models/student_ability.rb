@@ -11,6 +11,8 @@ class StudentAbility
 		can :show, Assignment
 		can :manage, AssignmentProcessObject
 		can :manage, Input
+		can :manage, Output
+		can :manage, ToolAndTechnique
 		can :manage, Attachment
 
 		can :register, Course

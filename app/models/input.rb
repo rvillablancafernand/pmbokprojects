@@ -4,8 +4,6 @@ class Input < ApplicationRecord
 	has_many :attachments, as: :attachable
 	accepts_nested_attributes_for :attachments, allow_destroy: true
 
-	attr_accessor :assignment_process_object_id
-
 	def to_s
 		input_and_output_type.name
 	end

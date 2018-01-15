@@ -176,7 +176,7 @@ GEM
       mimemagic (~> 0.3.0)
     parser (2.4.0.2)
       ast (~> 2.3)
-    pg (1.0.0)
+    pg (0.21.0)
     popper_js (1.12.9)
     premailer (1.11.1)
       addressable
@@ -337,7 +337,7 @@ DEPENDENCIES
   kaminari-activerecord
   listen (~> 3.0.5)
   paperclip
-  pg
+  pg (~> 0.18)
   premailer-rails
   puma (~> 3.0)
   rails (~> 5.0.1)
