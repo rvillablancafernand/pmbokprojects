@@ -7,6 +7,7 @@ class Professors::StudentsController < ApplicationController
 	end
 
 	def show
+		@assignment = Assignment.find(params[:assignment_id])
 		respond_with @student
 	end
 

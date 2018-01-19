@@ -4,5 +4,49 @@
 
 .row-wg
 	.col-sm-12
-		= header_generator nil, 'book', Course.pluralize
-	= table_generator @student.courses.page(params[:page]), :actions
+		= header_generator nil, 'book', Assignment.singularize
+		- @assignment.assignment_process_objects.where(student: @student).each do |assignment_process_object|
+			h4
+				= "Proceso: #{assignment_process_object.process_object.version} #{assignment_process_object.process_object.name} Grupo de Procesos: #{assignment_process_object.process_object.process_group} Área del Conocimiento: #{assignment_process_object.process_object.knowledge_area_type}"
+			= content_tag :div, id: "accordion_#{assignment_process_object.id}"
+				.card
+					.card-header
+						h5.mb-0
+							= link_to "Entradas", "#collapse_#{assignment_process_object.id}_1", data: { toggle: "collapse", turbolinks: :false }, class: 'collapsed'
+					= content_tag :div, id: "collapse_#{assignment_process_object.id}_1", class: 'collapse', data: { parent: "#accordion_#{assignment_process_object.id}" }
+						.card-body
+							- assignment_process_object.process_object.inputs.each do |input|
+								.card
+									.card-header
+										h5.mb-0
+											= input.to_s_with_desc
+									.card-body
+										- input.attachments.each do |attachment|
+											h5 = link_to attachment.item.original_filename, attachment.item.url
+				.card
+					.card-header
+						h5.mb-0
+							= link_to "Herramientas y Técnicas", "#collapse_#{assignment_process_object.id}_2", data: { toggle: "collapse", turbolinks: :false }, class: 'collapsed'
+					= content_tag :div, id: "collapse_#{assignment_process_object.id}_2", class: 'collapse', data: { parent: "#accordion_#{assignment_process_object.id}" }
+						.card-body
+							- assignment_process_object.process_object.tools_and_techniques.each do |tool_and_technique|
+								.card
+									.card-header
+										h5.mb-0
+											= tool_and_technique.to_s_with_desc
+									.card-body
+										- tool_and_technique.attachments.each do |attachment|
+											h5 = link_to attachment.item.original_filename, attachment.item.url
+					.card-header
+						h5.mb-0
+							= link_to "Salidas", "#collapse_#{assignment_process_object.id}_3", data: { toggle: "collapse", turbolinks: :false }, class: 'collapsed'
+					= content_tag :div, id: "collapse_#{assignment_process_object.id}_3", class: 'collapse', data: { parent: "#accordion_#{assignment_process_object.id}" }
+						.card-body
+							- assignment_process_object.process_object.outputs.each do |output|
+								.card
+									.card-header
+										h5.mb-0
+											= output.to_s_with_desc
+									.card-body
+										- output.attachments.each do |attachment|
+											h5 = link_to attachment.item.original_filename, attachment.item.url

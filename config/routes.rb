@@ -3,11 +3,11 @@ Rails.application.routes.draw do
 		# Devise students
 		devise_for :students, module: 'students/devise', path: '', controllers: { registrations: 'students/devise/registrations' }
 
-		resources :assignments, module: 'students'
-		resources :assignment_process_objects, module: 'students' do
-			resources :inputs
-			resources :tools_and_techniques
-			resources :outputs
+		resources :assignments, module: 'students', only: :show
+		resources :assignment_process_objects, module: 'students', only: :show do
+			resources :inputs, only: :update
+			resources :tools_and_techniques, only: :update
+			resources :outputs, only: :update
 		end
 
 		resources :courses, module: 'students' do
@@ -53,9 +53,7 @@ Rails.application.routes.draw do
 			end
 		end
 		resources :assignments, module: 'professors' do
-			member do
-				get 'students'
-			end
+			resources :students
 		end
 		resources :companies, module: 'professors'
 

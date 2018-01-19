@@ -1,6 +1,9 @@
 .nested-fields
 	- if f.object.item.present?
-		h5
-			= link_to f.object.item.original_filename, f.object.item.url
-	= f.hidden_field :assignment_process_object_id, html: {value: @aasd}
+		.form-group.row
+			label.col-sm-3.col-form-label
+				= "Archivo"
+			.col-10.col-sm-8
+				= link_to f.object.item.original_filename, f.object.item.url
 	= f.input :item, wrapper: :single_line_nested_item, remove_link: link_to_remove_association(icon('remove'), f)
+	hr

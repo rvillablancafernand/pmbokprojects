@@ -9,11 +9,10 @@ class StudentAbility
 
 		can :read, Course
 		can :show, Assignment
-		can :manage, AssignmentProcessObject
-		can :manage, Input
-		can :manage, Output
-		can :manage, ToolAndTechnique
-		can :manage, Attachment
+		can :show, AssignmentProcessObject
+		can :update, Input
+		can :update, Output
+		can :update, ToolAndTechnique
 
 		can :register, Course
 		cannot :register, Course, students: { id: student.id }
