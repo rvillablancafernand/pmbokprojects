@@ -5,9 +5,6 @@ class Company < ApplicationRecord
 	# Validations
 	validates_presence_of :name
 
-	# Attributes for views
-	set_attrs :id, :name, :description
-
 	# Methods
 	def to_s
 		name

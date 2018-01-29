@@ -1,0 +1,127 @@
+= header_generator @student, 'user', @student.to_s
+	= custom_link_to @assignment, :index, [@course, @assignment], 'btn btn-admin-index'
+	= custom_link_to @assignment, :edit, [:edit, @course, @assignment, @student], 'btn btn-admin-edit', false, nil, nil, "Calificar Estudiante "
+= dbox_generator @student, :id, :to_s, :email, :current_sign_in_at
+
+.row-wg
+	.col-sm-12
+		= header_generator nil, 'book', "#{Assignment.singularize} - #{@assignment_student.state_to_s}"
+= dbox_generator @assignment, :id, :name, :description, :pmbok, :company
+.row-wg
+	.col-sm-12
+		= header_generator nil, 'object-group', ProcessObject.pluralize
+		- if @assignment_student.present?
+			- @assignment_student.process_objects.each do |process_object|
+				h4
+					= "Proceso: #{process_object.version} - #{process_object.to_s_with_desc} | Grupo de Procesos: #{process_object.process_group.to_s_with_desc.mb_chars.titleize} | Área del Conocimiento: #{process_object.knowledge_area_type.to_s_with_desc.mb_chars.titleize}".html_safe
+				= content_tag :div, id: "accordion_#{process_object.id}"
+					.card
+						.card-header
+							h5.mb-0
+								= link_to "Entradas", "#collapse_#{process_object.id}_1", data: { toggle: "collapse", turbolinks: :false }, class: 'collapsed'
+						= content_tag :div, id: "collapse_#{process_object.id}_1", class: 'collapse', data: { parent: "#accordion_#{process_object.id}" }
+							.card-body
+								- process_object.inputs.each do |input|
+									.card
+										.card-header
+											h5.mb-0
+												= input.to_s_with_desc
+										.card-body
+											- input.attachments.each do |attachment|
+												= simple_form_for attachment do |f|
+													.form-group.row
+														label.col-sm-3.col-form-label
+															= "Archivo"
+														.col-sm-8
+															= link_to f.object.item.url
+																p
+																	= f.object.item.original_filename
+													.form-group.row
+														label.col-sm-3.col-form-label
+															= "Comentario Estudiante"
+														.col-sm-8
+															p
+																= f.object.comment
+													.form-group.row
+														label.col-sm-3.col-form-label
+															= "Nota Estudiante"
+														.col-sm-8
+															p
+																= f.object.grade
+													hr
+													= f.input :comment_professor
+													= f.input :grade_professor
+													= f.button :submit
+					.card
+						.card-header
+							h5.mb-0
+								= link_to "Herramientas y Técnicas", "#collapse_#{process_object.id}_2", data: { toggle: "collapse", turbolinks: :false }, class: 'collapsed'
+						= content_tag :div, id: "collapse_#{process_object.id}_2", class: 'collapse', data: { parent: "#accordion_#{process_object.id}" }
+							.card-body
+								- process_object.tools_and_techniques.each do |tool_and_technique|
+									.card
+										.card-header
+											h5.mb-0
+												= tool_and_technique.to_s_with_desc
+										.card-body
+											- tool_and_technique.attachments.each do |attachment|
+												= simple_form_for attachment do |f|
+													.form-group.row
+														label.col-sm-3.col-form-label
+															= "Archivo"
+														.col-sm-8
+															= link_to f.object.item.url
+																p
+																	= f.object.item.original_filename
+													.form-group.row
+														label.col-sm-3.col-form-label
+															= "Comentario Alumno"
+														.col-sm-8
+															p
+																= f.object.comment
+													.form-group.row
+														label.col-sm-3.col-form-label
+															= "Nota Alumno"
+														.col-sm-8
+															p
+																= f.object.grade
+													hr
+													= f.input :comment_professor
+													= f.input :grade_professor
+													= f.button :submit
+						.card-header
+							h5.mb-0
+								= link_to "Salidas", "#collapse_#{process_object.id}_3", data: { toggle: "collapse", turbolinks: :false }, class: 'collapsed'
+						= content_tag :div, id: "collapse_#{process_object.id}_3", class: 'collapse', data: { parent: "#accordion_#{process_object.id}" }
+							.card-body
+								- process_object.outputs.each do |output|
+									.card
+										.card-header
+											h5.mb-0
+												= output.to_s_with_desc
+										.card-body
+											- output.attachments.each do |attachment|
+												= simple_form_for attachment do |f|
+													.form-group.row
+														label.col-sm-3.col-form-label
+															= "Archivo"
+														.col-sm-8
+															= link_to f.object.item.url
+																p
+																	= f.object.item.original_filename
+													.form-group.row
+														label.col-sm-3.col-form-label
+															= "Comentario Alumno"
+														.col-sm-8
+															p
+																= f.object.comment
+													.form-group.row
+														label.col-sm-3.col-form-label
+															= "Nota Alumno"
+														.col-sm-8
+															p
+																= f.object.grade
+													hr
+													= f.input :comment_professor
+													= f.input :grade_professor
+													= f.button :submit

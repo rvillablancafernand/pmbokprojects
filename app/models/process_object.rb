@@ -7,8 +7,9 @@ class ProcessObject < ApplicationRecord
 	accepts_nested_attributes_for :tools_and_techniques, allow_destroy: true
 	has_many :outputs, inverse_of: :process_object
 	accepts_nested_attributes_for :outputs, allow_destroy: true
-	has_and_belongs_to_many :assignments
-	has_many :assignment_process_objects
+
+	has_many :assignments_students_process_objects
+	has_many :assignments_students, through: :assignments_students_process_objects
 	has_many :courses
 
 	validates_presence_of :version, :name

@@ -1,5 +1,7 @@
 module AdminHelper
-	def header_generator(object, icon_name, heading=nil, buttons=nil)
+	def header_generator(object, icon_name, heading=nil, &buttons)
+		buttons = capture(&buttons) if block_given?
+
 		if object.present?
 			case action_name.to_sym
 			when :new, :create
@@ -7,15 +9,12 @@ module AdminHelper
 				buttons ||= buttons_generator(object, :index)
 			when :show
 				heading ||= object.respond_to?(:to_s) ? object.to_s : object.singularize
-				buttons ||= buttons_generator(object, :register, :index, :edit, :destroy)
+				buttons ||= buttons_generator(object, :index, :edit, :destroy)
 			when :edit, :update
 				heading ||= object.respond_to?(:to_s) ? t('admin_helper.edit_with_name', name: object.to_s) : t('admin_helper.edit', model: object.singularize)
 				buttons ||= buttons_generator(object, :index, :show, :destroy)
 			when :index
 				heading ||= object.pluralize
-				buttons ||= buttons_generator(object, :new)
-			when :my_courses
-				heading ||= "Mis #{object.pluralize}"
 				buttons ||= buttons_generator(object, :new)
 			end
 		end
@@ -44,7 +43,6 @@ module AdminHelper
 	end
 
 	def table_generator(objects, *args)
-		args = objects.attrs | args
 		content_tag :div, class: 'col-sm-12' do
 			concat content_tag(:table, class: 'admin-table') {
 				concat content_tag(:thead) {
@@ -53,7 +51,7 @@ module AdminHelper
 							case attribute
 							when Hash
 								concat content_tag :th, objects.attribute_name(attribute[:name]), class: attribute[:class]
-							when :id, :actions, /.*\?/, /.*\_at/
+							when :id, /.*actions/, /.*\?/, /.*\_at/
 								concat content_tag :th, objects.attribute_name(attribute), class: 'table-center'
 							else
 								concat content_tag :th, objects.attribute_name(attribute)
@@ -73,7 +71,53 @@ module AdminHelper
 								when :id
 									concat content_tag :td, object.send(attribute), class: 'table-center'
 								when :actions
-									concat content_tag :td, actions_generator(object), class: 'table-center'
+									concat content_tag(:td, class: 'table-center'){
+										concat content_tag(:div){
+											concat show_link_to(object)
+											concat edit_link_to(object, 'text-warning')
+											concat destroy_link_to(object, 'text-danger')
+										}
+									}
+								when :professor_actions
+									concat content_tag(:td, class: 'table-center'){
+										concat content_tag(:div){
+											concat show_link_to(object)
+											concat custom_link_to(object, :edit, edit_professor_registration_path, 'text-warning', Professor.singularize)
+											concat destroy_link_to(object, 'text-danger')
+										}
+									}
+								when :course_students_actions
+									concat content_tag(:td, class: 'table-center'){
+										concat content_tag(:div){
+											concat accept_link_to(object, 'text-success')
+											concat reject_link_to(object, 'text-danger')
+											concat show_link_to(object)
+											concat destroy_link_to(object, 'text-danger')
+										}
+									}
+								when :course_assignments_actions
+									concat content_tag(:td, class: 'table-center'){
+										concat content_tag(:div){
+											concat custom_link_to(object, :show, [object.course, object], 'text-primary', Assignment.singularize)
+											concat custom_link_to(object, :edit,  [:edit, object.course, object], 'text-warning', Assignment.singularize)
+											concat custom_link_to(object, :destroy,  [object.course, object], 'text-danger', Assignment.singularize, true, :delete)
+										}
+									}
+								when :course_assignment_students_actions
+									concat content_tag(:td, class: 'table-center'){
+										concat content_tag(:div){
+											assignment = Assignment.find(params[:id])
+											concat custom_link_to(object, :show_assignment, [:show_assignment, assignment.course, assignment, object], 'text-primary', Assignment.singularize)
+											concat custom_link_to(object, :edit_assignment, [:edit, assignment.course, assignment, object], 'text-warning', Assignment.singularize)
+										}
+									}
+								when :courses_actions
+									concat content_tag(:td, class: 'table-center'){
+										concat content_tag(:div){
+											concat custom_link_to(object, :show, object, 'text-primary', object.singularize)
+											concat custom_link_to(object, :register, [:register, object], 'text-success', object.singularize, true, :post)
+										}
+									}
 								when /.*\?/
 									concat content_tag(:td, class: 'table-center'){
 										object.send(attribute) ? icon('check-square-o', class: 'text-success') : icon('square-o')
@@ -104,7 +148,6 @@ module AdminHelper
 	end
 
 	def dbox_generator(object, *args)
-		args |= object.attrs
 		content_tag :div, class: 'description-box-inverse' do
 			content_tag :dl, class: 'row-wg' do
 				args.each do |attribute|
@@ -139,102 +182,49 @@ module AdminHelper
 		args.map{ |arg| send "#{arg.to_s}_link_to", object, "btn btn-admin-#{arg.to_s}" }.join.html_safe
 	end
 
-	def actions_generator(object)
-		content_tag :div do
-			concat show_link_to(object)
-			concat edit_link_to(object, 'text-warning')
-			concat destroy_link_to(object, 'text-danger')
-			concat register_link_to(object, 'text-success')
-			concat accept_link_to(object, 'text-success')
+	def custom_link_to(object, action, path, class_name, model_name=nil, confirm=false, method_name=nil, custom_name=nil)
+		confirm_text = t("confirm_#{action.to_s}", scope: :admin_helper, model: model_name) if confirm
+		if current_user.can? action, object
+			link_to path, class: class_name, method: method_name, data: { toggle: 'tooltip', placement: 'bottom', title: t(action, scope: :admin_helper, model: model_name), confirm: confirm_text } do
+				concat custom_name
+				concat icon action
+			end
 		end
 	end
 
 	def index_link_to(object, class_name=nil)
-		path = case object
-		when ProcessGroup
-			object.pmbok
-		when ProcessObject
-			object.process_group.pmbok
-		else
-			object.class
-		end
-		if current_user.can? :index, object.class
-			link_to path, class: class_name, data: { toggle: 'tooltip', placement: 'bottom', title: t('admin_helper.back')} do
-				icon 'index'
-			end
-		end
+		custom_link_to object.class, :index, object.class, class_name
 	end
 
 	def show_link_to(object, class_name=nil)
-		path = object
-		if current_user.can? :show, object
-			link_to path, class: class_name, data: { toggle: 'tooltip', placement: 'bottom', title: t('admin_helper.show', model: object.singularize)} do
-				icon 'show'
-			end
-		end
+		custom_link_to object, :show, object, class_name, object.singularize
 	end
 
 	def new_link_to(object, class_name=nil)
-		path = case object.new
-		when Professor
-			new_professor_invitation_path
-		else
-			[:new, object.model_name.singular_route_key]
-		end
-		if current_user.can? :new, object
-			link_to path, class: class_name, data: { toggle: 'tooltip', placement: 'bottom', title: t('admin_helper.new', model: object.singularize)} do
-				icon 'new'
-			end
-		end
+		custom_link_to object, :new, [:new, object.model_name.singular_route_key], class_name, object.singularize
 	end
 
 	def edit_link_to(object, class_name=nil)
-		path = case object
-		when Professor
-			edit_professor_registration_path
-		else
-			[:edit, object]
-		end
-		if current_user.can? :edit, object
-			link_to path, class: class_name, data: { toggle: 'tooltip', placement: 'bottom', title: t('admin_helper.edit', model: object.singularize)} do
-				icon 'edit'
-			end
-		end
+		custom_link_to object, :edit, [:edit, object], class_name, object.singularize
 	end
 
 	def destroy_link_to(object, class_name=nil)
-		path = case object
-		when ProcessGroup
-			[object.pmbok, object]
-		when ProcessObject
-			[object.process_group.pmbok, object.process_group, object]
-		else
-			object
-		end
-		if current_user.can? :destroy, object
-			link_to path, method: :delete, class: class_name, data: { toggle: 'tooltip', placement: 'bottom', title: t('admin_helper.remove', model: object.singularize), confirm: t('admin_helper.confirm_remove', model: object.singularize)} do
-				icon 'destroy'
-			end
-		end
-	end
-
-	def register_link_to(object, class_name=nil)
-		path = [:register, object]
-		if current_user.can? :register, object
-			link_to path, class: class_name, data: { toggle: 'tooltip', placement: 'bottom', title: t('admin_helper.register', model: object.singularize), confirm: t('admin_helper.confirm_register', model: object.singularize)}, method: :post do
-				icon 'register'
-			end
-		end
+		custom_link_to object, :destroy, object, class_name, object.singularize, true, :delete
 	end
 
 	def accept_link_to(object, class_name=nil)
-		if action_name.to_sym == :show and controller_name.to_sym == :courses
-			path = accept_student_courses_path(course_id: params[:id], id: object.id)
-			if current_user.can? :accept, object
-				link_to path, class: class_name, data: { toggle: 'tooltip', placement: 'bottom', title: t('admin_helper.accept', model: object.singularize)}, method: :post do
-					icon 'accept'
-				end
-			end
+		path = accept_course_student_path(course_id: params[:id], id: object.id)
+		course_student = CourseStudent.find_by(course_id: params[:id], student_id: object.id)
+		if current_user.can?(:accept, object) and course_student.accepted.nil?
+			custom_link_to object, :accept, path, class_name, object.singularize, false, :post
+		end
+	end
+
+	def reject_link_to(object, class_name=nil)
+		path = reject_course_student_path(course_id: params[:id], id: object.id)
+		course_student = CourseStudent.find_by(course_id: params[:id], student_id: object.id)
+		if current_user.can?(:reject, object)
+			custom_link_to object, :reject, path, class_name, object.singularize, true, :post
 		end
 	end
 

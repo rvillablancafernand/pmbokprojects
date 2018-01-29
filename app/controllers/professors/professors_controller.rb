@@ -11,6 +11,12 @@ class Professors::ProfessorsController < ApplicationController
 
 	def destroy
 		@professor.destroy
-		respond_with @professor
+		if @professor.destroyed?
+			flash_message @professor, :destroy, :notice
+			redirect_to professors_url
+		else
+			flash_message @professor, :destroy, :error
+			redirect_to @professor
+		end
 	end
 end

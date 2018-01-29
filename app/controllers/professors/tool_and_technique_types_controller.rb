@@ -13,18 +13,32 @@ class Professors::ToolAndTechniqueTypesController < ApplicationController
 	end
 
 	def create
-		@tool_and_technique_type.save
-		respond_with @tool_and_technique_type, location: -> { tool_and_technique_types_path }
+		if @tool_and_technique_type.save tool_and_technique_type_params
+			flash_message @tool_and_technique_type, :create, :notice
+			redirect_to tool_and_technique_types_url
+		else
+			render :new
+		end
 	end
 
 	def update
-		@tool_and_technique_type.update tool_and_technique_type_params
-		respond_with @tool_and_technique_type, location: -> { tool_and_technique_types_path }
+		if @tool_and_technique_type.update tool_and_technique_type_params
+			flash_message @tool_and_technique_type, :update, :notice
+			redirect_to tool_and_technique_types_url
+		else
+			render :edit
+		end
 	end
 
 	def destroy
 		@tool_and_technique_type.destroy
-		respond_with @tool_and_technique_type, location: -> { tool_and_technique_types_path }
+		if @tool_and_technique_type.destroyed?
+			flash_message @tool_and_technique_type, :destroy, :notice
+			redirect_to tool_and_technique_types_url
+		else
+			flash_message @tool_and_technique_type, :destroy, :error
+			redirect_to tool_and_technique_types_url
+		end
 	end
 
 	private

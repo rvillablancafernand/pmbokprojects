@@ -13,18 +13,32 @@ class Professors::ProcessGroupTypesController < ApplicationController
 	end
 
 	def create
-		@process_group_type.save
-		respond_with @process_group_type, location: -> { process_group_types_path }
+		if @process_group_type.save process_group_type_params
+			flash_message @process_group_type, :create, :notice
+			redirect_to process_group_types_url
+		else
+			render :new
+		end
 	end
 
 	def update
-		@process_group_type.update process_group_type_params
-		respond_with @process_group_type, location: -> { process_group_types_path }
+		if @process_group_type.update process_group_type_params
+			flash_message @process_group_type, :update, :notice
+			redirect_to process_group_types_url
+		else
+			render :edit
+		end
 	end
 
 	def destroy
 		@process_group_type.destroy
-		respond_with @process_group_type, location: -> { process_group_types_path }
+		if @process_group_type.destroyed?
+			flash_message @process_group_type, :destroy, :notice
+			redirect_to process_group_types_url
+		else
+			flash_message @process_group_type, :destroy, :error
+			redirect_to process_group_types_url
+		end
 	end
 
 	private

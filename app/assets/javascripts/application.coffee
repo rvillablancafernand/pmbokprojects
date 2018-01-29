@@ -18,7 +18,6 @@
 #= require bootstrap
 
 #= require main
-#= require students
 #= require chosen-jquery
 #= require cocoon
 #= require turbolinks

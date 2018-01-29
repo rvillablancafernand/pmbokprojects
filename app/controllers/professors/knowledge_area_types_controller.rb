@@ -13,18 +13,32 @@ class Professors::KnowledgeAreaTypesController < ApplicationController
 	end
 
 	def create
-		@knowledge_area_type.save
-		respond_with @knowledge_area_type, location: -> { knowledge_area_types_path }
+		if @knowledge_area_type.save knowledge_area_type_params
+			flash_message @knowledge_area_type, :create, :notice
+			redirect_to knowledge_area_types_url
+		else
+			render :new
+		end
 	end
 
 	def update
-		@knowledge_area_type.update knowledge_area_type_params
-		respond_with @knowledge_area_type, location: -> { knowledge_area_types_path }
+		if @knowledge_area_type.update knowledge_area_type_params
+			flash_message @knowledge_area_type, :update, :notice
+			redirect_to knowledge_area_types_url
+		else
+			render :edit
+		end
 	end
 
 	def destroy
 		@knowledge_area_type.destroy
-		respond_with @knowledge_area_type, location: -> { knowledge_area_types_path }
+		if @knowledge_area_type.destroyed?
+			flash_message @knowledge_area_type, :destroy, :notice
+			redirect_to knowledge_area_types_url
+		else
+			flash_message @knowledge_area_type, :destroy, :error
+			redirect_to knowledge_area_types_url
+		end
 	end
 
 	private

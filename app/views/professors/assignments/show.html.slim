@@ -1,6 +1,10 @@
 = header_generator @assignment, 'book'
-= dbox_generator @assignment
+	= custom_link_to @course, :index, @course, 'btn btn-admin-index'
+	= custom_link_to @assignment, :edit, [:edit, @course, @assignment], 'btn btn-admin-edit', @assignment.singularize
+	= custom_link_to @assignment, :destroy, [@course, @assignment], 'btn btn-admin-destroy', @assignment.singularize, true, :delete
+
+= dbox_generator @assignment, :id, :name, :description, :pmbok, :company
 .row-wg
 	.col-sm-12
-		= header_generator nil, 'users', "#{Student.pluralize} - #{icon 'object-group'}#{ProcessObject.pluralize}".html_safe, link_to(icon('edit'), students_assignment_path(@assignment), class: 'btn btn-admin-edit', data: { toggle: 'tooltip', placement: 'bottom', title: t('admin_helper.edit', model: "#{Student.pluralize}/#{ProcessObject.pluralize}")})
-	= table_generator @assignment.students.includes(assignment_process_objects: :process_object).page(params[:page]), :process_objects
+		= header_generator nil, 'users', Student.pluralize
+	= table_generator @course.accepted_students.page(params[:page]), :id, :to_s, :course_assignment_students_actions

@@ -1,0 +1,23 @@
+.row-wg.justify-content-center
+	.col-md-8
+		.card.border-primary
+			.card-header.bg-primary
+				h2.text-white = Assignment.singularize
+			.card-body
+				= simple_form_for @assignment_student, url: [@course, @assignment, @student] do |f|
+					- f.error_notification
+					- if @assignment_student.disabled?
+						= f.input :grade, placeholder: @assignment_student.calc_grade, disabled: true
+					- else
+						= f.input :grade, placeholder: @assignment_student.calc_grade
+					.form-group.row
+						label.col-sm-3.col-form-label
+							= AssignmentStudent.pluralize
+						.col-sm-9
+							= f.simple_fields_for :assignments_students_process_objects do |assignment_student_process_object|
+								= render 'assignment_student_process_object_fields', f: assignment_student_process_object
+							.links
+								= link_to_add_association f, :assignments_students_process_objects
+									= icon 'new'
+									span = AssignmentStudent.singularize
+					= f.button :submit

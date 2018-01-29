@@ -7,16 +7,17 @@ class StudentAbility
 
 		can :visualize, :dashboard
 
-		can :read, Course
-		can :show, Assignment
-		can :show, AssignmentProcessObject
-		can :update, Input
-		can :update, Output
-		can :update, ToolAndTechnique
-
+		can :index, Course
+		can :show, Course, courses_students: { student_id: student.id, accepted: true }
+		can :my_courses, Course
 		can :register, Course
 		cannot :register, Course, students: { id: student.id }
 
-		can :my_courses, Course
+		can :done, Assignment, assignments_students: { student_id: student.id, state_name: :in_progress }
+		can :read, Assignment, assignments_students: { student_id: student.id }
+		can :read, AssignmentStudent
+		can :update, Input
+		can :update, Output
+		can :update, ToolAndTechnique
 	end
 end

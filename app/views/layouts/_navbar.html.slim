@@ -14,11 +14,9 @@ nav.navbar.navbar-dark.navbar-expand-lg
 						= icon 'home'
 						= t '.dashboard'
 					= navbar_link_to_index Professor, 'users'
-					= navbar_link_to_index Student, 'users' if current_user.admin?
-					= navbar_link_to_index Pmbok, 'globe'
+					/= navbar_link_to_index Student, 'users'
 					= navbar_link_to_index Course, 'book'
-					= navbar_link_to_index Assignment, 'file-text'
-					= navbar_link_to_index Company, 'building'
+					= navbar_link_to_index Pmbok, 'globe'
 					- if current_user.can? :index, ProcessGroupType or current_user.can? :index, KnowledgeAreaType or current_user.can? :index, InputAndOutputType or current_user.can? :index, ToolAndTechniqueType
 						li.nav-item.dropdown
 							= link_to '#', class: 'nav-link dropdown-toggle', data: { turbolinks: :false, toggle: 'dropdown' }
@@ -30,6 +28,7 @@ nav.navbar.navbar-dark.navbar-expand-lg
 								= navbar_dropdown_link_to_index KnowledgeAreaType, 'cubes'
 								= navbar_dropdown_link_to_index InputAndOutputType, 'exchange'
 								= navbar_dropdown_link_to_index ToolAndTechniqueType, 'wrench'
+					= navbar_link_to_index Company, 'building'
 				- elsif current_resource?(:student)
 					= navbar_link_to root_path, class: 'nav-link'
 						= icon 'home'

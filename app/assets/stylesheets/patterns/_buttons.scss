@@ -23,7 +23,7 @@
 		margin-top: 1rem;
 	}
 }
-.btn-admin-new {
+.btn-admin-new, .btn-admin-invite, .btn-admin-done {
 	@include btn-outline(theme-color(success));
 	font-weight: 900;
 
@@ -57,6 +57,14 @@
 }
 .btn-admin-accept {
 	@include btn-outline(theme-color(success));
+	font-weight: 900;
+
+	@include media-breakpoint-only(xs) {
+		margin-top: 1rem;
+	}
+}
+.btn-admin-reject {
+	@include btn-outline(theme-color(danger));
 	font-weight: 900;
 
 	@include media-breakpoint-only(xs) {
@@ -151,10 +159,13 @@
 .fa-index {
 	@extend .fa-reply;
 }
-.fa-show {
+.fa-show, .fa-show_assignment {
 	@extend .fa-eye;
 }
-.fa-new {
+.fa-edit_assignment {
+	@extend .fa-edit;
+}
+.fa-new, .fa-invite, .fa-done {
 	@extend .fa-plus;
 }
 .fa-destroy {
@@ -164,5 +175,8 @@
 	@extend .fa-sign-in;
 }
 .fa-accept {
-	@extend .fa-check;
+	@extend .fa-sign-in;
+}
+.fa-reject {
+	@extend .fa-sign-out;
 }

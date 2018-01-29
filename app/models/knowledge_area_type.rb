@@ -1,8 +1,6 @@
 class KnowledgeAreaType < ApplicationRecord
 	has_many :knowledge_areas
 
-	set_attrs :id, :name, :description, :color
-
 	def to_s
 		name
 	end

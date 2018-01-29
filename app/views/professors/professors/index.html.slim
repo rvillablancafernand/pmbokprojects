@@ -1,4 +1,5 @@
 = header_generator Professor, 'users'
+	= custom_link_to Professor, :invite, new_professor_invitation_path, 'btn btn-admin-new', Professor.singularize
 
 .row-wg
-	= table_generator @professors, :actions
+	= table_generator @professors, :id, :to_s, :email, :invitation_accepted?, :courses_count, :sign_in_count, :current_sign_in_at, :professor_actions

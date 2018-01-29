@@ -43,8 +43,6 @@ gem 'cancancan'
 
 gem 'paperclip'
 
-gem 'responders'
-
 # Slim
 gem 'slim'
 gem 'slim-rails'
@@ -59,6 +57,9 @@ gem 'kaminari'
 gem 'kaminari-activerecord'
 
 gem 'cocoon'
+
+gem 'state_machines'
+gem 'state_machines-activerecord'
 
 gem 'premailer-rails'
 

@@ -7,28 +7,30 @@ class ProfessorAbility
 
 		can :visualize, :dashboard
 
-		can :read, Student
-		can :accept, Student, courses_students: {accepted: false}
-		can :accept, Student, courses_students: {accepted: nil}
-
 		can :update, Professor, id: professor.id
 
-		can :manage, Course, professor_id: professor.id
-		cannot :register, Course
+		can :accept, Student
+		can :reject, Student
+
+		can :update, Attachment
+
+		can :crud, Course, professor_id: professor.id
 
 		can :create, Assignment
-		can :students, Assignment
+		can :show_assignment, Student
+		can :edit_assignment, Student
+
 		can :crud, Assignment, course: { professor_id: professor.id }
-		can :crud, AssignmentProcessObject, assignment: { course: { professor_id: professor.id }}
 
 		return unless professor.admin?
 
+		can :invite, Professor
 		can :read, Professor
-		can :create, Professor
 		can :destroy, Professor, administrator: false
 
 		can :crud, Company
 
+		can :read, Student
 		can :destroy, Student
 
 		can [:read, :create, :update], Pmbok

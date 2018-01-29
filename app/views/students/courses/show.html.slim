@@ -1,5 +1,6 @@
 = header_generator @course, 'book'
-= dbox_generator @course
+= dbox_generator @course, :id, :nrc, :name, :description, :year, :semester
 .row-wg
 	.col-sm-12
-		= table_generator @assignments, :actions
+		= header_generator nil, 'users', "#{Assignment.pluralize}"
+	= table_generator @assignments.page(params[:page]), :id, :name, :description, :pmbok, :company, :course_assignments_actions

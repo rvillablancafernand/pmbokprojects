@@ -1,20 +1,9 @@
 class Professors::CoursesController < ApplicationController
 	before_action :authenticate_professor!
-	load_and_authorize_resource except: [:accept]
+	load_and_authorize_resource
 
 	def index
 		@courses = @courses.includes(:professor).page(params[:page])
-	end
-
-	def students
-		@students = @course.students
-	end
-
-	def accept
-		@course = Course.find(params[:course_id])
-		Student.find(params[:id]).courses_students.where(course: @course).first.update_attributes accepted: true
-		flash[:notice] = 'Estudiante fue aceptado con éxito'
-		redirect_to :back
 	end
 
 	def show
@@ -27,18 +16,32 @@ class Professors::CoursesController < ApplicationController
 	end
 
 	def create
-		@course.save
-		respond_with @course, location: -> { course_path(@course) }
+		if @course.save course_params
+			flash_message @course, :create, :notice
+			redirect_to @course
+		else
+			render :new
+		end
 	end
 
 	def update
-		@course.update course_params
-		respond_with @course, location: -> { course_path(@course) }
+		if @course.update course_params
+			flash_message @course, :update, :notice
+			redirect_to @course
+		else
+			render :edit
+		end
 	end
 
 	def destroy
 		@course.destroy
-		respond_with @course, location: -> { courses_path }
+		if @course.destroyed?
+			flash_message @course, :destroy, :notice
+			redirect_to courses_url
+		else
+			flash_message @course, :destroy, :error
+			redirect_to @course
+		end
 	end
 
 	private

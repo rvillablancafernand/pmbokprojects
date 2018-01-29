@@ -9,8 +9,6 @@ class Professor < ApplicationRecord
 	has_many :students, through: :courses
 	has_many :assignments
 
-	set_attrs :id, :name, :surname, :second_surname, :email, :invitation_accepted?, :courses_count, :sign_in_count, :current_sign_in_at, :last_sign_in_at
-
 	def ability
 		@ability = ProfessorAbility.new(self)
 	end

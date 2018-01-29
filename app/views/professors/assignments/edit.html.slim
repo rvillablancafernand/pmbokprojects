@@ -1,3 +1,6 @@
 = header_generator @assignment, 'edit'
+	= custom_link_to @course, :index, @course, 'btn btn-admin-index'
+	= custom_link_to @assignment, :show, [@course, @assignment], 'btn btn-admin-show', @assignment.singularize
+	= custom_link_to @assignment, :destroy, [@course, @assignment], 'btn btn-admin-destroy', @assignment.singularize, true, :delete
 == render 'form'
 

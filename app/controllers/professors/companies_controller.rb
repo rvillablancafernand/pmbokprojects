@@ -16,22 +16,36 @@ class Professors::CompaniesController < ApplicationController
 	end
 
 	def create
-		@company.save
-		respond_with @company
+		if @company.save company_params
+			flash_message @company, :create, :notice
+			redirect_to @company
+		else
+			render :new
+		end
 	end
 
 	def update
-		@company.update company_params
-		respond_with @company
+		if @company.update company_params
+			flash_message @company, :update, :notice
+			redirect_to @company
+		else
+			render :edit
+		end
 	end
 
 	def destroy
 		@company.destroy
-		respond_with @company
+		if @company.destroyed?
+			flash_message @company, :destroy, :notice
+			redirect_to components_url
+		else
+			flash_message @company, :destroy, :error
+			redirect_to @company
+		end
 	end
 
 	private
 	def company_params
-		params.require(:company).permit(:name, :description)
+		params.require(:company).permit(:name, :description, :address, :phone)
 	end
 end

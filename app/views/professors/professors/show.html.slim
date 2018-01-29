@@ -1,9 +1,13 @@
 = header_generator @professor, 'user'
+	= index_link_to @professor, 'btn btn-admin-index'
+	= custom_link_to @professor, :edit, edit_professor_registration_path, 'btn btn-admin-edit', Professor.singularize
+	= destroy_link_to @professor, 'btn btn-admin-destroy'
 
-= dbox_generator @professor
+= dbox_generator @professor, :id, :to_s, :email, :invitation_accepted?, :courses_count, :sign_in_count, :current_sign_in_at
 
 .row-wg
 	.col-sm-12
-		= header_generator nil, 'book', Course.pluralize, (new_link_to(Course, "btn btn-admin-new") if @professor == current_user)
+		= header_generator nil, 'book', Course.pluralize
+			= new_link_to Course, 'btn btn-admin-new' if @professor == current_user
 
-	= table_generator @professor.courses.page(params[:page]), :actions
+	= table_generator @professor.courses.page(params[:page]), :id, :nrc, :name, :description, :year, :semester, :students_count, :actions

@@ -8,7 +8,7 @@
 				= simple_form_for resource, as: resource_name, url: unlock_path(resource_name) do |f|
 					= display_alert class: 'alert-danger mb-3'
 						= sanitize f.full_error(:unlock_token), tags: %w()
-					= f.input :email, wrapper: :email_at, autofocus: true, at: ENV['EMAIL_DOMAIN']
+					= f.input :username, wrapper: :email_at, autofocus: true, at: ENV['EMAIL_DOMAIN']
 					= f.button :submit, t('.submit')
 			.card-footer
 				= render 'students/devise/shared/links'

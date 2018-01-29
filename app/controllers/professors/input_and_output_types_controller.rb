@@ -6,9 +6,6 @@ class Professors::InputAndOutputTypesController < ApplicationController
 		@input_and_output_types = @input_and_output_types.page(params[:page])
 	end
 
-	def show
-	end
-
 	def new
 	end
 
@@ -16,18 +13,32 @@ class Professors::InputAndOutputTypesController < ApplicationController
 	end
 
 	def create
-		@input_and_output_type.save
-		respond_with @input_and_output_type, location: -> { input_and_output_types_path }
+		if @input_and_output_type.save input_and_output_type_params
+			flash_message @input_and_output_type, :create, :notice
+			redirect_to input_and_output_types_url
+		else
+			render :new
+		end
 	end
 
 	def update
-		@input_and_output_type.update input_and_output_type_params
-		respond_with @input_and_output_type, location: -> { input_and_output_types_path }
+		if @input_and_output_type.update input_and_output_type_params
+			flash_message @input_and_output_type, :update, :notice
+			redirect_to input_and_output_types_url
+		else
+			render :edit
+		end
 	end
 
 	def destroy
 		@input_and_output_type.destroy
-		respond_with @input_and_output_type, location: -> { input_and_output_types_path }
+		if @input_and_output_type.destroyed?
+			flash_message @input_and_output_type, :destroy, :notice
+			redirect_to input_and_output_types_url
+		else
+			flash_message @input_and_output_type, :destroy, :error
+			redirect_to input_and_output_types_url
+		end
 	end
 
 	private

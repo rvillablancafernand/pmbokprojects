@@ -1,12 +1,19 @@
 es:
   admin_helper:
     new: Crear %{model}
+    invite: Invitar %{model}
     show: Ver %{model}
+    show_assignment: Ver %{model}
     edit: Editar %{model}
     edit_with_name: Editar %{name}
-    remove: Eliminar %{model}
-    confirm_remove: ¿Estás seguro que deseas eliminar %{model}?
+    edit_assignment: Editar %{model}
+    destroy: Eliminar %{model}
+    confirm_destroy: ¿Estás seguro que deseas eliminar %{model}?
     register: Registrarme en este %{model}
     confirm_register: ¿Estás seguro que deseas registrarte en este %{model}?
     accept: Aceptar este %{model}
-    back: Volver
+    reject: Rechazar este %{model}
+    confirm_reject: ¿Estás seguro que deseas rechazar %{model}?
+    done: Entregar esta %{model}
+    confirm_done: ¿Estás seguro que deseas entregar esta %{model}?
+    index: Volver

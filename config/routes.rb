@@ -1,28 +1,4 @@
 Rails.application.routes.draw do
-	constraints subdomain: 'www' do
-		# Devise students
-		devise_for :students, module: 'students/devise', path: '', controllers: { registrations: 'students/devise/registrations' }
-
-		resources :assignments, module: 'students', only: :show
-		resources :assignment_process_objects, module: 'students', only: :show do
-			resources :inputs, only: :update
-			resources :tools_and_techniques, only: :update
-			resources :outputs, only: :update
-		end
-
-		resources :courses, module: 'students' do
-			member do
-				post 'register'
-			end
-			collection do
-				get 'my_courses', as: 'my'
-			end
-		end
-
-		# Home controller
-		root to: 'students/home#index'
-	end
-
 	constraints subdomain: 'profesores' do
 		# Devise admin users
 		devise_for :professors, module: 'professors/devise', path: '', skip: :registrations
@@ -45,20 +21,54 @@ Rails.application.routes.draw do
 		resources :input_and_output_types, module: 'professors', except: [:show]
 		resources :tool_and_technique_types, module: 'professors', except: [:show]
 
-		post 'courses/:course_id/accept/:id', to: 'professors/courses#accept', as: 'accept_student_courses'
-
 		resources :courses, module: 'professors' do
-			member do
-				get 'students'
+			resources :students, except: [:index, :show, :new, :create, :edit, :update, :destroy] do
+				member do
+					post 'accept'
+					post 'reject'
+				end
+			end
+			resources :assignments, except: [:index] do
+				resources :students, only: [:edit, :update] do
+					member do
+						get 'show_assignment'
+					end
+				end
 			end
 		end
-		resources :assignments, module: 'professors' do
-			resources :students
-		end
+		resources :attachments, module: 'professors', only: [:update]
 		resources :companies, module: 'professors'
 
 		# Home controller
 		root 'professors/home#dashboard'
+	end
+
+	constraints subdomain: 'www' do
+		# Devise students
+		devise_for :students, module: 'students/devise', path: '', controllers: { registrations: 'students/devise/registrations' }
+
+		resources :assignments_students, module: 'students', only: :show do
+			resources :inputs, only: :update
+			resources :tools_and_techniques, only: :update
+			resources :outputs, only: :update
+		end
+
+		resources :courses, module: 'students' do
+			resources :assignments, only: [:show] do
+				member do
+					post 'done'
+				end
+			end
+			member do
+				post 'register'
+			end
+			collection do
+				get 'my_courses', as: 'my'
+			end
+		end
+
+		# Home controller
+		root to: 'students/home#index'
 	end
 
 	# Redirect empty subdomain to www (to avoid duplicated sessions for same site)

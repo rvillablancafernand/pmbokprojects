@@ -16,18 +16,32 @@ class Professors::PmboksController < ApplicationController
 	end
 
 	def create
-		@pmbok.save
-		respond_with @pmbok
+		if @pmbok.save pmbok_params
+			flash_message @pmbok, :create, :notice
+			redirect_to @pmbok
+		else
+			render :new
+		end
 	end
 
 	def update
-		@pmbok.update pmbok_params
-		respond_with @pmbok
+		if @pmbok.update pmbok_params
+			flash_message @pmbok, :update, :notice
+			redirect_to @pmbok
+		else
+			render :edit
+		end
 	end
 
 	def destroy
 		@pmbok.destroy
-		respond_with @pmbok
+		if @pmbok.destroyed?
+			flash_message @pmbok, :destroy, :notice
+			redirect_to pmboks_url
+		else
+			flash_message @pmbok, :destroy, :error
+			redirect_to @pmbok
+		end
 	end
 
 	private

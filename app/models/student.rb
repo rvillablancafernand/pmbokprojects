@@ -5,12 +5,11 @@ class Student < ApplicationRecord
 	validates_presence_of :username, :name, :surname, :second_surname
 	validates_uniqueness_of :username
 
-	has_and_belongs_to_many :assignments
 	has_many :courses_students
 	has_many :courses, through: :courses_students
-	has_many :assignment_process_objects
-
-	set_attrs :id, :name, :surname, :second_surname, :email, :courses_count, :sign_in_count, :current_sign_in_at, :last_sign_in_at
+	has_many :assignments_students
+	has_many :assignments, through: :assignments_students
+	has_many :process_objects, through: :assignments
 
 	delegate :can?, :cannot?, to: :ability
 
@@ -31,11 +30,12 @@ class Student < ApplicationRecord
 		avatar_url.present? ? avatar_url : 'avatar-unknown.jpg'
 	end
 
-	def process_objects
-		assignment_process_objects.map{|i| i.process_object.to_s}.join(', ')
+	def assignments_for(course)
+		assignments.where(course: course).uniq
 	end
 
-	def accept_link
+	def process_objects_names
+		process_objects.map{|i| i.process_object.to_s}.join(', ')
 	end
 
 	# Username

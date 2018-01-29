@@ -3,10 +3,18 @@ es:
     actions:
       create:
         notice: '%{resource_name} fue creado con éxito'
-        alert: '%{resource_name} no pudo ser creado'
+        error: '%{resource_name} no pudo ser creado'
       update:
         notice: '%{resource_name} fue actualizado con éxito'
-        alert: '%{resource_name} no pudo ser actualizado'
+        error: '%{resource_name} no pudo ser actualizado'
       destroy:
         notice: '%{resource_name} fue eliminado con éxito'
-        alert: '%{resource_name} no pudo ser eliminado'
+        error: '%{resource_name} no pudo ser eliminado'
+      accept:
+        notice: '%{resource_name} fue aceptado con éxito'
+        error: '%{resource_name} no pudo ser aceptado'
+      reject:
+        notice: '%{resource_name} fue rechazado con éxito'
+        error: '%{resource_name} no pudo ser rechazado'
+      done:
+        notice: '%{resource_name} entregada con éxito'

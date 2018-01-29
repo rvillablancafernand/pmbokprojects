@@ -1,16 +1,7 @@
 class Professors::AssignmentsController < ApplicationController
 	before_action :authenticate_professor!
-	load_and_authorize_resource
-
-	before_action :set_courses_and_students, only: [:new, :create, :edit, :update]
-
-	def index
-		@assignments = @assignments.includes(:course, :company).page(params[:page])
-	end
-
-	def students
-		@students = @assignment.students
-	end
+	load_and_authorize_resource :course
+	load_and_authorize_resource :assignment, through: :course
 
 	def show
 	end
@@ -22,28 +13,36 @@ class Professors::AssignmentsController < ApplicationController
 	end
 
 	def create
-		@assignment.save
-		respond_with @assignment, location: -> { assignment_path(@assignment) }
+		if @assignment.save assignment_params
+			flash_message @assignment, :create, :notice
+			redirect_to [@course, @assignment]
+		else
+			render :new
+		end
 	end
 
 	def update
-		@assignment.update assignment_params
-		respond_with @assignment, location: -> { assignment_path(@assignment) }
+		if @assignment.update assignment_params
+			flash_message @assignment, :update, :notice
+			redirect_to [@course, @assignment]
+		else
+			render :edit
+		end
 	end
 
 	def destroy
 		@assignment.destroy
-		respond_with @assignment, location: -> { assignments_path }
+		if @assignment.destroyed?
+			flash_message @assignment, :destroy, :notice
+			redirect_to @course
+		else
+			flash_message @assignment, :destroy, :error
+			redirect_to [@course, @assignment]
+		end
 	end
 
 	private
-	def set_courses_and_students
-		authorize! :index, Course
-		@courses = Course.accessible_by(current_ability)
-		@students = @assignment.course.present? ? @assignment.course.students : []
-	end
-
 	def assignment_params
-		params.require(:assignment).permit(:name, :description, :pmbok_id, :company_id, :course_id, student_ids: [], assignment_process_objects_attributes: [:id, :student_id, :process_object_id, :_destroy])
+		params.require(:assignment).permit(:name, :description, :pmbok_id, :company_id)
 	end
 end

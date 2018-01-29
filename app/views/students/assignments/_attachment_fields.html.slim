@@ -3,7 +3,15 @@
 		.form-group.row
 			label.col-sm-3.col-form-label
 				= "Archivo"
-			.col-10.col-sm-8
-				= link_to f.object.item.original_filename, f.object.item.url
-	= f.input :item, wrapper: :single_line_nested_item, remove_link: link_to_remove_association(icon('remove'), f)
+			.col-sm-8
+				= link_to f.object.item.url
+					p
+						= f.object.item.original_filename
+		= f.input :comment
+		= f.input :grade, as: :radio_buttons, collection: [['No cumple - 1.0', 1.0], ['Está la intención de cumplir - 3.0', 3.0], ['Cumple con algunos documentos - 5.0', 5.0], ['Cumple en su totalidad - 7.0', 7.0]]
+		= link_to_remove_association icon('remove'), f
+	- else
+		= f.input :item, wrapper: :single_line_nested_item, remove_link: link_to_remove_association(icon('remove'), f)
+		= f.input :comment
+		= f.input :grade, as: :radio_buttons, collection: [['No cumple - 1.0', 1.0], ['Está la intención de cumplir - 3.0', 3.0], ['Cumple con algunos documentos - 5.0', 5.0], ['Cumple en su totalidad - 7.0', 7.0]]
 	hr

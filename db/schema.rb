@@ -10,18 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180111141010) do
-
-  create_table "assignment_process_objects", force: :cascade do |t|
-    t.integer  "assignment_id"
-    t.integer  "process_object_id"
-    t.integer  "student_id"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
-    t.index ["assignment_id"], name: "index_assignment_process_objects_on_assignment_id"
-    t.index ["process_object_id"], name: "index_assignment_process_objects_on_process_object_id"
-    t.index ["student_id"], name: "index_assignment_process_objects_on_student_id"
-  end
+ActiveRecord::Schema.define(version: 20180129170359) do
 
   create_table "assignments", force: :cascade do |t|
     t.string   "name"
@@ -36,24 +25,40 @@ ActiveRecord::Schema.define(version: 20180111141010) do
     t.index ["pmbok_id"], name: "index_assignments_on_pmbok_id"
   end
 
-  create_table "assignments_students", id: false, force: :cascade do |t|
-    t.integer "assignment_id", null: false
-    t.integer "student_id",    null: false
-    t.index ["assignment_id", "student_id"], name: "index_assignments_students_on_assignment_id_and_student_id"
-    t.index ["student_id", "assignment_id"], name: "index_assignments_students_on_student_id_and_assignment_id"
+  create_table "assignments_students", force: :cascade do |t|
+    t.integer  "assignment_id"
+    t.integer  "student_id"
+    t.string   "state"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.decimal  "grade"
+    t.index ["assignment_id"], name: "index_assignments_students_on_assignment_id"
+    t.index ["student_id"], name: "index_assignments_students_on_student_id"
+  end
+
+  create_table "assignments_students_process_objects", force: :cascade do |t|
+    t.integer  "assignment_student_id"
+    t.integer  "process_object_id"
+    t.string   "state"
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
   end
 
   create_table "attachments", force: :cascade do |t|
-    t.integer  "assignment_process_object_id"
+    t.integer  "assignment_student_process_object_id"
     t.string   "attachable_type"
     t.integer  "attachable_id"
     t.string   "item_file_name"
     t.string   "item_content_type"
     t.integer  "item_file_size"
     t.datetime "item_updated_at"
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
-    t.index ["assignment_process_object_id"], name: "index_attachments_on_assignment_process_object_id"
+    t.text     "comment"
+    t.decimal  "grade"
+    t.text     "comment_professor"
+    t.decimal  "grade_professor"
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
+    t.index ["assignment_student_process_object_id"], name: "index_attachments_on_assignment_student_process_object_id"
     t.index ["attachable_type", "attachable_id"], name: "index_attachments_on_attachable_type_and_attachable_id"
   end
 
@@ -62,6 +67,8 @@ ActiveRecord::Schema.define(version: 20180111141010) do
     t.text     "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.string   "address"
+    t.string   "phone"
   end
 
   create_table "courses", force: :cascade do |t|

@@ -27,7 +27,9 @@ es:
       output: Salida
       course: Curso
       assignment: Tarea
+      assignment_student: Tarea
       company: Empresa
+      attachment: Archivo
     attributes:
       professor:
         password: Contraseña
@@ -41,6 +43,7 @@ es:
         current_sign_in_at: Última conexión
         last_sign_in_at: Última vez visto
         sign_in_count: Conexiones
+        professor_actions: Acciones
       student:
         username: Nombre de Usuario
         password: Contraseña
@@ -54,8 +57,8 @@ es:
         current_sign_in_at: Última conexión
         last_sign_in_at: Última vez visto
         sign_in_count: Conexiones
-        to_s: Nombre Completo
         process_objects: Procesos
+        course_assignment_students_actions: Acciones
       pmbok:
         process_groups_count: Grupos de Procesos
       knowledge_area_type:
@@ -70,6 +73,9 @@ es:
         tool_and_technique_type: Herramienta o Técnica
       output:
         input_and_output_type: Entrada o Salida
+      company:
+        address: Dirección
+        phone: Teléfono
       course:
         nrc: NRC
         year: Año
@@ -81,9 +87,16 @@ es:
         company: Empresa
         students: Estudiantes
         process_objects: Procesos
-      assignment_process_object:
-        student: Estudiante
+        course_assignments_actions: Acciones
+      assignment_student:
         process_object: Proceso
+      assignment_student_process_object:
+        process_object: Proceso
+        process_object_id: Proceso
+      attachment:
+        item: Archivo
+        grade_professor: Nota Profesor
+        comment_professor: Comentario Profesor
     errors:
       messages:
         record_invalid: "La validación falló: %{errors}"

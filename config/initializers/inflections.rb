@@ -16,7 +16,10 @@ ActiveSupport::Inflector.inflections(:en) do |inflect|
 	inflect.irregular('tool_and_technique', 'tools_and_techniques')
 	inflect.irregular('CourseStudent', 'CoursesStudents')
 	inflect.irregular('course_student', 'courses_students')
-	inflect.irregular('course', 'courses')
+	inflect.irregular('AssignmentStudent', 'AssignmentsStudents')
+	inflect.irregular('assignment_student', 'assignments_students')
+	inflect.irregular('AssignmentStudentProcessObject', 'AssignmentsStudentsProcessObjects')
+	inflect.irregular('assignment_student_process_object', 'assignments_students_process_objects')
 end
 ActiveSupport::Inflector.inflections(:es) do |inflect|
 	inflect.plural(/([^djlnrs])([A-Z]|_|$)/, '\1s\2')
