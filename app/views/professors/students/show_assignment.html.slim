@@ -1,12 +1,35 @@
 = header_generator @student, 'user', @student.to_s
 	= custom_link_to @assignment, :index, [@course, @assignment], 'btn btn-admin-index'
-	= custom_link_to @assignment, :edit, [:edit, @course, @assignment, @student], 'btn btn-admin-edit', false, nil, nil, "Calificar Estudiante "
+	= custom_link_to @assignment, :edit, [:edit, @course, @assignment, @student], 'btn btn-admin-edit', false, nil, nil, "Calificar Estudiante/Editar Tarea "
 = dbox_generator @student, :id, :to_s, :email, :current_sign_in_at
 
 .row-wg
 	.col-sm-12
-		= header_generator nil, 'book', "#{Assignment.singularize} - #{@assignment_student.state_to_s}"
-= dbox_generator @assignment, :id, :name, :description, :pmbok, :company
+		= header_generator nil, 'book', @assignment
+.description-box-inverse
+	dl.row-wg
+		dt.col-sm-3 = Assignment.human_attribute_name(:id)
+		dd.col-sm-9 = @assignment.id
+		dt.col-sm-3 = Assignment.human_attribute_name(:name)
+		dd.col-sm-9 = @assignment.name
+		dt.col-sm-3 = Assignment.human_attribute_name(:description)
+		dd.col-sm-9 = @assignment.description
+		dt.col-sm-3 = Assignment.human_attribute_name(:pmbok)
+		dd.col-sm-9 = @assignment.pmbok
+		dt.col-sm-3 = Assignment.human_attribute_name(:company)
+		dd.col-sm-9 = @assignment.company
+		dt.col-sm-3 = Company.human_attribute_name(:address)
+		dd.col-sm-9 = @assignment.company.address
+		dt.col-sm-3 = Company.human_attribute_name(:phone)
+		dd.col-sm-9 = @assignment.company.phone
+		dt.col-sm-3
+			h3 = AssignmentStudent.human_attribute_name(:state)
+		dd.col-sm-9
+			h3 = @assignment_student.state_to_s
+		dt.col-sm-3
+			h3 = AssignmentStudent.human_attribute_name(:grade)
+		dd.col-sm-9
+			h3 = @assignment_student.grade
 .row-wg
 	.col-sm-12
 		= header_generator nil, 'object-group', ProcessObject.pluralize

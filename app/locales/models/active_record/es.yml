@@ -90,12 +90,16 @@ es:
         course_assignments_actions: Acciones
       assignment_student:
         process_object: Proceso
+        grade: Nota
+        state: Estado
       assignment_student_process_object:
         process_object: Proceso
         process_object_id: Proceso
       attachment:
         item: Archivo
+        grade: Nota
         grade_professor: Nota Profesor
+        comment: Comentario
         comment_professor: Comentario Profesor
     errors:
       messages:

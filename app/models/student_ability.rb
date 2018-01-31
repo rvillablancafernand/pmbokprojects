@@ -13,9 +13,11 @@ class StudentAbility
 		can :register, Course
 		cannot :register, Course, students: { id: student.id }
 
-		can :done, Assignment, assignments_students: { student_id: student.id, state_name: :in_progress }
 		can :read, Assignment, assignments_students: { student_id: student.id }
-		can :read, AssignmentStudent
+		can :read, AssignmentStudent, student_id: student.id
+		can :read, AssignmentStudentProcessObject, assignments_students: { student_id: student.id }
+
+		can :done, Assignment, assignments_students: { student_id: student.id, state_name: :in_progress }
 		can :update, Input
 		can :update, Output
 		can :update, ToolAndTechnique

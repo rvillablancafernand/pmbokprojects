@@ -6,10 +6,6 @@
 			.card-body
 				= simple_form_for @assignment_student, url: [@course, @assignment, @student] do |f|
 					- f.error_notification
-					- if @assignment_student.disabled?
-						= f.input :grade, placeholder: @assignment_student.calc_grade, disabled: true
-					- else
-						= f.input :grade, placeholder: @assignment_student.calc_grade
 					.form-group.row
 						label.col-sm-3.col-form-label
 							= AssignmentStudent.pluralize
@@ -20,4 +16,7 @@
 								= link_to_add_association f, :assignments_students_process_objects
 									= icon 'new'
 									span = AssignmentStudent.singularize
+					hr
+					= f.input :grade, placeholder: @assignment_student.calc_grade
+					= f.input :state, as: :select, collection: [['Tarea en Progreso', 'in_progress'], ['Tarea Entregada', 'done'], ['Tarea Revisada', 'revised']]
 					= f.button :submit

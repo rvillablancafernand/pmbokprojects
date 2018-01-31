@@ -3,7 +3,22 @@
 	= custom_link_to @assignment, :edit, [:edit, @course, @assignment], 'btn btn-admin-edit', @assignment.singularize
 	= custom_link_to @assignment, :destroy, [@course, @assignment], 'btn btn-admin-destroy', @assignment.singularize, true, :delete
 
-= dbox_generator @assignment, :id, :name, :description, :pmbok, :company
+.description-box-inverse
+	dl.row-wg
+		dt.col-sm-3 = Assignment.human_attribute_name(:id)
+		dd.col-sm-9 = @assignment.id
+		dt.col-sm-3 = Assignment.human_attribute_name(:name)
+		dd.col-sm-9 = @assignment.name
+		dt.col-sm-3 = Assignment.human_attribute_name(:description)
+		dd.col-sm-9 = @assignment.description
+		dt.col-sm-3 = Assignment.human_attribute_name(:pmbok)
+		dd.col-sm-9 = @assignment.pmbok
+		dt.col-sm-3 = Assignment.human_attribute_name(:company)
+		dd.col-sm-9 = @assignment.company
+		dt.col-sm-3 = Company.human_attribute_name(:address)
+		dd.col-sm-9 = @assignment.company.address
+		dt.col-sm-3 = Company.human_attribute_name(:phone)
+		dd.col-sm-9 = @assignment.company.phone
 .row-wg
 	.col-sm-12
 		= header_generator nil, 'users', Student.pluralize

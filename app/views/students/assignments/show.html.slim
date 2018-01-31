@@ -1,8 +1,31 @@
-= header_generator @assignment, 'book', "#{Assignment.singularize} - #{@assignment_student.state_to_s}"
+= header_generator @assignment, 'book', @assignment
 	= custom_link_to @course, :index, @course, 'btn btn-admin-index'
-	= custom_link_to @assignment, :done, [:done, @course, @assignment], 'btn btn-admin-done', @assignment.singularize, true, :post
+	= custom_link_to @assignment, :done, [:done, @course, @assignment], 'btn btn-admin-done', @assignment.singularize, true, :post, "Entregar Tarea "
 
-= dbox_generator @assignment, :id, :name, :description, :pmbok, :company
+.description-box-inverse
+	dl.row-wg
+		dt.col-sm-3 = Assignment.human_attribute_name(:id)
+		dd.col-sm-9 = @assignment.id
+		dt.col-sm-3 = Assignment.human_attribute_name(:name)
+		dd.col-sm-9 = @assignment.name
+		dt.col-sm-3 = Assignment.human_attribute_name(:description)
+		dd.col-sm-9 = @assignment.description
+		dt.col-sm-3 = Assignment.human_attribute_name(:pmbok)
+		dd.col-sm-9 = @assignment.pmbok
+		dt.col-sm-3 = Assignment.human_attribute_name(:company)
+		dd.col-sm-9 = @assignment.company
+		dt.col-sm-3 = Company.human_attribute_name(:address)
+		dd.col-sm-9 = @assignment.company.address
+		dt.col-sm-3 = Company.human_attribute_name(:phone)
+		dd.col-sm-9 = @assignment.company.phone
+		dt.col-sm-3
+			h3 = AssignmentStudent.human_attribute_name(:state)
+		dd.col-sm-9
+			h3 = @assignment_student.state_to_s
+		dt.col-sm-3
+			h3 = AssignmentStudent.human_attribute_name(:grade)
+		dd.col-sm-9
+			h3 = @assignment_student.grade
 
 .row-wg
 	.col-sm-12
@@ -23,15 +46,19 @@
 										h5.mb-0
 											= input.to_s_with_desc
 									.card-body
-										= simple_form_for [@assignment_student, input] do |f|
-											= f.hidden_field :assignment_student_id, value: @assignment_student.id
-											= f.simple_fields_for :attachments do |attachment|
-												= render 'attachment_fields', f: attachment
-											.links
-												= link_to_add_association f, :attachments
-													= icon 'new'
-													span = "#{Attachment.singularize}"
-											= f.button :submit
+										- if @assignment_student.state_name == :in_progress
+											= simple_form_for [@assignment_student, input] do |f|
+												= f.hidden_field :assignment_student_id, value: @assignment_student.id
+												= f.simple_fields_for :attachments do |attachment|
+													= render 'attachment_fields', f: attachment
+												.links
+													= link_to_add_association f, :attachments
+														= icon 'new'
+														span = "#{Attachment.singularize}"
+												= f.button :submit
+										- elsif @assignment_student.state_name == :done or @assignment_student.state_name == :revised
+											- input.attachments.each do |attachment|
+												= dbox_generator attachment, :item_url, :comment, :grade, :comment_professor, :grade_professor
 				.card
 					.card-header
 						h5.mb-0
@@ -44,15 +71,19 @@
 										h5.mb-0
 											= tool_and_technique.to_s_with_desc
 									.card-body
-										= simple_form_for [@assignment_student, tool_and_technique] do |f|
-											= f.hidden_field :assignment_student_id, value: @assignment_student.id
-											= f.simple_fields_for :attachments do |attachment|
-												= render 'attachment_fields', f: attachment
-											.links
-												= link_to_add_association f, :attachments
-													= icon 'new'
-													span = "#{Attachment.singularize}"
-											= f.button :submit
+										- if @assignment_student.state_name == :in_progress
+											= simple_form_for [@assignment_student, tool_and_technique] do |f|
+												= f.hidden_field :assignment_student_id, value: @assignment_student.id
+												= f.simple_fields_for :attachments do |attachment|
+													= render 'attachment_fields', f: attachment
+												.links
+													= link_to_add_association f, :attachments
+														= icon 'new'
+														span = "#{Attachment.singularize}"
+												= f.button :submit
+										- elsif @assignment_student.state_name == :done or @assignment_student.state_name == :revised
+											- tool_and_technique.attachments.each do |attachment|
+												= dbox_generator attachment, :item_url, :comment, :grade, :comment_professor, :grade_professor
 					.card-header
 						h5.mb-0
 							= link_to "Salidas", "#collapse_#{process_object.id}_3", data: { toggle: "collapse", turbolinks: :false }, class: 'collapsed'
@@ -64,12 +95,16 @@
 										h5.mb-0
 											= output.to_s_with_desc
 									.card-body
-										= simple_form_for [@assignment_student, output] do |f|
-											= f.hidden_field :assignment_student_id, value: @assignment_student.id
-											= f.simple_fields_for :attachments do |attachment|
-												= render 'attachment_fields', f: attachment
-											.links
-												= link_to_add_association f, :attachments
-													= icon 'new'
-													span = "#{Attachment.singularize}"
-											= f.button :submit
+										- if @assignment_student.state_name == :in_progress
+											= simple_form_for [@assignment_student, output] do |f|
+												= f.hidden_field :assignment_student_id, value: @assignment_student.id
+												= f.simple_fields_for :attachments do |attachment|
+													= render 'attachment_fields', f: attachment
+												.links
+													= link_to_add_association f, :attachments
+														= icon 'new'
+														span = "#{Attachment.singularize}"
+												= f.button :submit
+										- elsif @assignment_student.state_name == :done or @assignment_student.state_name == :revised
+											- output.attachments.each do |attachment|
+												= dbox_generator attachment, :item_url, :comment, :grade, :comment_professor, :grade_professor

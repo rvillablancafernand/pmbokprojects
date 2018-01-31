@@ -1,7 +1,7 @@
 class ToolAndTechnique < ApplicationRecord
 	belongs_to :tool_and_technique_type
 	belongs_to :process_object, counter_cache: true
-	has_many :attachments, as: :attachable
+	has_many :attachments, as: :attachable, inverse_of: :attachable
 	accepts_nested_attributes_for :attachments, allow_destroy: true
 
 	def to_s

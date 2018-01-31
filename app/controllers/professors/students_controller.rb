@@ -64,14 +64,14 @@ class Professors::StudentsController < ApplicationController
 		authorize! :show, Course
 		authorize! :show, Assignment, through: :course
 		authorize! :show_assignment, Student, through: :course
-		@assignment_student = AssignmentStudent.find_by(assignment: @assignment, student: @student)
+		@assignment_student = AssignmentStudent.find_or_create_by(assignment: @assignment, student: @student)
 	end
 
 	def edit
 		@student = Student.find(params[:id])
 		@assignment = Assignment.find(params[:assignment_id])
 		@course = Course.find(params[:course_id])
-		@assignment_student = AssignmentStudent.first_or_create(assignment: @assignment, student: @student)
+		@assignment_student = AssignmentStudent.find_or_create_by(assignment: @assignment, student: @student)
 
 		authorize! :show, Course
 		authorize! :show, Assignment, through: :course
@@ -82,7 +82,7 @@ class Professors::StudentsController < ApplicationController
 		@student = Student.find(params[:id])
 		@assignment = Assignment.find(params[:assignment_id])
 		@course = Course.find(params[:course_id])
-		@assignment_student = AssignmentStudent.first_or_create(assignment: @assignment, student: @student)
+		@assignment_student = AssignmentStudent.find_or_create_by(assignment: @assignment, student: @student)
 
 		authorize! :show, Course
 		authorize! :show, Assignment, through: :course
@@ -90,7 +90,7 @@ class Professors::StudentsController < ApplicationController
 
 		if @assignment_student.update assignment_student_params
 			flash_message @student, :update, :notice
-			redirect_to [@course, @assignment]
+			redirect_to [:show_assignment, @course, @assignment, @student]
 		else
 			render :edit
 		end
@@ -98,7 +98,7 @@ class Professors::StudentsController < ApplicationController
 
 	private
 	def assignment_student_params
-		params.require(:assignment_student).permit(assignments_students_process_objects_attributes: [:id, :process_object_id, :_destroy])
+		params.require(:assignment_student).permit(:grade, :state, assignments_students_process_objects_attributes: [:id, :process_object_id, :_destroy])
 	end
 
 end

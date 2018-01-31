@@ -157,6 +157,11 @@ module AdminHelper
 						concat content_tag(:dd, class: 'col-sm-9'){
 							object.send(attribute) ? icon('check-square-o', class: 'text-success') : icon('square-o')
 						}
+					when :item_url
+						concat content_tag :dt, object.attribute_name(attribute), class: 'col-sm-3'
+						concat content_tag(:dd, class: 'col-sm-9'){
+							link_to object.item_original_filename, object.item_url
+						}
 					else
 						concat content_tag :dt, object.attribute_name(attribute), class: 'col-sm-3'
 						concat content_tag :dd, object.send(attribute), class: 'col-sm-9'

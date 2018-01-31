@@ -165,7 +165,7 @@
 .fa-edit_assignment {
 	@extend .fa-edit;
 }
-.fa-new, .fa-invite, .fa-done {
+.fa-new, .fa-invite{
 	@extend .fa-plus;
 }
 .fa-destroy {
@@ -179,4 +179,7 @@
 }
 .fa-reject {
 	@extend .fa-sign-out;
+}
+.fa-done {
+@extend .fa-check;
 }

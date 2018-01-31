@@ -1,3 +1,4 @@
-= header_generator @student, 'edit', "Calificar Estudiante"
-	= custom_link_to @assignment, :index, [:show_assignment, @course, @assignment, @student], 'btn btn-admin-index', @assignment
+= header_generator @student, 'edit', "Calificar Estudiante/Editar Tarea"
+	= custom_link_to @assignment, :index, [@course, @assignment], 'btn btn-admin-index', @assignment
+	= custom_link_to @assignment, :show, [:show_assignment, @course, @assignment, @student], 'btn btn-admin-show', @student.singularize
 == render 'form'

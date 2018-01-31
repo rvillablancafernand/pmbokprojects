@@ -37,7 +37,7 @@ class Professors::CompaniesController < ApplicationController
 		@company.destroy
 		if @company.destroyed?
 			flash_message @company, :destroy, :notice
-			redirect_to components_url
+			redirect_to companies_url
 		else
 			flash_message @company, :destroy, :error
 			redirect_to @company
