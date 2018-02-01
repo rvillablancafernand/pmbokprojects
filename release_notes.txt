@@ -1,0 +1,23 @@
+RELEASE NOTES:
+-------------------------------------------------------------------------------
+Release notes del proyecto pmbokprojects.com que utiliza como repositorio GitHub (https://github.com/rvillablancafernand/pmbokprojects).
+
+-Versión 1: Master
+	Se crea la primera versión del producto con sus diseños preliminares y las funciones necesarias para poder gestionar las veriones de Pmbok.
+	Master-V1.5
+		Se realiza corrección al diseño y funcionamiento de las vistas de los Pmbok creados (El ver), además se corrige error que permitia crear Pmboks con el mismo nombre.
+-Versión 2: Master-V2
+	Se crea segunda versión que incluye los perfiles de usuario diferenciados (Administrador, Profesor y Alumno), además se modifica el mailer para poder aceptar los registros de usuarios con diseño acorde a la aplicación.
+-Versión 3: Master-V3
+	Se crea tercera versión que incluye las funciones de gestionar curso para profesor y administrador.
+-Versión 4: Master-V4
+	Se crea cuarta versión que incluye el gestionar las tareas para profesor y administrador.
+-Versión 5: Master-V5
+	Se crea quinta versión que incluye la función de subir documentos en las tarea asignadas a los alumnosy solo por los alumnos. 
+-Versión 6: Master-V6
+	Se crea sexta versión que incluye las funciones de revisar las tareas por parte de los profesores y el dejar una calificación y comentarios en las tareas por parte de los alumnos.
+-Versión 7: Master-V7
+	Se Crea Septima Versión que incluye el ver lascalificaciones puestas por el profesor por parte de losalumnos y el gestionar las empresas por parte del administrador.
+
+	Versión 7.1: Master-V7 Examen Final
+		Se hacen correcciones de diseño para examen final.
